@@ -1,5 +1,7 @@
 ## BETTER TOGETHER
 
+<img src="src/assets/logo.svg" width="150px" />
+
 **Para rodar:**
 1 - npm install ***instalar todas dependencias***
 2 - npm start ***para iniciar***
