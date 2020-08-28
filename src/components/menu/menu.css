@@ -1,0 +1,45 @@
+nav{
+  background: #820E0E;
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 10;
+}
+
+.botoes{
+  display: flex;
+}
+.btnNav{
+  margin: 5px;
+  color: white;
+}
+.btnNav:hover{
+  color: gray;
+}
+.circle img{
+  resize: both;
+  width: 50px;
+  border: solid white 1px;
+  border-radius: 100%;
+  margin-left: 5px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.ladoDireito{
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.ladoEsquerdo img{
+  width: 50px;
+  height: 50px;
+}
