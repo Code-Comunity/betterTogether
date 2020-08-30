@@ -5,7 +5,7 @@ nav{
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: fixed;
   z-index: 10;
 }
@@ -16,9 +16,17 @@ nav{
 .btnNav{
   margin: 5px;
   color: white;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .btnNav:hover{
-  color: gray;
+  color: rgb(167, 161, 161);
+}
+.btnNav img{
+  margin-left: 5px;
+  width: 22px;
 }
 .circle img{
   resize: both;
@@ -38,8 +46,10 @@ nav{
   display: flex;
   align-items: center;
   color: white;
+  margin-right: 60px;
 }
 .ladoEsquerdo img{
   width: 50px;
   height: 50px;
+  margin-left: 60px;
 }
