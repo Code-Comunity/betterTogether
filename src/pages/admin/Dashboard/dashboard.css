@@ -1,0 +1,117 @@
+.Dashboard{
+  width: 100%;
+  height: 100vh;
+  background: #F5F6FA;
+}
+
+.header{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  
+}
+
+.esquerda img{
+  width: 70px;
+}
+.direita{
+  background: chocolate;
+  width: max-content;
+  height: 100%;
+}
+.perfil{
+  background: #FFFFFF;
+  border-radius: 100px;
+  padding: 12px;
+  width: 230px;
+  display: flex;
+  align-items: center;
+}
+.perfil h3{
+  margin-left: 50px;
+}
+.circle{
+  background: cornflowerblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-right: 15px;
+}
+
+.funcoes{
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.funcoes .itens{
+  margin: 5px;
+}
+
+.main{
+  width: 100%;
+  height: max-content;
+
+  padding: 110px;
+}
+
+.ultimosPedidos{
+  width: 60%;
+}
+.ultimosPedidos h1{
+  margin-bottom: 25px;
+}
+
+.itemLista span{
+  margin: 5px;
+}
+.itemLista{
+  background: white;
+  margin: 15px;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemLista h2{
+  background: #820E0E;
+  border-radius: 9px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.itemLista .nome{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.infos{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+.infoitems{
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+.bottom{
+  display: flex;
+  justify-content: space-between;
+}
+.total{
+  border-left: gray 1px solid;
+  height: 100%;
+}

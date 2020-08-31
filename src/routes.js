@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //Rotas de admin
 import LoginAdmin from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
 
 //Rotas de usuario comum
 import Home from './pages/clientes/Home'
 import Contato from './pages/clientes/Contato'
+import LoginClient from './pages/clientes/Login';
 
 export default function Rotas() {
   return (
@@ -14,8 +16,9 @@ export default function Rotas() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/loginadmin" component={LoginAdmin} />
-
         <Route path="/contato" component={Contato} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/login" component={LoginClient} />
       </Switch>
     </BrowserRouter>
   );
