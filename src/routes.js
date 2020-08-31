@@ -7,6 +7,7 @@ import Dashboard from './pages/admin/Dashboard';
 
 //Rotas de usuario comum
 import Home from './pages/clientes/Home'
+import Contato from './pages/clientes/Contato'
 import LoginClient from './pages/clientes/Login';
 
 export default function Rotas() {
@@ -15,9 +16,9 @@ export default function Rotas() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/loginadmin" component={LoginAdmin} />
+        <Route path="/contato" component={Contato} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/login" component={LoginClient} />
-        
       </Switch>
     </BrowserRouter>
   );
