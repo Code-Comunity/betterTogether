@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../../assets/logored.svg';
+import Logo from '../../../assets/logowhite.svg';
 import './login.css';
 
 export default function LoginAdmin() {
@@ -10,7 +10,7 @@ export default function LoginAdmin() {
 
       <div className="boxLogin">
       <img src={Logo} alt="betterTogether"/>
-      <h3 style={{color: "#820E0E",}}>Login Area</h3>
+      <h3 style={{color: "#FFFF",}}>Login Area</h3>
       
         <div className="inputGroup">
 
