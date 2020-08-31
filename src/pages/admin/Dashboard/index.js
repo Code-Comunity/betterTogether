@@ -15,8 +15,8 @@ export default function Dashboard() {
             <img src={Logo} alt="LogoDashboard"/>
           </div>
           <div className="direta">
-            <div className="perfil">
-              <div className="circle"></div>
+            <div className="perfilDash">
+              <div className="circleDash"></div>
               <h2>Hélio</h2>
               <h3> -> </h3>
             </div>
@@ -59,14 +59,12 @@ export default function Dashboard() {
                           <span>{e.transportadora}</span>
                         </div>
                       </div>
-                  
+
                       <div className="total">
-                        <h2>{e.valorTotal}</h2>
+                        <h1>{e.valorTotal}</h1>
                       </div>
-                  </div>
                  
-                  
-                  
+                  </div>
 
                 </div>
                 )
