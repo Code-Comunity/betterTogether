@@ -24,7 +24,7 @@ export default function Navbar() {
                       <h4>Sobre</h4>
                       <img src={Sobre} alt="Sobre"/>
                     </Link>
-                    <Link to="/" className="btnNav">
+                    <Link to="/contato" className="btnNav">
                       <h4>Contato</h4>
                       <img src={Contato} alt="Contato"/>
                     </Link>
