@@ -6,7 +6,7 @@ import './menu.css';
 
 //Imagens
 import Perfil from '../../assets/testeperfil.png';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logowhite.svg';
 import Contato from '../../assets/contato.svg';
 import Carrinho from '../../assets/carrinho.svg';
 import Sobre from '../../assets/sobre.svg'
