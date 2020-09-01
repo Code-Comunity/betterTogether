@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoMdPerson,IoIosFingerPrint } from "react-icons/io";
 import Logo from '../../../assets/logowhite.svg';
 import './loginclient.css';
 
@@ -16,12 +17,12 @@ export default function LoginClient() {
         <div className="inputGroup">
 
           <div className="inputWIcon">
-            <h3>E</h3>
+            <h3><IoMdPerson size="20px" /></h3>
             <input type="text" name="email"/>
           </div>
 
           <div className="inputWIcon">
-            <h3>S</h3>
+            <h3><IoIosFingerPrint size="20px" /></h3>
             <input type="password" name="senha"/>
           </div>
         </div>

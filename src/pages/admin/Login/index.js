@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdPerson,IoIosFingerPrint } from "react-icons/io";
 import Logo from '../../../assets/logowhite.svg';
 import './login.css';
 
@@ -15,12 +16,12 @@ export default function LoginAdmin() {
         <div className="inputGroup">
 
           <div className="inputWIcon">
-            <h3>N</h3>
+            <h3><IoMdPerson size="20px" /></h3>
             <input type="text" name="nome"/>
           </div>
 
           <div className="inputWIcon">
-            <h3>S</h3>
+            <h3><IoIosFingerPrint size="20px" /></h3>
             <input type="text" name="senha"/>
           </div>
         </div>
