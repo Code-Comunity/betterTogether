@@ -38,6 +38,8 @@ export default function Dashboard() {
 
             <div className="pedidoslista">
               { data.map(e=>{
+
+                //Aqui chamaremos na api, os ultimos pedidos
                 return(
                 <div key={e.id} className="itemLista">
                   <div className="top">

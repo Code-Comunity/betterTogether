@@ -1,0 +1,54 @@
+.clienteItem{
+  background: white;
+  width: 80%;
+  height: 85px;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clientePerfil{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  color: #820E0E;
+}
+.thumbCliente{
+  background: #820E0E;
+      color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin-right: 15px;
+  min-width: 50px;
+}
+
+.infos1, .infos2{
+  display: flex;
+  flex-direction: column;
+}
+.infos1, .infos2 span{
+  display: flex;
+  align-items: center;
+
+}
+.clienteInformacoes{
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  font-weight: bold;
+  color: gray;
+}
+
+@media (max-width: 800px){
+  .clienteItem{
+    width: 100%;
+    margin: 0px;
+    margin-top: 20px;
+  }
+}

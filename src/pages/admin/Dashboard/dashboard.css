@@ -62,9 +62,9 @@
   height: max-content;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 110px;
+  padding: 5%;
 }
 
 .ultimosPedidos{
@@ -168,4 +168,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 800px){
+  .main{
+    flex-wrap: wrap;
+    padding: 0px;
+  }
+
+  .cardEst{
+    padding: 25px;
+    margin: 15px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  .ultimosPedidos{
+    width: 100%;
+  }
+  .CardsEstatisticas{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
 }
