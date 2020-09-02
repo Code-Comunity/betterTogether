@@ -10,7 +10,7 @@ header img{
   resize: both;
   image-resolution: 300;
 }
-.content{
+.home-content{
   width: 100%;
   margin-top: 40px;
 
@@ -51,15 +51,15 @@ header img{
   height: 278px;
   border-radius: 15px 15px 0px 0px;
 }
-.content-produto{
+.home-content-produto{
   padding: 10px;
 }
-.content-produto h1{
+.home-content-produto h1{
   font-size: 20px;
   color: #820E0E;
   text-align: left;
 }
-.content-produto p{
+.home-content-produto p{
   color: #A6A6A6;
   text-align: left;
   margin-top: 5px;

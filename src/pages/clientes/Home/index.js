@@ -8,7 +8,6 @@ import './style.css';
 
 //imagens
 import hero from '../../../assets/header.png';
-import teste from '../../../assets/fototeste.png'
 
 //api
 import data from './api';
@@ -20,7 +19,7 @@ export default function Home() {
       <header>
         <img src={hero} alt="promotion"/>
       </header>
-      <div className="content">
+      <div className="home-content">
         <div className="produtos-container">
           { data.map(e => {
             return(
