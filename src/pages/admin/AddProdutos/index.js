@@ -1,16 +1,12 @@
 import React from 'react';
-import { BiFace,BiHomeAlt,BiLayerPlus, BiPackage,BiBullseye } from "react-icons/bi";
-import { IoIosAddCircle,IoIosExit} from "react-icons/io";
+import { BiFace,BiHomeAlt, BiPackage } from "react-icons/bi";
+import { IoIosExit} from "react-icons/io";
 import {Link} from 'react-router-dom';
 import './style.css'
 import Logo from '../../../assets/logored.svg';
-import Graph from '../../../assets/Dashboard/graph.svg';
-import data from '../Dashboard/api';
+
 
 export default function AddProdutos() {
-
-  const meta = false;
-
   return (
     <>
 <div className="Dashboard">
@@ -35,63 +31,28 @@ export default function AddProdutos() {
 </div>
 
 <div className="main">
-    <div className="listaProdutos">
-      <h1 style={{color: '#820E0E', fontSize: 20, marginBottom: 30}}>Produtos</h1>
 
-    <div className="produtosCadastrados">
-      <Link className="add">
-        <IoIosAddCircle size="73px" />
-        <h1>Adicionar Produto</h1>
-      </Link>
-      { data.map(e=>{
-        //Aqui chamaremos na api, os produtos
-        return(
-        <div key={e.id} className="produto">
-          <BiPackage size="73px" />
-          <h1>{e.nome}</h1>
-        </div>
-        )
-        }) }
+    <div className="addProdutos">
+      <div className="left">
+        <input type="text" placeholder="Digite o código do produto"/>
+
+        <input type="text" placeholder="Digite o nome do produto"/>
+
+        <input type="text" placeholder="Digite o preço do produto"/>
+
+        <textarea name="descricao" id="desc" cols="30" rows="10" placeholder="Descreva um pouco sobre o produto ou serviço que
+        você está vendendo." >
+        </textarea>
       </div>
+
+      <div className="right">
+        <input type="file" name="addimgprodut" id="addimgprodut"/>
+        <button>Adicionar</button>
+      </div>
+      
     </div>
 
-      <div className="CardsEstatisticas">
-
-          <div className="cardEst">
-
-              <div className="dirCard">
-                <h4>Metas</h4>
-                <BiBullseye size="50px" />  
-                { meta ? <div><h1>Meta</h1></div> : <span>Nenhuma meta ainda</span> }
-                <Link className="addMeta">
-                <span><BiLayerPlus /></span>
-                <span>Adicionar nova meta</span>
-                </Link>
-              </div>
-
-              <div className="esqCard">
-                <h3>150 R$</h3>
-              </div>
-          </div>
-
-          <div className="cardEst">
-              <div className="dirCard">
-                <h4>Produtos mais vendidos</h4>
-                
-                {data.map(e=>{
-                  //Aqui chamaremos da api de estatisticas do produto
-                  return(<span>{e.nome}</span>)
-                })}
-              </div>
-
-              <div className="esqCard">
-                <img src={Graph} alt="grafico"/>
-              </div>
-          </div>
-        
-      </div>
 </div>
-
 </div>
     </>
   );

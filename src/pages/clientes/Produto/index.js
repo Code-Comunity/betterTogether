@@ -16,6 +16,9 @@ export default function Produto() {
       <Navbar />
       <div className="produto-container">
         { data.map(e => { 
+
+          //Aqui chamaremos a api, com o produto selecionado
+          
           return( 
           <div className="produto-content">
             <div className="produto-esquerda">

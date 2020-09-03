@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginAdmin from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import AddProdutos from './pages/admin/AddProdutos';
+import Produtos from './pages/admin/Produtos';
 import Clientes from './pages/admin/Clientes';
 
 
@@ -26,6 +27,7 @@ export default function Rotas() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/login" component={LoginClient} />
         <Route path="/addprodutos" component={AddProdutos} />
+        <Route path="/produtos" component={Produtos} />
         <Route path="/clientes" component={Clientes} />
       </Switch>
     </BrowserRouter>
