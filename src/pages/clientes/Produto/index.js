@@ -31,7 +31,7 @@ export default function Produto() {
             <div className="produto-direita">
               <div className="align-preco">
                 <div className="preco-produto-pag">
-                  <h1>R${e.preco}</h1>
+                  <h1>{e.preco}</h1>
                   <p>1 x de R${e.preco} sem juros no cartão</p>
                 </div>
                 <div className="produto-frete-calc">

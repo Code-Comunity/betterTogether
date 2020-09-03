@@ -41,12 +41,12 @@ header img{
   display: flex;
   flex-direction: column;
 }
-.foto-produto{
+.foto-produto-home{
   width: 350px;
   height: 278px;
   background: none;
 }
-.foto-produto img{
+.foto-produto-home img{
   width: 350px;
   height: 278px;
   border-radius: 15px 15px 0px 0px;

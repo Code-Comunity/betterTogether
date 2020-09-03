@@ -25,12 +25,12 @@ export default function Home() {
             return(
               <Link>
                   <div key={e.id} className="produtos">
-                    <div className="foto-produto">
+                    <div className="foto-produto-home">
                       <img src={e.thumb} alt="teste"/>
                     </div>
-                    <div className="content-produto">
+                    <div className="home-content-produto">
                       <h1>{e.nome}</h1>
-                      <p>R$ {e.preco}</p>
+                      <p>{e.preco}</p>
                       <p>12x no cartão</p>
                     </div>
                   </div>
