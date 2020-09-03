@@ -8,7 +8,6 @@ import './style.css';
 
 //imagens
 import hero from '../../../assets/header.png';
-import teste from '../../../assets/fototeste.png'
 
 //api
 import data from './api';
@@ -20,18 +19,18 @@ export default function Home() {
       <header>
         <img src={hero} alt="promotion"/>
       </header>
-      <div className="content">
+      <div className="home-content">
         <div className="produtos-container">
           { data.map(e => {
             return(
               <Link>
                   <div key={e.id} className="produtos">
-                    <div className="foto-produto">
+                    <div className="foto-produto-home">
                       <img src={e.thumb} alt="teste"/>
                     </div>
-                    <div className="content-produto">
+                    <div className="home-content-produto">
                       <h1>{e.nome}</h1>
-                      <p>R$ {e.preco}</p>
+                      <p>{e.preco}</p>
                       <p>12x no cartão</p>
                     </div>
                   </div>
