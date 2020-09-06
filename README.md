@@ -30,11 +30,12 @@ Foto | Nome | GitHub | Likedin | E-mail
 
 Linguagem:
 
-- 
+- Javascript
+- Php
 
 Banco de dados
 
-- Postgresql
+- 
 
 
 **Para executar:**
