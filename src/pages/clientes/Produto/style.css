@@ -1,7 +1,11 @@
+body{
+  background: #E5E5E5;
+}
 .produto-container{
     width: 100%;
-    height: auto;
+    height: 100vh;
     background: #E5E5E5;
+  
 
     display: flex;
     justify-content: center;
@@ -9,8 +13,8 @@
 }
 .produto-content{
     width: 80%;
-    margin-top: 150px;
- 
+    margin-top: 60px;
+
     display: flex;
     justify-content: space-between;
     flex-direction: row;

@@ -3,12 +3,14 @@ header{
   height: 460px;
   min-height: 460px;
   height: 460px;
+  
 }
 header img{
   width: 100vw;
   height: 100%;
   resize: both;
   image-resolution: 300;
+  margin-top: 60px;
 }
 .home-content{
   width: 100%;
