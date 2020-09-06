@@ -1,18 +1,18 @@
 #
-# BETTER TOGETHER
+# *BETTER TOGETHER*
 Loja Virtual De Produtos Românticos
 
 # <img src="src/assets/logo.svg" width="150px" />
 
 <br>
 
-**Objetivo**
+### **Objetivo**
 Fazer uma loja virtual funcional com meios de vendas e gerenciamento de produtos/estoque.
 
 <br>
 
-**Justificativa:**
- [EM EDIÇÃO]
+### **Justificativa:**
+ [Não Lançado]
 
  <br>
 
@@ -35,7 +35,7 @@ Linguagem:
 
 Banco de dados
 
-- 
+- [Não Lançado]
 
 <br>
 
