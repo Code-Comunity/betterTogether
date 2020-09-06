@@ -37,13 +37,15 @@ Banco de dados
 
 - 
 
+<br>
 
 **Para executar:**
 1 - npm install ***instalar todas dependencias***
 2 - npm start ***para iniciar***
 
+<br>
 
-**Libs instaladas**
-é possivel ver as libs que estão instaladas no package.json, na parte de "dependencies"
+**Libs instaladas:**
+é possivel ver as libs que estão instaladas no package.json, na parte de "dependencies".
 
-todavia, estamos usando atualmente o *Styled components para criar os componentes*, parte de Rotas já instaladas com o *React Router Dom* e por enquanto é só.
+Todavia, estamos usando atualmente o *Styled components para criar os componentes*, parte de Rotas já instaladas com o *React Router Dom* e por enquanto é só.
