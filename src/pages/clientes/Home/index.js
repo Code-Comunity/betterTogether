@@ -10,7 +10,7 @@ import './style.css';
 import hero from '../../../assets/header.png';
 
 //api
-import data from './api';
+import data from '../../../api/api';
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
         <div className="produtos-container">
           { data.map(e => {
             return(
-              <Link>
+              <Link to={"/produto/"+e.codigo} >
                   <div key={e.id} className="produtos">
                     <div className="foto-produto-home">
                       <img src={e.thumb} alt="teste"/>

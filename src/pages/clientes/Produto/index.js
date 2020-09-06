@@ -6,18 +6,28 @@ import { IoIosCalculator} from "react-icons/io";
 import './style.css';
 
 //api
-import data from './api';
+import data from '../../../api/api';
 
 
 
 
 
 export default function Produto() {
+
+  const url = window.location.href;
+  const splitURL = url.split('/');
+  
+  //Listar oq tá vindo da api, de acordo com o código retornado na variavel splitURL[4]
+  console.log(splitURL[4]) 
+  //essa variável é um array, esse array na posição 4, retorna o ultimo parametro de rota, que é o código
+  console.log(data) 
   return (
     <>
       <Navbar />
       <div className="produto-container">
-        { data.map(e => { 
+        { 
+        
+        data.filter(filtro=> filtro.codigo === splitURL[4]).map(e => { 
 
           //Aqui chamaremos a api, com o produto selecionado
           
