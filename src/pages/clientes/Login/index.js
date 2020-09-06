@@ -12,7 +12,7 @@ export default function LoginClient() {
 
       <div className="boxLogin">
       <img src={Logo} alt="betterTogether"/>
-      <h3 style={{color: "#FFF",}}>Login Area Cliente</h3>
+      <h3 style={{color: "#FFF",}}>Faça seu login!</h3>
       
         <div className="inputGroup">
 
