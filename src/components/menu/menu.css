@@ -13,6 +13,23 @@ nav{
 .botoes{
   display: flex;
 }
+.buttonNav{
+  height: 60px;
+  padding: 7px;
+
+  display: flex;
+  align-items: center;
+}
+.buttonNav:hover{
+  background: #fff;
+  cursor: pointer;
+  color: #820E0E;
+}
+
+.buttonNav a:hover{
+  color: #820E0E;
+}
+
 .btnNav{
   margin: 5px;
   color: white;
@@ -21,12 +38,9 @@ nav{
   flex-direction: row;
   align-items: center;
 }
-.btnNav:hover{
-  color: rgb(167, 161, 161);
-}
-.btnNav img{
-  margin-left: 5px;
-  width: 15px;
+
+.btnNav h4{
+  margin-right: 3px;
 }
 .circle img{
   resize: both;
