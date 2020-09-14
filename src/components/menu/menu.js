@@ -7,8 +7,8 @@ import './menu.css';
 //Imagens
 import Perfil from '../../assets/testeperfil.png';
 import Logo from '../../assets/logowhite.svg';
-import Carrinho from '../../assets/carrinho.svg';
-import Sobre from '../../assets/sobre.svg';
+//import {IoMdCart} from 'react-icons/io';
+import {FaInfoCircle, FaShoppingCart} from 'react-icons/fa';
 
 //Modal
 import Modal from '../ModalCarrinho/modalCarrinho';
@@ -22,20 +22,25 @@ export default function Navbar() {
     <>
       <nav>
         <div className="ladoEsquerdo">
-        <img src={Logo} alt="Logo"/>
+        <Link to='/' ><img src={Logo} alt="Logo"/></Link>
         </div>
         <div className="ladoDireito">
-                    <div className="botoes">
-                    <Link to="/sobre" className="btnNav">
-                      <h4>Sobre</h4>
-                      <img src={Sobre} alt="Sobre"/>
-                    </Link>
-
-                    <Link onClick={() => setIsModalVisible(true)} className="btnNav">
-                      <h4>Carrinho</h4> 
-                      <img src={Carrinho} alt="Carrinho"/>
-                    </Link>                  
-                    </div>                    
+                  
+                  <div className="botoes">
+                      <Link to="/sobre" className="btnNav">
+                        <div className="buttonNav">                        
+                              <h4>Sobre</h4>
+                              <FaInfoCircle />                        
+                        </div>
+                      </Link>
+                      
+                      <Link onClick={() => setIsModalVisible(true)} className="btnNav">
+                        <div className="buttonNav">               
+                              <h4>Carrinho</h4> 
+                              <FaShoppingCart />
+                        </div>
+                      </Link>                  
+                 </div>                  
             <div className="perfil">
               <h4>Maria Silva</h4>
               <div className="circle">

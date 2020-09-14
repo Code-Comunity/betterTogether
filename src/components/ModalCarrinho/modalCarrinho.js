@@ -1,12 +1,13 @@
 import React from 'react';
-import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close } from './style';
+import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar} from './style';
 
 //icons
+import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
 //api
-import data from './api';
+import data from '../../api/api';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
@@ -37,7 +38,13 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                 </Preco>
                             </Card>
                             )   
-                        })}    
+                        })}   
+                        <LinkComprar>
+                            <span>                               
+                                Finalizar compra 
+                                <IoMdCheckmarkCircle />
+                            </span>
+                        </LinkComprar> 
                     </Conteudo>
                 
             </Container>    

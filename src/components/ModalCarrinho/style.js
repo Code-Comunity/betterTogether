@@ -97,3 +97,17 @@ export const Close = styled.div`
         cursor: pointer; 
     } 
 `
+export const LinkComprar = styled.div`
+    display:flex;
+    justify-content:center;
+
+    span{
+        color: #820E0E; 
+        size: 20px; 
+        cursor: pointer;
+
+        img{
+            margin-left: 2px;
+        }
+    }
+`
