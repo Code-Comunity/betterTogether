@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../../components/menu/menu';
+import Footer from '../../../components/footer/footer';
 import {Link} from 'react-router-dom';
 
 //css
@@ -37,8 +38,9 @@ export default function Home() {
               </Link>
             )
           })}
-        </div>
+        </div>     
       </div>
+      <Footer />
     </div>
   );
 }

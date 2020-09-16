@@ -21,6 +21,7 @@ export default function Navbar() {
   return (
     <>
       <nav>
+        
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
         </div>
