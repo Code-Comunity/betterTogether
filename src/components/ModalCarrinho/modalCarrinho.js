@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar} from './style';
+import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar, MostraPreco} from './style';
 
 //icons
 import {IoMdCheckmarkCircle} from 'react-icons/io';
@@ -32,9 +32,9 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                     <Icons>
                                         <span><FaTrash /></span>
                                     </Icons>
-                                    <div>
+                                    <MostraPreco>
                                         <h1>{e.preco}</h1>
-                                    </div>
+                                    </MostraPreco>
                                 </Preco>
                             </Card>
                             )   
