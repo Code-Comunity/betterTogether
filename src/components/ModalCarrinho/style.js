@@ -15,6 +15,8 @@ export const Conteudo = styled.div`
     z-index: 10;
     position: fixed;
     width: 70%;
+    max-height: 85%;
+    overflow: auto;
     background: #F4F5F9;
     margin-top: 70px; 
     padding: 10px;
@@ -57,7 +59,7 @@ export const Descricao = styled.div`
         margin-top: 5px;
     }
     h1{
-        font-size: 20px;
+        font-size: 2.0rem;
         color: #820E0E;
         text-align: left;
     }
@@ -69,7 +71,7 @@ export const Preco = styled.div`
     flex-direction: column;
 
     h1{
-        font-size: 30px;
+        font-size: 3.0rem;
         color: #820E0E;
         text-align: left;
         margin-top: 10px;

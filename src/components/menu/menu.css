@@ -1,4 +1,4 @@
-nav{
+.nav{
   background: #820E0E;
   height: 60px;
   width: 100%;
@@ -12,6 +12,11 @@ nav{
   z-index: 10;
 }
 
+
+.menu-toggle{
+  position: fixed;
+  z-index: 10;
+}
 .botoes{
   display: flex;
 }
@@ -67,5 +72,70 @@ nav{
 .ladoEsquerdo img{
   width: 50px;
   height: 50px;
+
+}
+
+@media (max-width: 540px){
+  .ladoDireito{
+    display: none;
+  }
+
+  .one,
+  .two,
+  .three{
+    background-color: #fff;
+    height: 5px;
+    width: 100%;
+    margin: 6px auto;
+
+    transition-duration: 0.3s;
+  }
+
+  .menu-toggle{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    width: 40px;
+    height: 30px;
+    margin-right: 20px;
+    margin-left: 5px;
+  }
+  .nav.on{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #820E0E;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .nav.on .menu-toggle .one{
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  .nav.on .menu-toggle .two{
+    opacity: 0;
+  }
+  .nav.on .menu-toggle .three{
+    transform: rotate(-45deg) translate(8px, -9px);  
+  }
+  .nav.on .ladoDireito{
+    height: 62%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+
+    transition-duration: 0.5s;
+  }
+  .nav.on .botoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 }

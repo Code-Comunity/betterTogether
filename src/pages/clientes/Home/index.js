@@ -15,32 +15,34 @@ import data from '../../../api/api';
 
 export default function Home() {
   return (
-    <div className="home-container">
-      <Navbar />
-      <header>
-        <img src={hero} alt="promotion"/>
-      </header>
-      <div className="home-content">
-        <div className="produtos-container">
-          { data.map(e => {
-            return(
-              <Link to={"/produto/"+e.codigo} >
-                  <div key={e.id} className="produtos">
-                    <div className="foto-produto-home">
-                      <img src={e.thumb} alt="teste"/>
+    <> 
+    <Navbar />
+      <div className="home-container"> 
+        <header>
+          <img src={hero} alt="promotion"/>
+        </header>
+        <div className="home-content">
+          <div className="produtos-container">
+            { data.map(e => {
+              return(
+                <Link to={"/produto/"+e.codigo} >
+                    <div key={e.id} className="produtos">
+                      <div className="foto-produto-home">
+                        <img src={e.thumb} alt="teste"/>
+                      </div>
+                      <div className="home-content-produto">
+                        <h1>{e.nome}</h1>
+                        <p>{e.preco}</p>
+                        <p>12x no cartão</p>
+                      </div>
                     </div>
-                    <div className="home-content-produto">
-                      <h1>{e.nome}</h1>
-                      <p>{e.preco}</p>
-                      <p>12x no cartão</p>
-                    </div>
-                  </div>
-              </Link>
-            )
-          })}
-        </div>     
+                </Link>
+              )
+            })}
+          </div>     
+        </div>    
       </div>
-      <Footer />
-    </div>
+     <Footer />
+    </>
   );
 }

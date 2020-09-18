@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../../components/menu/menu';
+import Footer from '../../../components/footer/footer';
 import { IoIosCalculator} from "react-icons/io";
 
 //css
@@ -7,9 +8,6 @@ import './style.css';
 
 //api
 import data from '../../../api/api';
-
-
-
 
 
 export default function Produto() {
@@ -66,6 +64,7 @@ export default function Produto() {
           )
           })}
       </div>
+      <Footer />
     </>
   );
 }

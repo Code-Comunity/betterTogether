@@ -13,14 +13,32 @@ import {FaInfoCircle, FaShoppingCart} from 'react-icons/fa';
 //Modal
 import Modal from '../ModalCarrinho/modalCarrinho';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Navbar() {
-
+  //modal
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  //Menu responsivo
+  useEffect(()=>{
+    let show = true;
+
+    const menuSection = document.querySelector(".nav")
+    const menuToggle = menuSection.querySelector(".menu-toggle")
+  
+    menuToggle.addEventListener("click", () =>{
+      document.body.style.overflow = show? "hidden" : "initial";
+
+      menuSection.classList.toggle("on", show)
+      show = !show;
+    })
+  },[]);
+
+  
 
   return (
     <>
-      <nav>
+      <div className="nav">
         
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
@@ -48,9 +66,17 @@ export default function Navbar() {
                 <img src={Perfil} alt="Perfil foto"/>
               </div>
             </div>
-        </div>        
-      </nav>
+        </div>
+   
+          <div className="menu-toggle" >
+                <div className="one"></div>
+                <div className="two"></div>
+                <div className="three"></div>            
+          </div>  
+
+      </div>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}
+
     </>
   );
 }
