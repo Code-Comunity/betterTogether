@@ -7,6 +7,7 @@ import Dashboard from './pages/admin/Dashboard';
 import AddProdutos from './pages/admin/AddProdutos';
 import Produtos from './pages/admin/Produtos';
 import Clientes from './pages/admin/Clientes';
+import EditProdutos from './pages/admin/EditProdutos'
 
 
 //Rotas de usuario comum
@@ -14,6 +15,7 @@ import Home from './pages/clientes/Home';
 import Produto from './pages/clientes/Produto';
 import Sobre from './pages/clientes/Sobre';
 import LoginClient from './pages/clientes/Login';
+import Registro from './pages/clientes/Cadastro';
 
 export default function Rotas() {
   return (
@@ -23,12 +25,15 @@ export default function Rotas() {
         <Route path="/produto" component={Produto} />
         <Route path="/sobre" component={Sobre} />
         <Route path="/login" component={LoginClient} />
+        <Route path="/cadastro" component={Registro} />
 
         <Route path="/loginadmin" component={LoginAdmin} />       
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/addprodutos" component={AddProdutos} />
         <Route path="/produtos" component={Produtos} />
         <Route path="/clientes" component={Clientes} />
+        <Route path='/editar' component={EditProdutos}/>
+        
       </Switch>
     </BrowserRouter>
   );

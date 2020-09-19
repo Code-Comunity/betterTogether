@@ -1,19 +1,48 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
+import Footer from '../../../components/footer/footer';
 import {Link} from 'react-router-dom';
-
 //css
 import './style.css';
-
-
-//imagens
+//HEROIMAGE
 import hero from '../../../assets/header.png';
-
 //api
-import data from '../../../api/api';
+import api from '../../../service/api';
 
 export default function Home() {
+
+  //const url = window.location.href;
+  //const splitURL = url.split('/');
+
+  //USE STATES
+
+  const [produtos, setProdutos] = useState([]);
+
+  useEffect(()=>{
+    
+    async function getApi(){
+
+      try{
+        const req = await api.get(`/listallprodutos`)
+
+        return setProdutos(req.data.produtos);
+      }catch(error){
+        console.log(error)
+      }
+      
+      
+
+    }
+
+
+    getApi();
+
+
+  },[])
+
   return (
+    <>
     <div className="home-container">
       <Navbar />
       <header>
@@ -21,15 +50,15 @@ export default function Home() {
       </header>
       <div className="home-content">
         <div className="produtos-container">
-          { data.map(e => {
+          { produtos.map(e => {
             return(
-              <Link to={"/produto/"+e.codigo} >
-                  <div key={e.id} className="produtos">
+              <Link to={`/produto/${e.id_produto}`} >
+                  <div key={e.id_produto} className="produtos">
                     <div className="foto-produto-home">
-                      <img src={e.thumb} alt="teste"/>
+                      <img src={e.img} alt="teste"/> {/* Produto não apresenta imagem, pois a url que vem do back nao funciona no front separado. */}
                     </div>
                     <div className="home-content-produto">
-                      <h1>{e.nome}</h1>
+                      <h1>{e.produto}</h1>
                       <p>{e.preco}</p>
                       <p>12x no cartão</p>
                     </div>
@@ -37,8 +66,10 @@ export default function Home() {
               </Link>
             )
           })}
-        </div>
+        </div>     
       </div>
+      <Footer />
     </div>
+    </>
   );
 }

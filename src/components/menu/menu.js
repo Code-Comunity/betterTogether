@@ -21,6 +21,7 @@ export default function Navbar() {
   return (
     <>
       <nav>
+        
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
         </div>
@@ -39,7 +40,8 @@ export default function Navbar() {
                               <h4>Carrinho</h4> 
                               <FaShoppingCart />
                         </div>
-                      </Link>                  
+                      </Link>               
+                         
                  </div>                  
             <div className="perfil">
               <h4>Maria Silva</h4>

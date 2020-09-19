@@ -1,12 +1,12 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
 import { IoIosCalculator} from "react-icons/io";
-
 //css
 import './style.css';
+//API
+import api from '../../../service/api';
 
-//api
-import data from '../../../api/api';
 
 
 
@@ -16,30 +16,56 @@ export default function Produto() {
 
   const url = window.location.href;
   const splitURL = url.split('/');
+
+  //USE STATES
+
+  const [produto, setProduto] = useState([]);
+
   
-  //Listar oq tá vindo da api, de acordo com o código retornado na variavel splitURL[4]
-  console.log(splitURL[4]) 
-  //essa variável é um array, esse array na posição 4, retorna o ultimo parametro de rota, que é o código
-  console.log(data) 
+  useEffect(()=>{
+    async function getApi(){
+      try{
+        const data = await api.get(`/produto/${splitURL[4]}`)
+        const aiui = data.data;
+        setProduto([aiui]);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    getApi();
+  },[])
+
+  /*Parte de ADICIONAR AO CARRINHO*/
+  //GETTER
+  const carrinho = localStorage.getItem('@btgther/carrinho');
+  const parseCarrinho = JSON.parse(carrinho);
+  //SETTER
+  function Comprar(){
+    if(parseCarrinho === null){
+      localStorage.setItem('@btgther/carrinho', JSON.stringify(produto));
+    }
+    if(parseCarrinho != null){
+      const item = parseCarrinho
+        item.push(produto[0])
+      localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
+    }
+  }
+  console.log(parseCarrinho)
   return (
     <>
       <Navbar />
       <div className="produto-container">
-        { 
-        
-        data.filter(filtro=> filtro.codigo === splitURL[4]).map(e => { 
-
-          //Aqui chamaremos a api, com o produto selecionado
-          
-          return( 
-          <div className="produto-content">
+       {
+         produto.map(e=>{
+           return(
+            <div className="produto-content">
             <div className="produto-esquerda">
               <div className="foto-produto">
-                <img src={e.thumb} alt="teste"/>
+                <img src={e.img} alt="teste"/>
               </div>
               <div className="descricao-produto">
-                <h1>{e.nome}</h1>
-                <p>{e.descricao}</p>
+                <h1>{e.produto}</h1>
+                <p>{e.descrisao}</p>
               </div>
             </div>
 
@@ -58,13 +84,14 @@ export default function Produto() {
                 </div>
                 <div className="button-container">
                   <button className="button-produto"><h2>Comprar</h2></button>
-                  <button className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
+                  <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
                 </div>
               </div>
             </div>
           </div>
-          )
-          })}
+           )
+         })
+       }
       </div>
     </>
   );

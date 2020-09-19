@@ -2,6 +2,8 @@ nav{
   background: #820E0E;
   height: 60px;
   width: 100%;
+  padding-right: 2%;
+  padding-left: 2%;
 
   display: flex;
   align-items: center;
@@ -60,10 +62,10 @@ nav{
   display: flex;
   align-items: center;
   color: white;
-  margin-right: 60px;
+  
 }
 .ladoEsquerdo img{
   width: 50px;
   height: 50px;
-  margin-left: 60px;
+
 }

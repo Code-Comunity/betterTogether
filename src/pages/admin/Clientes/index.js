@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiFace,BiHomeAlt,BiPackage, BiBeenHere,BiMailSend,BiPhone } from "react-icons/bi";
 import { IoMdCalendar,IoIosExit } from "react-icons/io";
 import {Link} from 'react-router-dom';
 import './clientes.css'
 import Logo from '../../../assets/logored.svg';
 
-import clientes from './api'
-
+import api from '../../../service/api';
 
 export default function Clientes() {
+
+  const [ clientes, setClientes ] = useState([])
+
+    useEffect(()=>{
+
+      async function getClientes(){
+        try{
+          const {data} = await api.get('/listCliente');
+          //console.log(data.clientes)
+          return setClientes(data.clientes)
+
+        }catch(error){
+          console.log(error)
+        }
+      }
+
+      getClientes();
+    },[])
+
   return (
     <>
             <div className="Dashboard">
@@ -28,7 +46,7 @@ export default function Clientes() {
 
 <div className="funcoes">
       <Link to="/dashboard" className="itens"> <BiHomeAlt size="30px"/> </Link>
-      <Link to="/addprodutos" className="itens"> <BiPackage size="30px"/> </Link>
+      <Link to="/produtos" className="itens"> <BiPackage size="30px"/> </Link>
       <Link to="/clientes" className="itens"> <BiFace size="30px"/> </Link>
 </div>
 
@@ -37,6 +55,7 @@ export default function Clientes() {
       <h1 style={{color: '#820E0E', fontSize: 20}}>Clientes</h1>
 
     <div className="pedidoslista">
+<div className="scrollPage">
       { clientes.map(e=>{
 
         //Aqui chamaremos na api, dos clientes cadastrados no banco
@@ -44,24 +63,25 @@ export default function Clientes() {
           <div className="clienteItem">
             <div className="clientePerfil">
                   <div className="thumbCliente">
-                    <h3>{e.thumb}</h3>
+                    <h3>{e.img}</h3>
                   </div>
                     <h3>{e.nome}</h3>
             </div>
             <div className="clienteInformacoes">
                 <div className="infos1">
-                  <span><BiBeenHere /> {e.endereco}</span>
+                  <span><BiBeenHere /> {e.cep}</span>
                   <span><BiMailSend />{e.email}</span>
                 </div>
                 <div className="infos2">
-                  <span><BiPhone />{e.contato.tel1}</span>
-                  <span><BiPhone />{e.contato.tel2}</span>
+                  <span><BiPhone />71 985429908</span>
+                  <span><BiPhone />71 985429908</span>
                 </div>
             </div>
               
           </div>
         )
-        }) }
+      }) }
+</div>
       </div>
     </div>
 

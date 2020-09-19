@@ -1,0 +1,104 @@
+.cadastroArea img{
+  width: 150px;
+  margin: 35px;
+}
+
+.cadastroArea{
+  background: #ffff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxLogin{
+  background: #820E0E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 30px;
+}
+
+.inputGroup{
+  width: max-content;
+  height: max-content;
+  margin: 15px;
+  padding: 30px;
+}
+
+.inputWIcon{
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+.inputWIcon h3{
+  z-index: 9;
+  height: 100%;
+  color: #C1C1C1;
+}
+
+.inputWIcon input{
+  width: 400px;
+  height: 60px;
+  background: #F0F0F0;
+  border-radius: 9px;
+  border: none;
+  position: relative;
+  margin-left: -30px;
+
+  padding-left: 40px;
+  font-size: large;
+  font-weight: 700;
+}
+.inputWIcon select{
+  width: 60px;
+  height: 60px;
+  background: #F0F0F0;
+  border-radius: 9px;
+  border: none;
+  margin-left: -9px;
+  position: relative;
+  font-size: large;
+  font-weight: 700;
+}
+
+.inputWIcon input:focus{
+  outline: none;
+}
+
+.BTNLogin{
+  width: 300px;
+  height: 55px;
+  background: #fff;
+  border-radius: 15px;
+  border: solid white 3px;
+  color: #820E0E;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.BTNLogin:hover{
+  background: #616161;
+  color: white;
+  border: none;
+}
+
+
+@media (max-width: 670px){
+  .inputWIcon input{
+    width: 250px;
+  }
+  .inputGroup{
+    margin: 8px;
+    padding: 20px;
+  }
+  .BTNLogin{
+    width: 200px;
+  }
+}

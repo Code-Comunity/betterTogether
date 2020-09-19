@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar} from './style';
 
 //icons
@@ -6,41 +7,74 @@ import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
-//api
-import data from '../../api/api';
-
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
+
+
+    //GETTER
+    const carrinho = localStorage.getItem('@btgther/carrinho');
+    const parseCarrinho = JSON.parse(carrinho);
+    
+    const [statusCarrinho, setStatusCarrinho] = useState(parseCarrinho)
+
 
     const clickFora = (e) => {
         if(e.target.id === id) onClose();
     };
+
+    function DeletarItem(){
+        parseCarrinho.pop()
+        localStorage.setItem('@btgther/carrinho', JSON.stringify(parseCarrinho));
+        return setStatusCarrinho(parseCarrinho);
+    }
+
+    function FinalizarCompra(){
+        const valores = statusCarrinho.map((e)=>{return e.preco;})
+        const total = valores.reduce((total, currentElement) => total + currentElement)
+        return total;
+        
+        /* PARA ENVIAR PARA O BACKEND
+        api.post('/transaction', {total})
+        */
+    }
+
+    useEffect(()=>{
+        function atualizador(){
+            const newParse = JSON.parse(localStorage.getItem('@btgther/carrinho'))
+            return setStatusCarrinho(newParse);
+        }
+
+        atualizador();
+
+        
+    },[])
 
     return ( 
         
             <Container id={id} onClick={clickFora}>
                     <Conteudo >
                         <Close> <span><RiCloseCircleFill onClick={onClose} /></span></Close>
-                        { data.map(e => {
+                        { statusCarrinho.map(e => {
                             return( 
-                            <Card key={e.id}>
-                                <Foto  ><img src={e.thumb} alt=""/></Foto>
+                            <Card key={e.id_produto}>
+                                <Foto  ><img src={e.img} alt=""/></Foto>
                                 <Descricao>
-                                    <h1>{e.nome}</h1>
-                                    <p>{e.descricao}</p> 
+                                    <h1>{e.produto}</h1>
+                                    <p>{e.descrisao}</p> 
                                 </Descricao>
                                 <Preco>
                                     <Icons>
-                                        <span><FaTrash /></span>
+                                        <span onClick={()=>DeletarItem()} style={{cursor: "pointer"}}><FaTrash /></span>
                                     </Icons>
                                     <div>
                                         <h1>{e.preco}</h1>
                                     </div>
                                 </Preco>
                             </Card>
-                            )   
-                        })}   
+                            ) 
+                        })  
+                    }   
                         <LinkComprar>
-                            <span>                               
+                            <span onClick={()=>FinalizarCompra()}>                               
                                 Finalizar compra 
                                 <IoMdCheckmarkCircle />
                             </span>

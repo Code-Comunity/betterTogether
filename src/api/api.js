@@ -22,6 +22,30 @@ const data = [
       thumb: 'https://eudecoro.com/files/artigos/velas-decoracao-dis-dos-namorados.jpg',
       descricao: 'Esse kit de velas vai deixar sua noite apimentada com o seu parceiro ou sua parceira.',
       preco: 25.00.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+    },
+    {
+      id: 4,
+      codigo: "ID902610",
+      nome: 'Kit de Velas',
+      thumb: 'https://eudecoro.com/files/artigos/velas-decoracao-dis-dos-namorados.jpg',
+      descricao: 'Esse kit de velas vai deixar sua noite apimentada com o seu parceiro ou sua parceira.',
+      preco: 25.00.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+    },
+    {
+      id: 5,
+      codigo: "ID902695",
+      nome: 'Kit de Velas',
+      thumb: 'https://eudecoro.com/files/artigos/velas-decoracao-dis-dos-namorados.jpg',
+      descricao: 'Esse kit de velas vai deixar sua noite apimentada com o seu parceiro ou sua parceira.',
+      preco: 25.00.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
+    },
+    {
+      id: 6,
+      codigo: "ID902647",
+      nome: 'Kit de Velas',
+      thumb: 'https://eudecoro.com/files/artigos/velas-decoracao-dis-dos-namorados.jpg',
+      descricao: 'Esse kit de velas vai deixar sua noite apimentada com o seu parceiro ou sua parceira.',
+      preco: 25.00.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}),
     }
   ]
   

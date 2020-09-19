@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { BiFace,BiHomeAlt,BiDollarCircle,BiMap,BiCar, BiPackage } from "react-icons/bi";
 import { IoMdCalendar,IoIosExit,IoMdCash, IoMdClock,IoMdBarcode,IoMdShareAlt } from "react-icons/io";
 import {Link} from 'react-router-dom';
@@ -9,6 +9,25 @@ import Graph from '../../../assets/Dashboard/graph.svg';
 import data from './api.js'
 
 export default function Dashboard() {
+
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuario'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
+
+  console.log(usuarioLogado)
+
   return (
     <>
       <div className="Dashboard">
@@ -20,7 +39,7 @@ export default function Dashboard() {
           <div className="direta">
             <div className="perfilDash">
               <div className="circleDash"></div>
-              <h2>Hélio</h2>
+              <h2>{usuarioLogado.nome}</h2>
               <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
             </div>
           </div>
@@ -28,7 +47,7 @@ export default function Dashboard() {
 
         <div className="funcoes">
               <Link to="/dashboard" className="itens"> <BiHomeAlt size="30px"/> </Link>
-              <Link to="/addprodutos" className="itens"> <BiPackage size="30px"/> </Link>
+              <Link to="/produtos" className="itens"> <BiPackage size="30px"/> </Link>
               <Link to="/clientes" className="itens"> <BiFace size="30px"/> </Link>
         </div>
 
@@ -104,19 +123,15 @@ export default function Dashboard() {
                   <div className="cardEst">
                       <div className="dirCard">
                         <h4>Público comum</h4>
-
                         <h5 style={{marginTop:10, marginBottom: 10 }}>Feminino</h5>
                         <h5>Masculino</h5>
                       </div>
-
                       <div className="esqCard">
                         <img src={Graph} alt="grafico"/>
                       </div>
                   </div>
-                
               </div>
         </div>
-
       </div>
     </>
   );

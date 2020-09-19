@@ -1,3 +1,4 @@
+
 .clienteItem{
   background: white;
   width: 80%;
@@ -34,8 +35,8 @@
 }
 .infos1, .infos2 span{
   display: flex;
-  align-items: center;
-
+  align-items: flex-start;
+  
 }
 .clienteInformacoes{
   display: flex;
@@ -45,10 +46,39 @@
   color: gray;
 }
 
+.scrollPage{
+  width: 100%;
+  height: 50vh;
+  overflow: scroll;
+}
+
+.scrollPage::-webkit-scrollbar {
+  display: none;
+}
+.scrollPage{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media (max-width: 800px){
   .clienteItem{
     width: 100%;
     margin: 0px;
     margin-top: 20px;
   }
+
+  .clientePerfil h3{
+    font-size: 0.7rem;
+  }
+  .clienteInformacoes .infos1, .infos2 span{
+    font-size: 0.7rem;
+  }
+
+  .clientePerfil .thumbCliente{
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    margin-right: 2px;
+  }
 }
+

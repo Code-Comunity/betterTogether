@@ -4,6 +4,18 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] - 18/09/2020
+### Added
+- Função de carrinho completa.
+- Conexão do front com back-end completa.
+- Função de Cadastro e Login completa.
+
+### Changed
+- Atualização do Carrinho de compras.
+- Atualização do Changelog.
+
+
+
 ## [0.0.4] - 08/09/2020
 ### Added
 - Criação do Changelog.
