@@ -18,6 +18,7 @@ import { useEffect } from 'react';
 export default function Navbar() {
   //modal
   const [isModalVisible, setIsModalVisible] = useState(false);
+  
 
   //Menu responsivo
   useEffect(()=>{
