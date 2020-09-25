@@ -5,6 +5,7 @@ export const Container = styled.footer`
     max-height: 293px;
     margin-top: 40px;
     font-family: sans-serif;
+    
 
     display: flex;
     flex-direction: column;

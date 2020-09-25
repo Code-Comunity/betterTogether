@@ -16,6 +16,7 @@ import Produto from './pages/clientes/Produto';
 import Sobre from './pages/clientes/Sobre';
 import LoginClient from './pages/clientes/Login';
 import Registro from './pages/clientes/Cadastro';
+import Perfil from './pages/clientes/Perfil/index';
 
 export default function Rotas() {
   return (
@@ -26,6 +27,7 @@ export default function Rotas() {
         <Route path="/sobre" component={Sobre} />
         <Route path="/login" component={LoginClient} />
         <Route path="/cadastro" component={Registro} />
+        <Route path="/perfil" component={Perfil} />
 
         <Route path="/loginadmin" component={LoginAdmin} />       
         <Route path="/dashboard" component={Dashboard} />
