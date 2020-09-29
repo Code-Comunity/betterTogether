@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import { BiFace,BiHomeAlt,BiLayerPlus, BiPackage,BiBullseye } from "react-icons/bi";
-import { IoIosAddCircle,IoIosExit} from "react-icons/io";
+import { IoIosAddCircle,IoIosExit,IoIosBuild} from "react-icons/io";
 import {FaTrash} from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 import './style.css'
 import Logo from '../../../assets/logored.svg';
 import Graph from '../../../assets/Dashboard/graph.svg';
@@ -26,7 +26,26 @@ export default function AddProdutos() {
   },[produtos])
 
 
-  
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
+
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
 
   //Para o componente de metas (por enquanto estático);
   const meta = false;
@@ -42,8 +61,8 @@ export default function AddProdutos() {
   <div className="direta">
     <div className="perfilDash">
       <div className="circleDash"></div>
-      <h2>Hélio</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+      <h2>{usuarioLogado.nome}</h2>
+      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
     </div>
   </div>
 </div>
@@ -68,11 +87,14 @@ export default function AddProdutos() {
         //Aqui chamaremos na api, os produtos
         return(
           
-        <Link key={e.id_produto} className="produto" to={`/editar/${e.id_produto}`}>
+        <div key={e.id_produto} className="produto" >
           <BiPackage size="73px" />
           <h1>{e.produto}</h1>
+            <Link to={`/editar/${e.id_produto}`}>
+              <IoIosBuild size="20px" />
+            </Link>
             <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id_produto)} size="20px" />
-        </Link>
+        </div>
         )
         }) }
       </div>

@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar, MostraPreco} from './style';
+import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar} from './style';
 
 //icons
 import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
+import { render } from '@testing-library/react';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
+    
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
@@ -30,6 +32,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     function FinalizarCompra(){
         const valores = statusCarrinho.map((e)=>{return e.preco;})
         const total = valores.reduce((total, currentElement) => total + currentElement)
+        alert("valor total"+total)
         return total;
         
         /* PARA ENVIAR PARA O BACKEND
@@ -42,10 +45,13 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
             const newParse = JSON.parse(localStorage.getItem('@btgther/carrinho'))
             return setStatusCarrinho(newParse);
         }
+        atualizador();  
+    },[])
 
-        atualizador();
-
-        
+    useEffect(()=>{
+        if(statusCarrinho == null){
+            console.log("carrinho ta vazio")
+        }
     },[])
 
     return ( 
@@ -53,7 +59,8 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
             <Container id={id} onClick={clickFora}>
                     <Conteudo >
                         <Close> <span><RiCloseCircleFill onClick={onClose} /></span></Close>
-                        { statusCarrinho.map(e => {
+                    
+                        { statusCarrinho===null ? <h1>Carrinho vazio, Adicione itens</h1> : statusCarrinho.map(e => {
                             return( 
                             <Card key={e.id_produto}>
                                 <Foto  ><img src={e.img} alt=""/></Foto>
@@ -65,9 +72,9 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                     <Icons>
                                         <span onClick={()=>DeletarItem()} style={{cursor: "pointer"}}><FaTrash /></span>
                                     </Icons>
-                                    <MostraPreco>
+                                    <div>
                                         <h1>{e.preco}</h1>
-                                    </MostraPreco>
+                                    </div>
                                 </Preco>
                             </Card>
                             ) 

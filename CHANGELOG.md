@@ -4,7 +4,20 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.4] - 18/09/2020
+## [0.0.6] - 26/09/2020
+### Added
+- Função de carrinho completa.
+- Context Api adicionada ao projeto como forma de autenticação de rotas.
+- Admin separado de Cliente comum.
+- Separação de rotas de Cliente e Admin com 2 arquivos js novos.
+
+### Changed
+- Atualização do Carrinho de compras (correção do erro do carrinho vazio).
+- Atualização do Changelog.
+
+
+
+## [0.0.5] - 18/09/2020
 ### Added
 - Função de carrinho completa.
 - Conexão do front com back-end completa.

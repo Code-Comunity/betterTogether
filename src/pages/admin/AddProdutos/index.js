@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BiFace,BiHomeAlt, BiPackage } from "react-icons/bi";
 import { IoIosExit} from "react-icons/io";
 import {Link} from 'react-router-dom';
@@ -15,6 +15,23 @@ export default function AddProdutos() {
   const [ preco, setPreco ] = useState('');
   const [ descricao, setDescricao ] = useState('');
   const [ imagem, setImagem ] = useState('');
+
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
+
 
   async function CadastrarProduto(){
 
@@ -38,6 +55,12 @@ export default function AddProdutos() {
   }
 
 
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
+
+
   return (
     <>
 <div className="Dashboard">
@@ -49,8 +72,8 @@ export default function AddProdutos() {
   <div className="direta">
     <div className="perfilDash">
       <div className="circleDash"></div>
-      <h2>Hélio</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+      <h2>{usuarioLogado.nome}</h2>
+      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
     </div>
   </div>
 </div>

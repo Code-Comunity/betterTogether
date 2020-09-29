@@ -15,8 +15,6 @@ export const Conteudo = styled.div`
     z-index: 10;
     position: fixed;
     width: 70%;
-    max-height: 85%;
-    overflow: auto;
     background: #F4F5F9;
     margin-top: 70px; 
     padding: 10px;
@@ -32,14 +30,9 @@ export const Conteudo = styled.div`
         color: #820E0E; 
         margin-right: 5px; 
     }
-    @media (max-width: 425px){ 
-        width: 80%;
-    }
-    
 `
 export const Card = styled.div`
     width: 100%;
-    margin: 2px;
 
     display: flex;
     flex-direction: row;
@@ -47,22 +40,12 @@ export const Card = styled.div`
 
 `
 export const Foto = styled.div`
-    width: 202px;
-    height: 160px;
+    width: 20%;
 
     img{
         width: 100%;
-        height: 100%;
+        height: 160px;
     }
-    @media (max-width: 1024px){    
-        width: 140px;
-        height: 112px;
-    }
-    @media (max-width: 425px){ 
-        width: 100px;
-        height: 79px;
-    }
-
 `
 export const Descricao = styled.div`
     width: 70%;
@@ -74,33 +57,9 @@ export const Descricao = styled.div`
         margin-top: 5px;
     }
     h1{
-        font-size: 2.0rem;
+        font-size: 20px;
         color: #820E0E;
         text-align: left;
-    }
-    @media (max-width: 768px){ 
-        h1{   
-            font-size: 1.5rem;
-        }  
-        p{
-            font-size:1.2rem;
-        }
-    }
-    @media (max-width: 425px){ 
-        h1{   
-            font-size: 1.0rem;
-        }  
-        p{
-            font-size:0.8rem;
-        }
-    }
-    @media (max-width: 320px){ 
-        h1{   
-            font-size: 1.0rem;
-        }  
-        p{
-            font-size:0.8rem;
-        }
     }
 `
 export const Preco = styled.div`
@@ -108,31 +67,14 @@ export const Preco = styled.div`
 
     display:flex;
     flex-direction: column;
-`
-export const MostraPreco = styled.div`
 
     h1{
-        font-size: 3.0rem;
+        font-size: 30px;
         color: #820E0E;
         text-align: left;
         margin-top: 10px;
     }
 
-    @media (max-width: 1024px){ 
-        h1{   
-            font-size: 2.5rem;
-        }  
-    }
-    @media (max-width: 768px){ 
-        h1{   
-            font-size: 2.0rem;
-        }  
-    }
-    @media (max-width: 425px){ 
-        h1{   
-            font-size: 1.2rem;
-        }  
-    }
 `
 export const Icons = styled.div`
     padding: 10px;

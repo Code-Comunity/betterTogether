@@ -6,7 +6,6 @@ import { IoIosCalculator} from "react-icons/io";
 import './style.css';
 //API
 import api from '../../../service/api';
-import Footer from '../../../components/footer/footer';
 
 
 
@@ -94,7 +93,6 @@ export default function Produto() {
          })
        }
       </div>
-      <Footer />
     </>
   );
 }

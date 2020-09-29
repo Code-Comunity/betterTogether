@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { BiFace,BiHomeAlt,BiPackage, BiBeenHere,BiMailSend,BiPhone } from "react-icons/bi";
 import { IoMdCalendar,IoIosExit } from "react-icons/io";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './clientes.css'
 import Logo from '../../../assets/logored.svg';
 
 import api from '../../../service/api';
 
 export default function Clientes() {
+
+
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
 
   const [ clientes, setClientes ] = useState([])
 
@@ -27,6 +44,13 @@ export default function Clientes() {
       getClientes();
     },[])
 
+
+
+    function Deslogar(){
+      localStorage.clear();
+      return window.location.href = "/"
+    }
+
   return (
     <>
             <div className="Dashboard">
@@ -38,8 +62,8 @@ export default function Clientes() {
   <div className="direta">
     <div className="perfilDash">
       <div className="circleDash"></div>
-      <h2>Hélio</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+      <h2>{usuarioLogado.nome}</h2>
+      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
     </div>
   </div>
 </div>

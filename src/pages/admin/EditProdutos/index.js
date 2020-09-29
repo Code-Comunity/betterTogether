@@ -21,6 +21,22 @@ export default function EditProdutos() {
   const splitURL = url.split('/');
 
 
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
+
   useEffect(()=>{
 
       async function GetDados(){
@@ -45,6 +61,11 @@ export default function EditProdutos() {
 
   },[])
 
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
+
 
   return (
     <>
@@ -57,8 +78,8 @@ export default function EditProdutos() {
   <div className="direta">
     <div className="perfilDash">
       <div className="circleDash"></div>
-      <h2>Hélio</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+      <h2>{usuarioLogado.nome}</h2>
+      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
     </div>
   </div>
 </div>

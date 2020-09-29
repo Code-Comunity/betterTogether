@@ -1,29 +1,19 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPerson,IoIosFingerPrint } from "react-icons/io";
 import Logo from '../../../assets/logowhite.svg';
 import './loginclient.css';
-import api from '../../../service/api';
+//import api from '../../../service/api';
+
+import Context from '../../../contexts/auth';
 
 export default function LoginClient() {
 
-  const [ email, setEmail ] = useState('');
-  const [ senha, setSenha ] = useState('');
+ const { logado, Autenticar, setEmail, setSenha} = useContext(Context);
+ console.log(logado);
 
-  async function Autenticar(){
-    try{
-      const {data} = await api.post('/login', {
-        email:email,
-        senha:senha
-      })
-
-      localStorage.setItem('@BT:usuario', JSON.stringify(data.usuario))
-      localStorage.setItem('@BT:token', data.token)
-      return window.location.href = "/"
-    }catch(error){
-      console.log(error);
-    }
-
+  function handleLogin(){
+    Autenticar();
   }
 
   return (
@@ -47,8 +37,8 @@ export default function LoginClient() {
             <input type="password" name="senha" onChange={ e => setSenha(e.target.value) }/>
           </div>
         </div>
-        <Link style={{color: "#FFF"}} to="/"><h3>Sou novo aqui</h3></Link>
-        <button onClick={()=>Autenticar()} className="BTNLogin">Entrar</button>
+        <Link style={{color: "#FFF"}} to="/cadastro"><h3>Sou novo aqui</h3></Link>
+        <button onClick={()=>handleLogin()} className="BTNLogin">Entrar</button>
       </div>
        
       </div>

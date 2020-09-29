@@ -8,6 +8,7 @@ import Graph from '../../../assets/Dashboard/graph.svg';
 
 import data from './api.js'
 
+
 export default function Dashboard() {
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
@@ -15,7 +16,7 @@ export default function Dashboard() {
   useEffect(()=>{
     async function buscaUser(){
       try{
-        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuario'));
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
 
         setUsuarioLogado(usuarioLogado);
       }catch(error){
@@ -26,7 +27,11 @@ export default function Dashboard() {
     buscaUser()
   },[])
 
-  console.log(usuarioLogado)
+
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
 
   return (
     <>
@@ -40,7 +45,7 @@ export default function Dashboard() {
             <div className="perfilDash">
               <div className="circleDash"></div>
               <h2>{usuarioLogado.nome}</h2>
-              <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+              <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
             </div>
           </div>
         </div>
