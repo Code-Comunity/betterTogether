@@ -56,6 +56,7 @@ nav{
   display: flex;
   align-items: center;
   margin-left: 20px;
+  z-index: 8;
 }
 
 .ladoDireito{
@@ -67,5 +68,54 @@ nav{
 .ladoEsquerdo img{
   width: 50px;
   height: 50px;
+}
 
+.BotoesLogin{
+  background: #FFFFFF;
+  border-radius: 9px;
+  width: 100px;
+  padding: 10px;
+  margin: 8px;
+  color: #820E0E;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.loginEcadastro{
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown{
+  position: absolute;
+  margin-top: 143px;
+  margin-left: -10px;
+  border-radius: 0 0 15px 15px;
+  background-color: #820E0E;
+  width: 250px;
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+}
+.Links{
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.Links:hover{
+  color: rgb(218, 216, 216);
+}
+.dropdown .Links+.Links{
+  margin-top: 10px;
+  color: white;
+}
+.dropdown .Links+.Links:hover{
+  color: rgb(218, 216, 216);
+}
+
+.perfil:hover .dropdown{
+  display: flex;
 }

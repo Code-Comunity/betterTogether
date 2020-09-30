@@ -7,11 +7,13 @@ import Logo from '../../../assets/logored.svg';
 import Graph from '../../../assets/Dashboard/graph.svg';
 
 import data from './api.js'
+import api from '../../../service/api';
 
 
 export default function Dashboard() {
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
+  const [ saldo, setSaldo ] = useState([])
 
   useEffect(()=>{
     async function buscaUser(){
@@ -24,6 +26,20 @@ export default function Dashboard() {
       }
     }
 
+    async function buscaSaldo(){
+      try{
+        const {data} = await api.get('/mostrarsaldo')
+
+        const { available } = data;
+        console.log(available)
+
+        setSaldo(data);
+        
+      }catch(error){
+        console.log(error)
+      }
+    }
+    buscaSaldo()
     buscaUser()
   },[])
 
@@ -110,19 +126,25 @@ export default function Dashboard() {
                       </div>
 
                       <div className="esqCard">
-                        <h3>150 R$</h3>
+                        { saldo.waiting_funds ? <h3>{saldo.waiting_funds.amount}</h3> : <h3>"sem fundos</h3> }
                       </div>
                   </div>
+                  
 
-                  <div className="cardEst">
-                        <div className="dirCard">
-                          <h4>Saldo</h4>
+                  <div className="cardEst1">
+                    <div className="saldoDisponivel">
+                    <div className="dirCard">
+                          <h4>Saldo Disponível</h4>
                           <BiDollarCircle size="30px"/>
                         </div>
 
                         <div className="esqCard">
-                          <h3>1,500,00 R$</h3>
+                          { saldo.available ? <h3>{saldo.available.amount}</h3> : <h3>"Sem fundos para sacar"</h3> }
                         </div>
+                    </div>
+                        
+                        <button className="btnTransfer" onClick={()=>alert('Criar função de transferencia')} >Sacar</button>
+                      
                   </div>
 
                   <div className="cardEst">

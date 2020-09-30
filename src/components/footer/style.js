@@ -112,7 +112,7 @@ export const CentroBaixo = styled.div`
     align-items: center;
 `
 export const DireitaBaixo = styled.div`
-    width: 20%;
+    width: 10%;
     min-height: 100%;
     font-size: 20px;
 

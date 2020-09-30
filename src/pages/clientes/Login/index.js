@@ -1,9 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPerson,IoIosFingerPrint } from "react-icons/io";
 import Logo from '../../../assets/logowhite.svg';
 import './loginclient.css';
-//import api from '../../../service/api';
 
 import Context from '../../../contexts/auth';
 

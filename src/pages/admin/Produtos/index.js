@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { BiFace,BiHomeAlt,BiLayerPlus, BiPackage,BiBullseye } from "react-icons/bi";
 import { IoIosAddCircle,IoIosExit,IoIosBuild} from "react-icons/io";
 import {FaTrash} from 'react-icons/fa';
-import {Link,Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './style.css'
 import Logo from '../../../assets/logored.svg';
 import Graph from '../../../assets/Dashboard/graph.svg';

@@ -6,7 +6,6 @@ import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkCom
 import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
-import { render } from '@testing-library/react';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 

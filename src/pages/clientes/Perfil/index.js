@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Link } from 'react-router-dom';
+import Context from '../../../contexts/auth';
 
 //Styles
 import { Header, Container, Conteudo, DireitaHeader, CentroHeader, Direita, Esquerda, Botao, Botao2 } from './styles';
@@ -17,7 +18,12 @@ import { IoIosCube, IoIosCall } from 'react-icons/io';
 import { FaUserCircle } from 'react-icons/fa';
 import { ImLocation2 } from 'react-icons/im';
 
+
+
 export default function Perfil(){
+
+    const { usuario } = useContext(Context);
+
     return(
         <>
             <Navbar />
@@ -25,8 +31,8 @@ export default function Perfil(){
                 <Header>
                     <DireitaHeader>
                         <div>
-                            <h1>Maria Silva</h1>
-                            <h3>mariasilva@gmail.com</h3>
+                            <h1>{usuario.nome}</h1>
+                            <h3>{usuario.email}</h3>
                         </div>
                     </DireitaHeader>
                     <CentroHeader>

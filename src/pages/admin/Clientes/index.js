@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BiFace,BiHomeAlt,BiPackage, BiBeenHere,BiMailSend,BiPhone } from "react-icons/bi";
 import { IoMdCalendar,IoIosExit } from "react-icons/io";
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './clientes.css'
 import Logo from '../../../assets/logored.svg';
 

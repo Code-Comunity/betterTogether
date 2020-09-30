@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import { useState } from 'react';
 
 import Context from '../contexts/auth';
 import RotaAutenticado from './RotasAutenticado';
