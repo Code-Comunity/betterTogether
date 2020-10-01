@@ -46,7 +46,6 @@ export default function AddProdutos() {
     localStorage.clear();
     return window.location.href = "/"
   }
-
   //Para o componente de metas (por enquanto estático);
   const meta = false;
 
@@ -85,10 +84,12 @@ export default function AddProdutos() {
 
       { produtos.map(e=>{
         //Aqui chamaremos na api, os produtos
+
         return(
           
         <div key={e.id_produto} className="produto" >
           <BiPackage size="73px" />
+          {console.log(e)}
           <h1>{e.produto}</h1>
             <Link to={`/editar/${e.id_produto}`}>
               <IoIosBuild size="20px" />

@@ -11,14 +11,10 @@ export function AuthProvider({children}){
   const [ emailAdmin, setEmailAdmin ] = useState('')
   const [ senhaAdmin, setSenhaAdmin ] = useState('')
 
- 
-
   function verify(){
     const usuario = localStorage.getItem('@btgther/usuario')
     const token = localStorage.getItem('@btgther/token')
-    if(usuario && token){
-      setUsuario(JSON.parse(usuario));
-    }
+    if(usuario && token){setUsuario(JSON.parse(usuario));}
   }
 
   function verifyAdm(){
@@ -29,10 +25,7 @@ export function AuthProvider({children}){
     }
   }
 
-  useEffect(()=>{
-    verify();
-    verifyAdm();
-  },[])
+  useEffect(()=>{verify();verifyAdm();},[])
 
   //Função de Login
   async function Autenticar(){
@@ -45,9 +38,7 @@ export function AuthProvider({children}){
       localStorage.setItem('@btgther/usuario', JSON.stringify(data.usuario))
       localStorage.setItem('@btgther/token', data.token)
       return window.location.href = "/"
-    }catch(error){
-      console.log(error);
-    }
+    }catch(error){console.log(error);}
   }
 
   async function AutenticarAdm(){
