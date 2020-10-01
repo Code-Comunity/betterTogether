@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import Navbar from '../../../components/menu/menu';
 
 //style
-import { Container, Compra, Esquerda, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco } from './styles.js';
+import { Container, Compra, Esquerda, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco, Botao } from './styles.js';
 
 export default function Comprar(){
 
@@ -25,6 +25,21 @@ export default function Comprar(){
                     </Esquerda>
                     <Direita>
                         <InfoEndereco>
+                            <Form>
+                                <input type="text" name="email" placeholder="Número de residência"  />
+                            </Form>
+
+                            <Form>
+                                <input type="text" name="email" placeholder="Cep"  />
+                            </Form>
+
+                            <Form>
+                                <input type="text" name="email" placeholder="Telefone para contato"  />
+                            </Form>
+
+                            <Form>
+                                <input type="text" name="email" placeholder="Referência"  />
+                            </Form>
 
                         </InfoEndereco>
                         <InfoCartao>
@@ -44,8 +59,10 @@ export default function Comprar(){
                                 <Form2>
                                     <input type="text" name="senha" placeholder="CVV" />
                                 </Form2>
-
                             </Baixo>
+                            
+                            <Botao ><h2>Finalizar</h2></Botao>
+
                         </InfoCartao>
                     </Direita>
                 </Compra>

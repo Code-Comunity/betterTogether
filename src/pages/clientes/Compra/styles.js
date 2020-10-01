@@ -24,6 +24,7 @@ export const Direita = styled.div`
 
     display: flex;
     flex-direction: row;
+    align-items: center;
 `
 export const Cartao = styled.div`
     background: #820E0E;
@@ -81,4 +82,20 @@ export const Form2 = styled(Form)`
 export const Form3 = styled(Form)`
     width: 70%;
 
+`
+export const Botao = styled.button`
+    width: 93%;
+    height: 50px;
+    background: #fff;
+    border-radius: 15px;
+    color: #820E0E;
+    cursor: pointer;
+    border: none;
+    border: 3px solid #820E0E;
+    margin-left: 4%;
+
+    :hover{
+        background: #820E0E;
+        color: #fff;
+    }
 `
