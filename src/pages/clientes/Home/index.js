@@ -51,6 +51,7 @@ export default function Home() {
       <div className="home-content">
         <div className="produtos-container">
           { produtos.map(e => {
+            let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             return(
               <Link to={`/produto/${e.id_produto}`} >
                   <div key={e.id_produto} className="produtos">
@@ -59,7 +60,7 @@ export default function Home() {
                     </div>
                     <div className="home-content-produto">
                       <h1>{e.produto}</h1>
-                      <p>{e.preco}</p>
+                      <p>{preco}</p>
                       <p>12x no cartão</p>
                     </div>
                   </div>

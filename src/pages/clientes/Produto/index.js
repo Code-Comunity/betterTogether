@@ -57,6 +57,8 @@ export default function Produto() {
       <div className="produto-container">
        {
          produto.map(e=>{
+           let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+          
            return(
             <div className="produto-content">
             <div className="produto-esquerda">
@@ -72,8 +74,8 @@ export default function Produto() {
             <div className="produto-direita">
               <div className="align-preco">
                 <div className="preco-produto-pag">
-                  <h1>{e.preco}</h1>
-                  <p>1 x de {e.preco} sem juros no cartão</p>
+                  <h1>{preco}</h1>
+                  <p>1 x de {preco} sem juros no cartão</p>
                 </div>
                 <div className="produto-frete-calc">
                   <h2>Calcular frete:</h2>

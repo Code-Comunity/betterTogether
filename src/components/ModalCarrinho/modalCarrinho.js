@@ -54,12 +54,13 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     },[])
 
     return ( 
-        
+            
             <Container id={id} onClick={clickFora}>
                     <Conteudo >
                         <Close> <span><RiCloseCircleFill onClick={onClose} /></span></Close>
                     
                         { statusCarrinho===null ? <h1>Carrinho vazio, Adicione itens</h1> : statusCarrinho.map(e => {
+                            let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
                             return( 
                             <Card key={e.id_produto}>
                                 <Foto  ><img src={e.img} alt=""/></Foto>
@@ -72,7 +73,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                         <span onClick={()=>DeletarItem()} style={{cursor: "pointer"}}><FaTrash /></span>
                                     </Icons>
                                     <div>
-                                        <h1>{e.preco}</h1>
+                                        <h1>{preco}</h1>
                                     </div>
                                 </Preco>
                             </Card>
