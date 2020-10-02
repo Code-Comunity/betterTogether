@@ -8,10 +8,6 @@ import './style.css';
 import api from '../../../service/api';
 
 
-
-
-
-
 export default function Produto() {
 
   const url = window.location.href;
@@ -51,14 +47,42 @@ export default function Produto() {
     }
   }
   console.log(parseCarrinho)
+
+  //Parte referente à quantidade de produtos   
+  const [count, setCount] = useState(1);
+  
+  function qtdMais(){
+    setCount(count + 1);
+    produto.map(e =>{     
+        if(count === e.estoque){
+          setCount(e.estoque);    
+        }
+        return setCount;
+    })
+  }
+
+  function qtdMenos(){
+    setCount(count - 1);
+    if(count === 1){
+      setCount(1);
+    }    
+  }
+
+  let qtd = count;
+  console.log(qtd)
+
   return (
     <>
       <Navbar />
       <div className="produto-container">
        {
-         produto.map(e=>{
-           let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+         //.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+         produto.map(e =>{
+          let preco = e.preco
+          let total = preco * qtd;
           
+          console.log(total);
+
            return(
             <div className="produto-content">
             <div className="produto-esquerda">
@@ -73,10 +97,20 @@ export default function Produto() {
 
             <div className="produto-direita">
               <div className="align-preco">
-                <div className="preco-produto-pag">
-                  <h1>{preco}</h1>
+                <div className="preco-produto-pag" >
+                  <h1>{total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
                   <p>1 x de {preco} sem juros no cartão</p>
                 </div>
+
+                <div className="qtd-produto-pag">
+                  <h2>Quantidade:</h2>
+                  <div className="icon-produto">
+                    <h1 onClick={qtdMenos}>-</h1> 
+                    <input type="text" placeholder={count} readOnly />
+                    <h1 onClick={qtdMais}>+</h1>
+                  </div> 
+                </div>
+
                 <div className="produto-frete-calc">
                   <h2>Calcular frete:</h2>
                   <div className="icon-produto"> 

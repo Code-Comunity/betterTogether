@@ -137,8 +137,9 @@ body{
   z-index: 9;
   height: 100%;
   color: #820E0E ;
+  cursor: pointer;
 }
-.produto-frete-calc input{
+.icon-produto input{
   width: 275px;
   height: 40px;
   background: #F0F0F0;
@@ -152,6 +153,24 @@ body{
   font-weight: 700;
     
 }
+.qtd-produto-pag{
+  margin-top: 20px;
+}
+.qtd-produto-pag h2{
+  font-size: 2.0rem;
+  color: #820E0E;
+  margin-bottom: 10px;
+}
+.qtd-produto-pag h1{
+  color: #820E0E;
+  margin: 10px;
+  cursor: pointer;
+}
+.qtd-produto-pag input{
+  width: 90%;
+  padding-left: 35%;
+}
+
 .button-container{
   margin-top: 40px; 
 }
