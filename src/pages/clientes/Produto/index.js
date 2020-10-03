@@ -55,7 +55,8 @@ export default function Produto() {
     setCount(count + 1);
     produto.map(e =>{     
         if(count === e.estoque){
-          setCount(e.estoque);    
+          setCount(e.estoque); 
+          alert("Esse é todo o nosso estoque desse produto! ;(");   
         }
         return setCount;
     })
@@ -69,14 +70,12 @@ export default function Produto() {
   }
 
   let qtd = count;
-  console.log(qtd)
 
   return (
     <>
       <Navbar />
       <div className="produto-container">
        {
-         //.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
          produto.map(e =>{
           let preco = e.preco
           let total = preco * qtd;
@@ -99,7 +98,7 @@ export default function Produto() {
               <div className="align-preco">
                 <div className="preco-produto-pag" >
                   <h1>{total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
-                  <p>1 x de {preco} sem juros no cartão</p>
+                  <p>1 x de {total} sem juros no cartão</p>
                 </div>
 
                 <div className="qtd-produto-pag">
@@ -118,6 +117,7 @@ export default function Produto() {
                     <h3><IoIosCalculator size="20px" /></h3>
                   </div>
                 </div>
+
                 <div className="button-container">
                   <button className="button-produto"><h2>Comprar</h2></button>
                   <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>

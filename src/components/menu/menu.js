@@ -72,7 +72,7 @@ export default function Navbar() {
             </div>
 
              )}           
-            
+             
         </div>        
       </nav>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}

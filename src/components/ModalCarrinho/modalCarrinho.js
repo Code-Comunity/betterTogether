@@ -53,8 +53,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         }
     },[])
 
-    return ( 
-            
+    return (             
             <Container id={id} onClick={clickFora}>
                     <Conteudo >
                         <Close> <span><RiCloseCircleFill onClick={onClose} /></span></Close>
