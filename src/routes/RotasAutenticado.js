@@ -13,10 +13,8 @@ export default function RotaAutenticado(){
 
     if(adm && snhAdm){
       setIsadmin(true)
-      console.log('autenticado como adm')
     }else{
       setIsadmin(false)
-      console.log('autenticado como cliente')
     }
   },[])
   return (isAdmin ? <RotasADM /> : <RotasClientes />)

@@ -46,8 +46,6 @@ export default function NaoAutenticado(){
 
   return(
     <Router>
-      {console.log("Rota de Nao autenticado")}
-
       { !!logado ?  <Redirect path="/" component={Home} /> : <Switch></Switch> }
       
       <Switch>
