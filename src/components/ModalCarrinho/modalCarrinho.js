@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar} from './style';
+import React, { useEffect, useState, useContext } from 'react';
+import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar, Quantidade} from './style';
 
 //icons
 import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
+import Context from '../../contexts/auth';
+
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
-    
+    const {qtdMais, qtdMenos, qtd} = useContext(Context);
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
@@ -31,7 +33,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     function FinalizarCompra(){
         const valores = statusCarrinho.map((e)=>{return e.preco;})
         const total = valores.reduce((total, currentElement) => total + currentElement)
-        alert("valor total"+total)
+        alert("valor total"+total);
         return total;
         
         /* PARA ENVIAR PARA O BACKEND
@@ -53,6 +55,11 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         }
     },[])
 
+    //testes
+    //const carrinho1 = JSON.parse(localStorage.getItem('@btgther/carrinho'))
+    //alert(carrinho1[1])
+
+
     return ( 
             
             <Container id={id} onClick={clickFora}>
@@ -68,6 +75,13 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                     <h1>{e.produto}</h1>
                                     <p>{e.descrisao}</p> 
                                 </Descricao>
+                                <Quantidade>
+                                <div className="icon-produto" style={{width:"70%"}} >
+                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
+                                    <input type="text" placeholder={qtd} readOnly />
+                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
+                                </div> 
+                                </Quantidade>
                                 <Preco>
                                     <Icons>
                                         <span onClick={()=>DeletarItem()} style={{cursor: "pointer"}}><FaTrash /></span>

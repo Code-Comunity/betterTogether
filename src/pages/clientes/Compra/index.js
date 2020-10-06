@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react';
 import api from '../../../service/api';
-import Cleave from 'cleave.js/react';
+//import Cleave from 'cleave.js/react';
 
 import axios from 'axios';
 
@@ -8,7 +8,7 @@ import axios from 'axios';
 import Navbar from '../../../components/menu/menu';
 
 //style
-import { Container, Compra, Esquerda, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco, Botao } from './styles.js';
+import { Container, Compra, PessoalInfo,TituloSection, DadosEntrega,DadosCartao, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco, Botao } from './styles.js';
 
 export default function Comprar(){
   //Variáveis de estado, resgatados do storage
@@ -167,74 +167,139 @@ export default function Comprar(){
       console.log(error);
     }
   }
-  
+  //Novos useStates
+  const [ nomeIdent, setNomeIdent ] = useState('')
   
   return (
     <>
       <Navbar />
       <Container>
         <Compra>
-          <Esquerda>
-            <Cartao>
-              {/* Cleave é uma tentativa de mostrar a bandeira do cartão */}
-              {
-                //<Cleave placeholder="Enter your credit card number"
-                //  options={{creditCard: true}}
-                //onChange={(e)=>setOnchange(e.target.value)} />
-              }
-            </Cartao>
-          </Esquerda>
-          <Direita>
-            <InfoEndereco>
-              <Form>
+          <PessoalInfo>
+        <TituloSection>
+          <h1>1</h1>
+          <h2>Informações pessoais</h2>
+        </TituloSection>
+
+          <Form>
                 <input
                   type="text"
-                  placeholder="Número de residência"
-                  onChange={(e) => setNumResid(e.target.value)}
+                  placeholder="Nome de identificação"
+                  onChange={(e) => setNomeIdent(e.target.value)}
                 />
-              </Form>
-
-              <Form>
+          </Form>
+          <Form>
                 <input
                   type="text"
                   placeholder="CPF"
                   onChange={(e) => setCpf(e.target.value)}
                 />
-              </Form>
+          </Form>
 
-              <Form>
-                <input
-                  type="text"
-                  placeholder="Numero da rua"
-                  onChange={(e) => setRuaNum(e.target.value)}
-                />
-              </Form>
-
-              <Form>
-                <input
-                  type="text"
-                  placeholder="CEP"
-                  onChange={(e) => setCep(e.target.value)}
-                />
-              </Form>
-
-              <Form>
+          <Form>
                 <input
                   type="text"
                   placeholder="Telefone para contato"
                   onChange={(e) => setNumeroTel(e.target.value)}
                 />
-              </Form>
+          </Form>
+        
+          </PessoalInfo>
+
+
+
+
+
+          <DadosEntrega>
+            <TituloSection>
+              <h1>2</h1>
+              <h2>Dados de entrega</h2>
+            </TituloSection>
+
+              <Form>
+                  <input
+                    type="text"
+                    placeholder="CEP"
+                    onChange={(e) => setCep(e.target.value)}
+                  />
+                </Form>
+                <div style={{display: "flex", width: "100%"}} >
+                <Form>
+                  <input
+                      type="text"
+                      placeholder="Complemento"
+                      style={{width:"100%"}}
+                  />
+                </Form>
+                <Form>
+                  <input
+                      type="text"
+                      placeholder="Número de residência"
+                      style={{width:"100%"}}
+                      onChange={(e) => setNumResid(e.target.value)}
+                  />
+                </Form>
+              </div>
 
               <Form>
                 <input
                   type="text"
-                  placeholder="Referência"
+                  placeholder="Ponto de Referência"
                   onChange={(e) => setRef(e.target.value)}
                 />
               </Form>
-            </InfoEndereco>
+              <Form>
+                <input
+                  type="text"
+                  placeholder="Cidade"
+                />
+              </Form>
+              <Form>
+                <input
+                  type="text"
+                  placeholder="Bairro"
+                />
+              </Form>
+            
+              <div style={{display: "flex", width: "100%"}} >
+                <Form>
+                <input
+                  type="text"
+                  placeholder="Numero da rua"
+                  style={{width:"100%"}}
+                  onChange={(e) => setRuaNum(e.target.value)}
+                />
+              </Form>
+                <Form>
+                  <input
+                      type="text"
+                      placeholder="UF"
+                      style={{width:"100%"}}
+                  />
+                </Form>
+              </div>
+              <Form>
+                <input
+                type="text"
+                placeholder="Nome da rua"
+                />
+              </Form>
+
+          </DadosEntrega>
+
+
+          <DadosCartao>
+            <TituloSection>
+            <h1>3</h1>
+            <h2>Dados do cartão</h2>
+          </TituloSection>
+
+
+          <Direita>
+
+           
             <InfoCartao>
+             
               <Form>
                 <input
                   type="text"
@@ -273,7 +338,9 @@ export default function Comprar(){
               </Botao>
             </InfoCartao>
           </Direita>
+          </DadosCartao>
         </Compra>
+          
       </Container>
     </>
   );

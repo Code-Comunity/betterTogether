@@ -56,8 +56,54 @@ export function AuthProvider({children}){
     }
   }
 
+  //Funções da escolha de quantidade de produtos
+  //USE STATES 
+  const url = window.location.href;
+  const splitURL = url.split('/');
+  const [produto, setProduto] = useState([]);
+
+  //Identificação do produto
+  useEffect(()=>{
+    async function getApi(){
+     try{
+       const data = await api.get(`/produto/${splitURL[4]}`)
+       const aiui = data.data;
+        setProduto([aiui]);
+     }catch(err){
+        console.log(err);
+     }
+    }
+   getApi();
+   // eslint-disable-next-line
+  },[])
+
+  //Contador que aumenta quantidade
+  const [count, setCount] = useState(1);
+  
+  function qtdMais(){
+    setCount(count + 1);
+    produto.map(e =>{     
+        if(count === e.estoque){
+          setCount(e.estoque);
+          alert("Esse é todo o nosso estoque :(");    
+        }
+        return setCount;
+    })
+  }
+  
+  //Contador que diminui quantidade
+  function qtdMenos(){
+    setCount(count - 1);
+    if(count === 1){
+      setCount(1);
+    }    
+  }
+
+  //Variavel que armazena o valor da quantidade
+  let qtd = count;
+
   return(
-    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin}}>
+    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin, qtdMais, qtdMenos, qtd}}>
       {children}
     </Context.Provider>
   );

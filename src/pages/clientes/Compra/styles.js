@@ -7,17 +7,62 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    border: solid gray;
 `
 export const Compra = styled.div`
-    width: 85%;
-    height: 60%;
-
+    width: 95%;  
+    height: 100%;
+    border: solid purple;
+    display: flex;
+    flex-direction: column;
     display: flex;
 `
-export const Esquerda = styled.div`
+export const PessoalInfo = styled.div`
     height: 100%;
-    width: 50%;
+    width: 60%;
+    background: tomato;
+    input{
+        width: 300px;
+    }
 `
+export const TituloSection = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    h1{
+    border: solid 2px #820E0E;
+    border-radius: 100%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    }
+    h2{
+    color: #820E0E;
+    font-weight: bold;
+    }
+`
+
+export const DadosEntrega = styled.div`
+    height: 100%;
+    width: 60%;
+    background: tomato;
+    input{
+        width: 300px;
+    }
+`
+export const DadosCartao = styled.div`
+    height: 100%;
+    width: 60%;
+    background: tomato;
+    input{
+        width: 300px;
+    }
+`
+
 export const Direita = styled.div`
     height: 100%;
     width: 50%;

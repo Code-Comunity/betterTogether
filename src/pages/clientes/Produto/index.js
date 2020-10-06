@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect,useState} from 'react';
+import React, {useContext, useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
 import { IoIosCalculator} from "react-icons/io";
 //css
 import './style.css';
 //API
 import api from '../../../service/api';
-
+import Context from '../../../contexts/auth';
 
 export default function Produto() {
+  
+  const {qtdMais, qtdMenos, qtd} = useContext(Context);
 
   const url = window.location.href;
   const splitURL = url.split('/');
@@ -17,7 +19,7 @@ export default function Produto() {
 
   const [produto, setProduto] = useState([]);
 
-  
+  console.log(splitURL);
   useEffect(()=>{
     async function getApi(){
       try{
@@ -34,7 +36,8 @@ export default function Produto() {
   /*Parte de ADICIONAR AO CARRINHO*/
   //GETTER
   const carrinho = localStorage.getItem('@btgther/carrinho');
-  const parseCarrinho = JSON.parse(carrinho);
+  const parseCarrinho = JSON.parse(carrinho); //TRANSFORMAR STRING EM OBJETO 
+
   //SETTER
   function Comprar(){
     if(parseCarrinho === null){
@@ -45,31 +48,10 @@ export default function Produto() {
         item.push(produto[0])
       localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
     }
+    alert("Produto adicionado ao carrinho!!");  
   }
-  console.log(parseCarrinho)
-
-  //Parte referente à quantidade de produtos   
-  const [count, setCount] = useState(1);
   
-  function qtdMais(){
-    setCount(count + 1);
-    produto.map(e =>{     
-        if(count === e.estoque){
-          setCount(e.estoque);    
-        }
-        return setCount;
-    })
-  }
-
-  function qtdMenos(){
-    setCount(count - 1);
-    if(count === 1){
-      setCount(1);
-    }    
-  }
-
-  let qtd = count;
-  console.log(qtd)
+  
 
   return (
     <>
@@ -80,8 +62,6 @@ export default function Produto() {
          produto.map(e =>{
           let preco = e.preco
           let total = preco * qtd;
-          
-          console.log(total);
 
            return(
             <div className="produto-content">
@@ -105,9 +85,9 @@ export default function Produto() {
                 <div className="qtd-produto-pag">
                   <h2>Quantidade:</h2>
                   <div className="icon-produto">
-                    <h1 onClick={qtdMenos}>-</h1> 
-                    <input type="text" placeholder={count} readOnly />
-                    <h1 onClick={qtdMais}>+</h1>
+                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
+                    <input type="text" placeholder={qtd} readOnly />
+                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
                   </div> 
                 </div>
 
