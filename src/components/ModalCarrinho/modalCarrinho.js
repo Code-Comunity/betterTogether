@@ -56,8 +56,8 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     },[])
 
     //testes
-    //const carrinho1 = JSON.parse(localStorage.getItem('@btgther/carrinho'))
-    //alert(carrinho1[1])
+   // const carrinho1 = JSON.parse(localStorage.getItem('@btgther/carrinho'))
+ 
 
 
     return ( 
@@ -78,7 +78,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                 <Quantidade>
                                 <div className="icon-produto" style={{width:"70%"}} >
                                     <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
-                                    <input type="text" placeholder={qtd} readOnly />
+                                    <input type="text" placeholder={e.quantidade} readOnly />
                                     <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
                                 </div> 
                                 </Quantidade>

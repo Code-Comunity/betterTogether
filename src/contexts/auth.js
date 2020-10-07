@@ -99,11 +99,16 @@ export function AuthProvider({children}){
     }    
   }
 
-  //Variavel que armazena o valor da quantidade
+  //Variaveis que armazenam o valor da quantidade
   let qtd = count;
+  const qtdItem = [];
+  console.log(...qtdItem)
+ 
 
+
+  //Exportando valores
   return(
-    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin, qtdMais, qtdMenos, qtd}}>
+    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin, qtdMais, qtdMenos, qtd, qtdItem}}>
       {children}
     </Context.Provider>
   );

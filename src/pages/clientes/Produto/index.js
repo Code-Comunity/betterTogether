@@ -10,7 +10,8 @@ import Context from '../../../contexts/auth';
 
 export default function Produto() {
   
-  const {qtdMais, qtdMenos, qtd} = useContext(Context);
+  const {qtdMais, qtdMenos, qtdItem} = useContext(Context);
+  let { qtd } = useContext(Context);
 
   const url = window.location.href;
   const splitURL = url.split('/');
@@ -36,22 +37,29 @@ export default function Produto() {
   /*Parte de ADICIONAR AO CARRINHO*/
   //GETTER
   const carrinho = localStorage.getItem('@btgther/carrinho');
-  const parseCarrinho = JSON.parse(carrinho); //TRANSFORMAR STRING EM OBJETO 
+  const parseCarrinho = JSON.parse(carrinho); //TRANSFORMAR STRING EM OBJETO
 
+  
   //SETTER
   function Comprar(){
+
+
     if(parseCarrinho === null){
+      produto[0].quantidade = qtd;
+      
       localStorage.setItem('@btgther/carrinho', JSON.stringify(produto));
     }
     if(parseCarrinho != null){
+      produto[0].quantidade = qtd;
       const item = parseCarrinho
         item.push(produto[0])
       localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
     }
+
     alert("Produto adicionado ao carrinho!!");  
   }
   
-  
+
 
   return (
     <>

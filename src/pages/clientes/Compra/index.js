@@ -83,8 +83,7 @@ export default function Comprar(){
     precoSemPonto = precoSemPonto.replace(".", "");
     precoSemPonto = parseInt(precoSemPonto);
 
-
-
+    
     return {
       id: `rb${e.id_produto}`,
       title: e.produto,
