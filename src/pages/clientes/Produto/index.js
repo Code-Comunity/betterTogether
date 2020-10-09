@@ -10,7 +10,7 @@ import Context from '../../../contexts/auth';
 
 export default function Produto() {
   
-  const {qtdMais, qtdMenos, qtdItem} = useContext(Context);
+  const {qtdMais, qtdMenos} = useContext(Context);
   let { qtd } = useContext(Context);
 
   const url = window.location.href;
@@ -42,8 +42,6 @@ export default function Produto() {
   
   //SETTER
   function Comprar(){
-
-
     if(parseCarrinho === null){
       produto[0].quantidade = qtd;
       

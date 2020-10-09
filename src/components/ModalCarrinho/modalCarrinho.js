@@ -11,7 +11,7 @@ import Context from '../../contexts/auth';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
-    const {qtdMais, qtdMenos, qtd} = useContext(Context);
+    const {qtdMais, qtdMenos} = useContext(Context);
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
@@ -31,7 +31,34 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     }
 
     function FinalizarCompra(){
-        const valores = statusCarrinho.map((e)=>{return e.preco;})
+        
+        let item = JSON.parse(localStorage.getItem('@btgther/carrinho'));
+        
+        let item2 = item.map((e) => {
+            
+            let qtdItem = e.quantidade;
+            //console.log(qtdItem)
+
+            let precoItem = e.preco;
+            //console.log(precoItem)
+            
+            let precoTotal = qtdItem * precoItem;
+            e.preco = precoTotal;
+
+            return precoTotal;
+        })
+
+        
+
+        
+        console.log(item)
+        /*
+        const coquecoisa = item.map((e) => {return e.preco = precoTotal});
+        console.log(coquecoisa)
+        */
+        const valores = item.map((e)=>{return e.preco;});
+        console.log(valores);
+
         const total = valores.reduce((total, currentElement) => total + currentElement)
         alert("valor total"+total);
         return total;
@@ -55,8 +82,8 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         }
     },[])
 
-    //testes
-   // const carrinho1 = JSON.parse(localStorage.getItem('@btgther/carrinho'))
+  
+    
  
 
 
@@ -67,7 +94,11 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                         <Close> <span><RiCloseCircleFill onClick={onClose} /></span></Close>
                     
                         { statusCarrinho===null ? <h1>Carrinho vazio, Adicione itens</h1> : statusCarrinho.map(e => {
-                            let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                           
+                            let preco = e.preco;
+                            let qtdCarrinho = e.quantidade;
+                            let totalCarrinho = qtdCarrinho * preco;
+
                             return( 
                             <Card key={e.id_produto}>
                                 <Foto  ><img src={e.img} alt=""/></Foto>
@@ -87,7 +118,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                         <span onClick={()=>DeletarItem()} style={{cursor: "pointer"}}><FaTrash /></span>
                                     </Icons>
                                     <div>
-                                        <h1>{preco}</h1>
+                                        <h1>{totalCarrinho.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
                                     </div>
                                 </Preco>
                             </Card>

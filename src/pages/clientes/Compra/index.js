@@ -88,10 +88,27 @@ export default function Comprar(){
       id: `rb${e.id_produto}`,
       title: e.produto,
       unit_price: precoSemPonto,
-      quantity: 1,
+      quantity: e.quantidade,
       tangible: true,
     };
   });
+
+ console.log(items)
+      
+  let valorTotal = meusItems.map((e) => {
+      
+      let qtdItem = e.quantity;
+      //console.log(qtdItem)
+
+      let precoItem = e.unit_price;
+      //console.log(precoItem)
+      
+      let precoTotal = qtdItem * precoItem;
+
+      return precoTotal;
+  })
+  
+  console.log({valorTotal: valorTotal,amount: meusItems} );
 
   //Resgatar informações do usuário salvos no storage
   useEffect(() => {
@@ -146,9 +163,17 @@ export default function Comprar(){
     totalSemPonto = totalSemPonto.replace(".", "");
     totalSemPonto = parseInt(totalSemPonto);
 
+    const total1 = valorTotal.reduce(
+      (total1, currentElement) => total1 + currentElement
+    );
+
+    let valorTotalSemPonto = total1 + "";
+    valorTotalSemPonto = valorTotalSemPonto.replace(".", "");
+    valorTotalSemPonto = parseInt(valorTotalSemPonto);
+
     try {
       const response = await api.post("/transaction", {
-        amount: totalSemPonto,
+        amount: valorTotalSemPonto,
         card_number: numeroCartao,
         card_cvv: cvv,
         card_expiration_date: dataExpiracao,
@@ -156,14 +181,17 @@ export default function Comprar(){
         customer: costumer,
         billing: billing,
         shipping: shipping,
-        items: meusItems,
-        referencia:referencia,
-        numeroDaResidencia: numResid,
+        items: meusItems
       });
+
+
+      console.log(valorTotal)
       alert(response.status)
+
       return setPagamento(response);
     } catch (error) {
       console.log(error);
+      alert(error)
     }
   }
   //Novos useStates

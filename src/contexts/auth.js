@@ -62,6 +62,8 @@ export function AuthProvider({children}){
   const splitURL = url.split('/');
   const [produto, setProduto] = useState([]);
 
+
+
   //Identificação do produto
   useEffect(()=>{
     async function getApi(){
@@ -101,14 +103,15 @@ export function AuthProvider({children}){
 
   //Variaveis que armazenam o valor da quantidade
   let qtd = count;
-  const qtdItem = [];
-  console.log(...qtdItem)
  
+  
+  
+
 
 
   //Exportando valores
   return(
-    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin, qtdMais, qtdMenos, qtd, qtdItem}}>
+    <Context.Provider value={{logado:!!usuario,usuario,Autenticar,AutenticarAdm,setEmail,setSenha,setSenhaAdmin,setEmailAdmin, qtdMais, qtdMenos, qtd}}>
       {children}
     </Context.Provider>
   );
