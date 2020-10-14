@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
+import Footer from '../../../components/footer/footer';
 import { IoIosCalculator} from "react-icons/io";
 //css
 import './style.css';
@@ -115,6 +116,7 @@ export default function Produto() {
          })
        }
       </div>
+      <Footer />
     </>
   );
 }

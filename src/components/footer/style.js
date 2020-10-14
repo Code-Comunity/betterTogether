@@ -97,14 +97,15 @@ export const EsquerdaBaixo = styled.div`
         width: 70px;
         margin: 10px;
         margin-left: 10px;
+
     }
 `
 export const CentroBaixo = styled.div`
     width: 60%;
     min-height: 100%;
-
     color: #484646;
     font-size: 12px;
+
 
     display: flex;
     flex-direction: column-reverse;
@@ -132,12 +133,10 @@ export const DireitaBaixo = styled.div`
 `
 export const Contato = styled.div`
     margin-left: 40px;
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-
     h3{
         font-size: 12px;
     }
@@ -147,4 +146,3 @@ export const Contato = styled.div`
 
     }
 `
-
