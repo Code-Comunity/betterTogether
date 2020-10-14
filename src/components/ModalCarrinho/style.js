@@ -103,6 +103,35 @@ export const Descricao = styled.div`
         }
     }
 `
+export const Quantidade = styled.div`
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 30px;
+    margin-bottom: 25px;
+
+    input{
+        width: 80%;
+        height: 40px;
+        background: #F0F0F0;
+        border-radius: 9px;
+        border: none;
+        position: relative;
+
+        
+        padding-left: 30%;
+        font-size: large;
+        font-weight: 700;
+    }
+
+    h1{
+        color: #820E0E;
+        margin: 10px;
+        cursor: pointer;
+    }
+`
+
 export const Preco = styled.div`
     width: 20%;
 
@@ -115,7 +144,7 @@ export const MostraPreco = styled.div`
         font-size: 3.0rem;
         color: #820E0E;
         text-align: left;
-        margin-top: 10px;
+        margin-top: 10px;   
     }
 
     @media (max-width: 1024px){ 

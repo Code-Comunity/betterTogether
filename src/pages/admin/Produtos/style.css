@@ -7,9 +7,12 @@
   width: 30%;
   height: 130px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 0.5rem;
+}
+.produto h1{
+  font-size: 1.2rem;
 }
 
 .add{
@@ -40,6 +43,13 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+@media (max-width: 1100px){
+  .produto h1{
+    font-size: 0.9rem;
+  }
+}
+
 
 @media (max-width: 800px){
   .listaProdutos , .produtosCadastrados{

@@ -26,13 +26,13 @@
 .perfilDash{
   background: #FFFFFF;
   border-radius: 100px;
-  padding: 12px;
-  width: 230px;
+  padding: 20px;
+  width: max-content;
   display: flex;
   align-items: center;
 }
 .perfilDash h3{
-  margin-left: 50px;
+  margin-left: 30px;
 }
 .circleDash{
   background: #820E0E;
@@ -40,6 +40,14 @@
   height: 50px;
   border-radius: 100%;
   margin-right: 15px;
+  display: block;
+  position: absolute;
+}
+
+.perfilDash h2{
+  position: relative;
+  margin-left: 55px;
+  font-size: 1.3rem;
 }
 
 .funcoes{
@@ -151,12 +159,38 @@
   width: 100%;
   padding: 25px;
   margin: 35px;
-  margin-top: 70px;
+  margin-top: 60px;
   display: flex;
   justify-content: space-between;
   border-radius: 15px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   color: #820E0E;
+}
+
+.cardEst + .cardEst{
+  margin-top: -20px;
+}
+
+.cardEst1{
+  background: #fff;
+  width: 100%;
+  padding: 25px;
+  margin: 35px;
+  margin-top: -20px;
+  margin-bottom: -40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  color: #820E0E;
+}
+
+.saldoDisponivel{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .dirCard{
@@ -168,6 +202,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.btnTransfer{
+  border: solid #820E0E 3px;
+  background: none;
+  border-radius: 15px;
+  height: 45px;
+  color: #820E0E;
+  cursor: pointer;
+}
+.btnTransfer:hover{
+  background: #820E0E;
+  color: white;
 }
 
 @media (max-width: 800px){

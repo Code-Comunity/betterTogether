@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import { BiFace,BiHomeAlt, BiPackage } from "react-icons/bi";
 import { IoIosExit} from "react-icons/io";
@@ -8,13 +9,17 @@ import Logo from '../../../assets/logored.svg';
 import api from '../../../service/api';
 
 
-export default function AddProdutos() {
+export default function EditProdutos() {
 
   const [ nomeProduto, setNomeProduto ] = useState('');
   const [ estoque, setEstoque ] = useState('');
   const [ preco, setPreco ] = useState('');
   const [ descricao, setDescricao ] = useState('');
   const [ imagem, setImagem ] = useState('');
+
+  const url = window.location.href;
+  const splitURL = url.split('/');
+
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
 
@@ -32,28 +37,29 @@ export default function AddProdutos() {
     buscaUser()
   },[])
 
+  useEffect(()=>{
 
-  async function CadastrarProduto(){
-
-    try{
-      await api.post('/cadastro/novo',{
-        produto: nomeProduto,
-        descrisao: descricao,
-        preco: estoque,
-        estoque: preco,
-        img: imagem
-      })
-      alert(`${nomeProduto} Cadastrado no banco!`)
-      
-      return window.location.href = "/dashboard"
+      async function GetDados(){
+        
+        try{ 
+          const {data} = await api.get(`/editar/${splitURL[4]}`)
+          console.log(data[0].produto)
+          setNomeProduto(data[0].produto)
+          setEstoque(data[0].estoque)
+          setPreco(data[0].preco)
+          setDescricao(data[0].descrisao)
+          setImagem(data[0].img)
 
 
-    }catch(error){
-      console.log(error)
-    }
+        }catch(error){  
+          console.log(error)
+        }
 
-  }
+      }
 
+      GetDados()
+
+  },[])
 
   function Deslogar(){
     localStorage.clear();
@@ -89,18 +95,19 @@ export default function AddProdutos() {
     <div className="addProdutos">
       <div className="left">
 
-        <input type="text" placeholder="Digite o nome do produto" onChange={(e)=>setNomeProduto(e.target.value)}/>
-        <input type="text" placeholder="Digite o estoque do produto" onChange={(e)=>setEstoque(e.target.value)}/>
-        <input type="text" placeholder="Digite o preço do produto" onChange={(e)=>setPreco(e.target.value)}/>
+        <input type="text" value={nomeProduto} placeholder="Digite o nome do produto" onChange={(e)=>setNomeProduto(e.target.value)}/>
+        <input type="text" value={estoque} placeholder="Digite o estoque do produto" onChange={(e)=>setEstoque(e.target.value)}/>
+        <input type="text" value={preco} placeholder="Digite o preço do produto" onChange={(e)=>setPreco(e.target.value)}/>
 
         <textarea name="descricao" id="desc" cols="30" rows="10" placeholder="Descreva um pouco sobre o produto ou serviço que
-        você está vendendo." onChange={(e)=>setDescricao(e.target.value)} >
+        você está vendendo." value={descricao} onChange={(e)=>setDescricao(e.target.value)} >
         </textarea>
       </div>
 
       <div className="right">
+        <img className="imgProduto" src={imagem} alt="Imagem do produto"/>
         <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.value)}/>
-        <button onClick={()=>CadastrarProduto()}>Adicionar</button>
+        <button onClick={()=>{}}>Adicionar</button>
       </div>
       
     </div>

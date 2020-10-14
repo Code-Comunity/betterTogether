@@ -2,12 +2,12 @@ html{
   min-width: 100%;
 }
 header{
-  min-width: 100vw;
+  width: 100%;
   margin: 0;
   
 }
 header img{
-  width: 100%;
+  width: 100vw;
   resize: both;
   image-resolution: 300;
   margin-top: 60px;

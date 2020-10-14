@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 //Css
@@ -7,7 +7,6 @@ import './menu.css';
 //Imagens
 import Perfil from '../../assets/testeperfil.png';
 import Logo from '../../assets/logowhite.svg';
-//import {IoMdCart} from 'react-icons/io';
 import {FaInfoCircle, FaShoppingCart} from 'react-icons/fa';
 
 //Modal
@@ -15,30 +14,23 @@ import Modal from '../ModalCarrinho/modalCarrinho';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+//Context
+import Context from '../../contexts/auth';
+import { IoIosLogIn, IoIosLogOut,IoIosPerson, IoMdPersonAdd } from 'react-icons/io';
+
 export default function Navbar() {
-  //modal
+  const { logado, usuario } = useContext(Context);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  //Menu responsivo
-  useEffect(()=>{
-    let show = true;
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
 
-    const menuSection = document.querySelector(".nav")
-    const menuToggle = menuSection.querySelector(".menu-toggle")
-  
-    menuToggle.addEventListener("click", () =>{
-      document.body.style.overflow = show? "hidden" : "initial";
-
-      menuSection.classList.toggle("on", show)
-      show = !show;
-    })
-  },[]);
-
-  
-
+  console.log(logado,usuario)
   return (
     <>
-      <div className="nav">
+      <nav>
         
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
@@ -53,30 +45,37 @@ export default function Navbar() {
                         </div>
                       </Link>
                       
-                      <Link onClick={() => setIsModalVisible(true)} className="btnNav">
+                      <Link onClick={() => setIsModalVisible(true)} className="btnNav" to="#">
                         <div className="buttonNav">               
                               <h4>Carrinho</h4> 
                               <FaShoppingCart />
                         </div>
-                      </Link>                  
-                 </div>                  
-            <div className="perfil">
-              <h4>Maria Silva</h4>
+                      </Link>               
+                         
+                 </div>       
+                 { logado ? ( <div className="perfil">
+              <h4>{usuario.nome}</h4>
               <div className="circle">
                 <img src={Perfil} alt="Perfil foto"/>
               </div>
+
+              <div className="dropdown">
+                <Link className="Links" to="#" onClick={()=>Deslogar()}> <IoIosLogOut /> Deslogar</Link>
+                <Link className="Links" to="/perfil"> <IoIosPerson /> Perfil</Link>
+              </div>
+
+            </div> ) : ( 
+            
+            <div className="loginEcadastro"> 
+              <Link className="BotoesLogin" to="/login"> <IoIosLogIn size="15px" />  Logar</Link>
+              <Link className="BotoesLogin" to="/cadastro"> <IoMdPersonAdd size="25px" /> Cadastrar</Link> 
             </div>
-        </div>
-   
-          <div className="menu-toggle" >
-                <div className="one"></div>
-                <div className="two"></div>
-                <div className="three"></div>            
-          </div>  
 
-      </div>
+             )}           
+            
+        </div>        
+      </nav>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}
-
     </>
   );
 }

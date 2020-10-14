@@ -61,6 +61,7 @@
   display: flex;
   align-items: center;
   margin-left: 20px;
+  z-index: 8;
 }
 
 .ladoDireito{
@@ -72,70 +73,55 @@
 .ladoEsquerdo img{
   width: 50px;
   height: 50px;
-
 }
 
-@media (max-width: 540px){
-  .ladoDireito{
-    display: none;
-  }
+.BotoesLogin{
+  background: #FFFFFF;
+  border-radius: 9px;
+  width: 100px;
+  padding: 10px;
+  margin: 8px;
+  color: #820E0E;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
-  .one,
-  .two,
-  .three{
-    background-color: #fff;
-    height: 5px;
-    width: 100%;
-    margin: 6px auto;
 
-    transition-duration: 0.3s;
-  }
+.loginEcadastro{
+  display: flex;
+  flex-direction: row;
+}
 
-  .menu-toggle{
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    width: 40px;
-    height: 30px;
-    margin-right: 20px;
-    margin-left: 5px;
-  }
-  .nav.on{
-    position: fixed;
-    top: 0;
-    left: 0;
+.dropdown{
+  position: absolute;
+  margin-top: 143px;
+  margin-left: -10px;
+  border-radius: 0 0 15px 15px;
+  background-color: #820E0E;
+  width: 250px;
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+}
+.Links{
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+.Links:hover{
+  color: rgb(218, 216, 216);
+}
+.dropdown .Links+.Links{
+  margin-top: 10px;
+  color: white;
+}
+.dropdown .Links+.Links:hover{
+  color: rgb(218, 216, 216);
+}
 
-    width: 100vw;
-    height: 100vh;
-
-    background-color: #820E0E;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  .nav.on .menu-toggle .one{
-    transform: rotate(45deg) translate(7px, 7px);
-  }
-  .nav.on .menu-toggle .two{
-    opacity: 0;
-  }
-  .nav.on .menu-toggle .three{
-    transform: rotate(-45deg) translate(8px, -9px);  
-  }
-  .nav.on .ladoDireito{
-    height: 62%;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: flex-end;
-
-    transition-duration: 0.5s;
-  }
-  .nav.on .botoes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
+.perfil:hover .dropdown{
+  display: flex;
 }

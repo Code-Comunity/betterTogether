@@ -1,14 +1,52 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { BiFace,BiHomeAlt,BiLayerPlus, BiPackage,BiBullseye } from "react-icons/bi";
-import { IoIosAddCircle,IoIosExit} from "react-icons/io";
+import { IoIosAddCircle,IoIosExit,IoIosBuild} from "react-icons/io";
+import {FaTrash} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import './style.css'
 import Logo from '../../../assets/logored.svg';
 import Graph from '../../../assets/Dashboard/graph.svg';
-import data from '../Dashboard/api';
+import api from '../../../service/api';
 
 export default function AddProdutos() {
 
+
+  const [ produtos, setProdutos ] = useState([])
+
+  async function DeletarProduto(prop){
+    await api.get(`/excluir/${prop}`)
+  }
+
+  useEffect(()=>{
+    async function getProdutos(){
+      const {data} = await api.get('/listProduto')
+      return setProdutos(data.produtos);
+    }
+    getProdutos();
+  },[produtos])
+
+
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
+        setUsuarioLogado(usuarioLogado);
+      }catch(error){
+        console.log(error)
+      }
+    }
+
+    buscaUser()
+  },[])
+
+  function Deslogar(){
+    localStorage.clear();
+    return window.location.href = "/"
+  }
+  //Para o componente de metas (por enquanto estático);
   const meta = false;
 
   return (
@@ -22,15 +60,15 @@ export default function AddProdutos() {
   <div className="direta">
     <div className="perfilDash">
       <div className="circleDash"></div>
-      <h2>Hélio</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" /> </h3>
+      <h2>{usuarioLogado.nome}</h2>
+      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
     </div>
   </div>
 </div>
 
 <div className="funcoes">
       <Link to="/dashboard" className="itens"> <BiHomeAlt size="30px"/> </Link>
-      <Link to="/addprodutos" className="itens"> <BiPackage size="30px"/> </Link>
+      <Link to="/produtos" className="itens"> <BiPackage size="30px"/> </Link>
       <Link to="/clientes" className="itens"> <BiFace size="30px"/> </Link>
 </div>
 
@@ -39,16 +77,24 @@ export default function AddProdutos() {
       <h1 style={{color: '#820E0E', fontSize: 20, marginBottom: 30}}>Produtos</h1>
 
     <div className="produtosCadastrados">
-      <Link className="add">
+      <Link className="add" to="/addprodutos">
         <IoIosAddCircle size="73px" />
         <h1>Adicionar Produto</h1>
       </Link>
-      { data.map(e=>{
+
+      { produtos.map(e=>{
         //Aqui chamaremos na api, os produtos
+
         return(
-        <div key={e.id} className="produto">
+          
+        <div key={e.id_produto} className="produto" >
           <BiPackage size="73px" />
-          <h1>{e.nome}</h1>
+          {console.log(e)}
+          <h1>{e.produto}</h1>
+            <Link to={`/editar/${e.id_produto}`}>
+              <IoIosBuild size="20px" />
+            </Link>
+            <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id_produto)} size="20px" />
         </div>
         )
         }) }
@@ -78,10 +124,10 @@ export default function AddProdutos() {
               <div className="dirCard">
                 <h4>Produtos mais vendidos</h4>
                 
-                {data.map(e=>{
+                {/*data.map(e=>{
                   //Aqui chamaremos da api de estatisticas do produto
                   return(<span>{e.nome}</span>)
-                })}
+                })*/}
               </div>
 
               <div className="esqCard">

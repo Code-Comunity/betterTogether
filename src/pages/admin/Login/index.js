@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { IoMdPerson,IoIosFingerPrint } from "react-icons/io";
 import Logo from '../../../assets/logowhite.svg';
 import './login.css';
 
+import Context from '../../../contexts/auth';
+
 export default function LoginAdmin() {
+
+
+
+  const { AutenticarAdm,setSenhaAdmin,setEmailAdmin } = useContext(Context)
+
+  function Logar(){
+    AutenticarAdm();
+  }
+
   return (
     <>
     <body>
@@ -17,15 +28,15 @@ export default function LoginAdmin() {
 
           <div className="inputWIcon">
             <h3><IoMdPerson size="20px" /></h3>
-            <input type="text" name="nome"/>
+            <input type="text" name="nome" onChange={(e)=>setEmailAdmin(e.target.value)}/>
           </div>
 
           <div className="inputWIcon">
             <h3><IoIosFingerPrint size="20px" /></h3>
-            <input type="text" name="senha"/>
+            <input type="password" name="senha" onChange={(e)=>setSenhaAdmin(e.target.value)}/>
           </div>
         </div>
-        <button className="BTNLogin">Entrar</button>
+        <button onClick={()=>Logar()} className="BTNLogin">Entrar</button>
       </div>
        
       </div>

@@ -127,6 +127,8 @@ body{
 .icon-produto{
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width: 300px;
 
   background: #F0F0F0;
   border-radius: 9px;
@@ -135,10 +137,10 @@ body{
   z-index: 9;
   height: 100%;
   color: #820E0E ;
-  margin-left: 20px;
+  cursor: pointer;
 }
-.produto-frete-calc input{
-  width: 300px;
+.icon-produto input{
+  width: 275px;
   height: 40px;
   background: #F0F0F0;
   border-radius: 9px;
@@ -146,13 +148,39 @@ body{
   position: relative;
 
   
-  padding-left: 40px;
+  padding-left: 20px;
   font-size: large;
   font-weight: 700;
     
 }
+.qtd-produto-pag{
+  margin-top: 20px;
+}
+.qtd-produto-pag h2{
+  font-size: 2.0rem;
+  color: #820E0E;
+  margin-bottom: 10px;
+}
+.qtd-produto-pag h1{
+  color: #820E0E;
+  margin: 10px;
+  cursor: pointer;
+}
+.qtd-produto-pag input{
+  width: 90%;
+  padding-left: 35%;
+}
+
 .button-container{
   margin-top: 40px; 
 }
-  
+.naoSelecionavel {
+  -webkit-touch-callout: none;  /* iPhone OS, Safari */
+  -webkit-user-select: none;    /* Chrome, Safari 3 */
+  -khtml-user-select: none;     /* Safari 2 */
+  -moz-user-select: none;       /* Firefox */
+  -ms-user-select: none;        /* IE10+ */
+  user-select: none;            /* Possível implementação no futuro */
+  /* cursor: default; */
+} 
   
