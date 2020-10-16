@@ -8,8 +8,12 @@ import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
 import Context from '../../contexts/auth';
+import { useHistory } from 'react-router-dom';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
+
+    const history = useHistory()
+    
 
     const {qtdMais, qtdMenos} = useContext(Context);
 
@@ -33,39 +37,12 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     function FinalizarCompra(){
         
         let item = JSON.parse(localStorage.getItem('@btgther/carrinho'));
-        
-        let item2 = item.map((e) => {
-            
-            let qtdItem = e.quantidade;
-            //console.log(qtdItem)
-
-            let precoItem = e.preco;
-            //console.log(precoItem)
-            
-            let precoTotal = qtdItem * precoItem;
-            e.preco = precoTotal;
-
-            return precoTotal;
-        })
-
-        
-
-        
-        console.log(item)
-        /*
-        const coquecoisa = item.map((e) => {return e.preco = precoTotal});
-        console.log(coquecoisa)
-        */
         const valores = item.map((e)=>{return e.preco;});
         console.log(valores);
 
         const total = valores.reduce((total, currentElement) => total + currentElement)
         alert("valor total"+total);
-        return total;
-        
-        /* PARA ENVIAR PARA O BACKEND
-        api.post('/transaction', {total})
-        */
+        return history.push('/compra')
     }
 
     useEffect(()=>{
