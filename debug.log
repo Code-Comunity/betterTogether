@@ -1,0 +1,95 @@
+[1010/152559.849:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1010/152559.849:ERROR:crash_report_database_win.cc(447)] failed to read records
+[1010/232807.950:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1010/232807.950:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/030526.131:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/030526.132:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/111841.872:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/111841.903:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/112841.891:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/112841.891:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/112841.908:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\PTK\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\2a7d761e-448c-4ac0-afcc-7a07b4385e46: O sistema não pode encontrar o caminho especificado. (0x3)
+[1011/112841.909:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\PTK\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\b33fbf45-b0bf-4ec2-a8ad-0d75cdc97744: O sistema não pode encontrar o caminho especificado. (0x3)
+[1011/112841.909:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\PTK\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\e15cc00e-efd1-4f72-8ab9-766358ee6bc5: O sistema não pode encontrar o caminho especificado. (0x3)
+[1011/112841.909:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1011/112841.909:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/112841.909:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/112841.910:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/112841.910:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/113341.916:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/113341.916:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/114841.922:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/114841.922:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/120341.927:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/120341.927:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/121841.932:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/121841.932:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/123341.933:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/123341.933:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/124841.945:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/124841.945:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/130341.952:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/130341.953:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/131841.976:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/131841.976:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/133205.101:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/133205.101:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/133341.985:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/133341.985:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/134841.994:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/134841.994:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/140342.022:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/140342.022:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/141842.032:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/141842.032:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/143342.047:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/143342.047:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/144842.050:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/144842.050:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/150342.056:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/150342.056:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/151842.058:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/151842.058:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/153342.091:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/153342.091:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/154842.091:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/154842.091:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/160342.096:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/160342.096:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/161842.105:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/161842.105:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/163342.111:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/163342.111:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/164842.125:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/164842.125:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/170342.129:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/170342.129:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/171842.132:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/171842.132:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/173342.141:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/173342.141:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/174842.142:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/174842.142:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/180342.149:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/180342.150:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/181842.151:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/181842.152:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/183342.168:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/183342.168:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/184842.178:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/184842.178:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/190342.238:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/190342.294:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/191842.308:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/191842.308:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/193342.327:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/193342.327:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/194842.332:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/194842.332:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/200342.340:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/200342.340:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/201842.354:ERROR:file_io.cc(90)] ReadExactly: expected 3080, observed 0
+[1011/201842.354:ERROR:crash_report_database_win.cc(476)] failed to read records
+[1011/202406.243:ERROR:scoped_process_suspend.cc(31)] NtSuspendProcess: Tentou-se acessar um processo de saída. (0xc000010a)
+[1011/202406.465:ERROR:process_info.cc(118)] ReadProcessMemory bool __cdecl crashpad::(anonymous namespace)::ReadStruct(HANDLE, crashpad::WinVMAddress, T *) [T = crashpad::process_types::PEB<crashpad::process_types::internal::Traits64>]: Somente uma parte de um pedido ReadProcessMemory ou WriteProcessMemory foi concluída. (0x12B)
+[1011/202406.465:ERROR:process_info.cc(551)] ReadProcessData failed

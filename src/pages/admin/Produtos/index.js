@@ -9,14 +9,10 @@ import Graph from '../../../assets/Dashboard/graph.svg';
 import api from '../../../service/api';
 
 export default function AddProdutos() {
-
-
   const [ produtos, setProdutos ] = useState([])
-
   async function DeletarProduto(prop){
     await api.get(`/excluir/${prop}`)
   }
-
   useEffect(()=>{
     async function getProdutos(){
       const {data} = await api.get('/listProduto')
@@ -24,15 +20,11 @@ export default function AddProdutos() {
     }
     getProdutos();
   },[produtos])
-
-
   const [usuarioLogado , setUsuarioLogado ] = useState([])
-
   useEffect(()=>{
     async function buscaUser(){
       try{
         const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
-
         setUsuarioLogado(usuarioLogado);
       }catch(error){
         console.log(error)
@@ -83,13 +75,9 @@ export default function AddProdutos() {
       </Link>
 
       { produtos.map(e=>{
-        //Aqui chamaremos na api, os produtos
-
         return(
-          
         <div key={e.id_produto} className="produto" >
           <BiPackage size="73px" />
-          {console.log(e)}
           <h1>{e.produto}</h1>
             <Link to={`/editar/${e.id_produto}`}>
               <IoIosBuild size="20px" />
@@ -109,7 +97,7 @@ export default function AddProdutos() {
                 <h4>Metas</h4>
                 <BiBullseye size="50px" />  
                 { meta ? <div><h1>Meta</h1></div> : <span>Nenhuma meta ainda</span> }
-                <Link className="addMeta">
+                <Link to="#" className="addMeta">
                 <span><BiLayerPlus /></span>
                 <span>Adicionar nova meta</span>
                 </Link>
