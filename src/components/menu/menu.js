@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <>
       <MenuResponsivo />
-      <nav>
+      <div className="nav-menu">
         
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
                      
             
         </div>        
-      </nav>
+      </div>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}
     </>
   );
