@@ -12,6 +12,7 @@ import {FaInfoCircle, FaShoppingCart} from 'react-icons/fa';
 //Modal
 import Modal from '../ModalCarrinho/modalCarrinho';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 //Responsivo
 import MenuResponsivo from '../menuResponsivo/menu';
@@ -21,7 +22,6 @@ import Context from '../../contexts/auth';
 import { IoIosLogIn, IoIosLogOut,IoIosPerson, IoMdPersonAdd } from 'react-icons/io';
 
 export default function Navbar() {
-
   const { logado, usuario } = useContext(Context);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
