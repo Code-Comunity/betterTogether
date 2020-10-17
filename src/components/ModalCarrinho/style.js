@@ -35,7 +35,7 @@ export const Conteudo = styled.div`
     @media (max-width: 425px){ 
         width: 80%;
     }
-    
+
 `
 export const Card = styled.div`
     width: 100%;
@@ -58,9 +58,39 @@ export const Foto = styled.div`
         width: 140px;
         height: 112px;
     }
+
+    @media (max-width: 1024px){    
+        width: 140px;
+        height: 112px;
+    }
+
     @media (max-width: 425px){ 
         width: 100px;
         height: 79px;
+    }
+    @media (max-width: 768px){ 
+        h1{   
+            font-size: 1.5rem;
+        }  
+        p{
+            font-size:1.2rem;
+        }
+    }
+    @media (max-width: 425px){ 
+        h1{   
+            font-size: 1.2rem;
+        }  
+        p{
+            font-size:1.0rem;
+        }
+    }
+    @media (max-width: 320px){ 
+        h1{   
+            font-size: 1.0rem;
+        }  
+        p{
+            font-size:0.8rem;
+        }
     }
 
 `

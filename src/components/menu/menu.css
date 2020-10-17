@@ -125,3 +125,9 @@
 .perfil:hover .dropdown{
   display: flex;
 }
+
+@media(max-width: 425px){
+  .ladoDireito{
+    display: none;
+  }
+}
