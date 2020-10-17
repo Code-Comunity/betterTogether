@@ -109,10 +109,12 @@ export const EsquerdaBaixo = styled.div`
         width: 70px;
         margin: 10px;
         margin-left: 10px;
+
         
         @media(max-width: 425px){
             width: 80%;
         }
+
     }
 `
 export const CentroBaixo = styled.div`

@@ -13,14 +13,14 @@ body{
 }
 .produto-content{
   width: 80%;
-  margin-top: 60px;
+
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }
 .produto-esquerda{
-  width: 575px;
+  max-width: 575px;
   height: 100%;
 }
 .align-preco{
@@ -49,7 +49,7 @@ body{
   padding: 10px;
 }
 .descricao-produto h1{
-  font-size: 20px;
+  font-size: 2.0rem;
   color: #820E0E;
   text-align: left;
 }
@@ -105,7 +105,7 @@ body{
   color: #fff;
 }
 .preco-produto-pag h1{
-  font-size: 60px;
+  font-size: 6.0rem;
   color: #820E0E;
   text-align: left  
 }
@@ -118,7 +118,7 @@ body{
   margin-top: 20px;  
 }
 .produto-frete-calc h2{
-  font-size: 20px;
+  font-size: 2.0rem;
   color: #820E0E;
   text-align: left;
   margin-bottom: 10px; 
