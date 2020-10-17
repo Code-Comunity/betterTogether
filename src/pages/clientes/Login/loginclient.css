@@ -88,4 +88,14 @@
   .BTNLogin{
     width: 200px;
   }
+  .boxLogin{
+    width: 100vw;
+    overflow: hidden;
+    border-radius: none;
+  }
+  .cadastroarea{
+    background: #820E0E;
+  }
+
 }
+
