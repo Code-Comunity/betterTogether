@@ -43,8 +43,7 @@ export default function Produto() {
   //SETTER
   function Comprar(){
     if(parseCarrinho === null){
-      produto[0].quantidade = qtd;
-      
+      produto[0].quantidade = qtd;    
       localStorage.setItem('@btgther/carrinho', JSON.stringify(produto));
     }
     if(parseCarrinho != null){
@@ -53,18 +52,21 @@ export default function Produto() {
         item.push(produto[0])
       localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
     }
-
     alert("Produto adicionado ao carrinho!!");  
   }
-  
+/*
+  //Atualizador do qtd
+  useEffect(()=>{
+    const button = document.querySelector(".button-produto-add")
 
+    button.addEventListener("click", () =>{ qtd = 1 })
+  },[]);*/
 
   return (
     <>
       <Navbar />
       <div className="produto-container">
        {
-         //.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
          produto.map(e =>{
           let preco = e.preco
           let total = preco * qtd;
@@ -106,7 +108,7 @@ export default function Produto() {
                 </div>
                 <div className="button-container">
                   <button className="button-produto"><h2>Comprar</h2></button>
-                  <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
+                  <button onClick={()=>Comprar()}  className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
                 </div>
               </div>
             </div>
