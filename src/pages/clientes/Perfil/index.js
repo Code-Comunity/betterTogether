@@ -50,22 +50,9 @@ export default function Perfil(){
                         <Botao2>
                             <Link>
                                 <FaUserCircle />
-                                <h3>Cadastro</h3>
+                                <h3>Alterar dados</h3>
                             </Link>
                         </Botao2>
-                        <Botao2>
-                            <Link>
-                                <ImLocation2/>
-                                <h3>Endereço</h3>
-                            </Link>
-                        </Botao2>
-                        <Botao2>
-                            <Link>
-                                <IoIosCall />
-                                <h3>Fale conosco</h3>
-                            </Link>
-                        </Botao2>
-                        
                     </Esquerda>
                     <Direita>
                         <h1>Pedidos:</h1>

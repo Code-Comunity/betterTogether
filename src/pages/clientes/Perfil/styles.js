@@ -27,6 +27,12 @@ export const Conteudo = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media(max-width: 425px){
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
 `
 export const DireitaHeader = styled.div`
     width: 45%;
@@ -42,6 +48,15 @@ export const DireitaHeader = styled.div`
     }
     h3{
         color: #fff;
+    }
+
+    @media(max-width: 425px){
+        h1{
+            display: none;
+        }
+        h3{
+            display: none;
+        }
     }
 `
 export const CentroHeader = styled.div`
@@ -62,6 +77,14 @@ export const Esquerda = styled.div`
    
     display: flex;
     flex-direction: column;
+
+    @media(max-width: 425px){
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        text-align: center;
+        padding-left: 12px;
+    }
 `
 export const Direita = styled.div`
     width: 70%;
@@ -72,6 +95,14 @@ export const Direita = styled.div`
         color: #820E0E;
         font-size: 2.7rem;
         margin-left: 20px;
+    }
+
+    @media(max-width: 425px){
+        width: 100vw;
+
+        h1{
+            display: none;
+        }
     }
 
 `
@@ -94,6 +125,21 @@ export const Botao = styled.div`
     h3{
         margin-left: 5px;
     }
+
+    @media(max-width: 425px){
+        margin: 0; 
+
+        a{
+            justify-content: center;
+            align-items: center;
+        }
+
+        h3{
+            margin: 0;
+        }
+    }
+
+    
 `
 export const Botao2 = styled.div`
     width: 100%;
@@ -113,6 +159,17 @@ export const Botao2 = styled.div`
 
     h3{
         margin-left: 5px;
+    }
+
+    @media(max-width: 425px){
+        a{
+            justify-content: center;
+            align-items: center;
+        }
+
+        h3{
+            margin: 0;
+        }
     }
 `
 export const Card= styled.div`

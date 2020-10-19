@@ -7,6 +7,11 @@ export const Container = styled.footer`
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
+    position: relative;
+
+    @media(max-width: 425px){
+        margin-top: 150px;
+    }
    
 `
 

@@ -3,7 +3,6 @@ body{
 }
 .produto-container{
   width: 100%;
-  height: 100vh;
   background: #E5E5E5;
   
 
@@ -183,4 +182,41 @@ body{
   user-select: none;            /* Possível implementação no futuro */
   /* cursor: default; */
 } 
+@media(max-width: 1024px){
+  .foto-produto{
+    width: 375px;
+    height: 215px;
+  }
+}
+@media(max-width: 768px){
+  .produto-content{
+    flex-wrap: nowrap;
+    width: 95%;
+  }
+}
+@media(max-width: 425px){
+  .produto-content{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 750px;
+    position: relative;
+  }
+
+  .produto-esquerda{
+    margin-top: 75px;
+  }
+  .produto-direita{
+    margin-bottom: 75px;
+  }
+  .descricao-produto{
+    max-width: 375px;
+    height: auto;
+    word-break: break-all;
+  }
+
+}
+@media(max-width: 375px){
+  
+}
   

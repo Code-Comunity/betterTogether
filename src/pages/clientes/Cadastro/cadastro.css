@@ -101,4 +101,14 @@
   .BTNLogin{
     width: 200px;
   }
+  .boxLogin{
+    width: 100vw;
+    height: 100vh;
+   
+    background-color: #820E0E;
+  }
+  .cadastroArea{
+    background-color: #820E0E;
+    border-radius: none;
+  }
 }
