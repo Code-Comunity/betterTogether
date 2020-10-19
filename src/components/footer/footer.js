@@ -29,12 +29,12 @@ export default function Footer(){
                         
                         <Contato>
                             <h3>Contato</h3>
-                            <Link>
+                            <a href="https://www.instagram.com/bettertogetherssa/" target="_blank">
                                 <IoLogoInstagram/>
-                            </Link>
-                            <Link>
+                            </a>
+                            <a href="https://wa.me/557198774901" target="_blank">
                                 <FaWhatsapp/>
-                            </Link>
+                            </a >
                         </Contato>
                         <Link><h3>betteremail@gmail.com</h3></Link>
                     </Direita>
@@ -48,8 +48,8 @@ export default function Footer(){
                         <img src={Cartoes} alt="Cartoes"/>
                     </CentroBaixo>
                     <DireitaBaixo>
-                        <Link>
-                            <h4>Voltar ao topo</h4>
+                        <Link >
+                            <h4 onClick="scroll(100vh, 0);">Voltar ao topo</h4>
                             <AiOutlineArrowUp />
                         </Link>
                     </DireitaBaixo>
