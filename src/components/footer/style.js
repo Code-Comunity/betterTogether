@@ -10,7 +10,7 @@ export const Container = styled.footer`
     position: relative;
 
     @media(max-width: 425px){
-        margin-top: 150px;
+        margin-top: 50px;
     }
    
 `

@@ -97,6 +97,7 @@ export const Foto = styled.div`
 export const Descricao = styled.div`
     width: 70%;
     padding: 10px;
+    word-break: break-all;
 
     p{
         color: #A6A6A6;
@@ -160,6 +161,10 @@ export const Quantidade = styled.div`
         margin: 10px;
         cursor: pointer;
     }
+
+    @media (max-width: 425px){
+        display: none;
+    }
 `
 
 export const Preco = styled.div`
@@ -167,8 +172,6 @@ export const Preco = styled.div`
 
     display:flex;
     flex-direction: column;
-`
-export const MostraPreco = styled.div`
 
     h1{
         font-size: 3.0rem;
