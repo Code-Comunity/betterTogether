@@ -59,15 +59,6 @@ export const Foto = styled.div`
         height: 112px;
     }
 
-    @media (max-width: 1024px){    
-        width: 140px;
-        height: 112px;
-    }
-
-    @media (max-width: 425px){ 
-        width: 100px;
-        height: 79px;
-    }
     @media (max-width: 768px){ 
         h1{   
             font-size: 1.5rem;
@@ -77,6 +68,9 @@ export const Foto = styled.div`
         }
     }
     @media (max-width: 425px){ 
+        width: 100px;
+        height: 79px;
+
         h1{   
             font-size: 1.2rem;
         }  
@@ -135,31 +129,17 @@ export const Descricao = styled.div`
     }
 `
 export const Quantidade = styled.div`
-    width: 38%;
+    width: 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: 30px;
     margin-bottom: 25px;
 
-    input{
-        width: 80%;
-        height: 40px;
-        background: #F0F0F0;
-        border-radius: 9px;
-        border: none;
-        position: relative;
-
-        
-        padding-left: 30%;
-        font-size: large;
-        font-weight: 700;
-    }
-
-    h1{
+    h3{
         color: #820E0E;
         margin: 10px;
-        cursor: pointer;
+        margin-left: 35px;
     }
 
     @media (max-width: 425px){
@@ -192,7 +172,7 @@ export const Preco = styled.div`
     }
     @media (max-width: 425px){ 
         h1{   
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }  
     }
 `

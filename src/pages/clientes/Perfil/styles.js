@@ -80,10 +80,14 @@ export const Esquerda = styled.div`
 
     @media(max-width: 425px){
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
         text-align: center;
-        padding-left: 12px;
+        
+ 
+        h3{
+            font-size: 18px;
+        }
     }
 `
 export const Direita = styled.div`
@@ -127,10 +131,11 @@ export const Botao = styled.div`
     }
 
     @media(max-width: 425px){
-        margin: 0; 
+        margin: 0;
+        width: 100%;
+        justify-content: center; 
 
         a{
-            justify-content: center;
             align-items: center;
         }
 

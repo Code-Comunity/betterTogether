@@ -15,7 +15,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     const history = useHistory()
     
 
-    const {qtdMais, qtdMenos} = useContext(Context);
+    const { qtd, qtdMais, qtdMenos } = useContext(Context);
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
@@ -33,6 +33,45 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         localStorage.setItem('@btgther/carrinho', JSON.stringify(parseCarrinho));
         return setStatusCarrinho(parseCarrinho);
     }
+
+    /*
+    //Parte relacionada a quantidade no carrinho
+    //Contador que aumenta quantidade
+    const [count, setCount] = useState(qtd)
+    const [produto, setProduto] = useState([]);
+    
+    function qtdMaisCarrinho(){
+        setCount(count + 1);
+        produto[0].quantidade = count;
+        const item = parseCarrinho
+          item.push(produto[0])
+        localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
+
+        produto.map(e =>{     
+            if(count === e.estoque){
+                setCount(e.estoque);
+                alert("Esse é todo o nosso estoque :(")    
+            }
+            return setCount;
+        })
+    }
+  
+    //Contador que diminui quantidade
+    function qtdMenosCarrinho(){
+        setCount(count - 1);
+        produto[0].quantidade = count;
+        const item = parseCarrinho
+          item.push(produto[0])
+        localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
+
+        if(count === 1){
+            setCount(1);
+        } 
+        
+        console.log(produto[0].quantidade)
+    }
+
+    */
 
     function FinalizarCompra(){
         
@@ -59,8 +98,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         }
     },[])
 
-  
-    
+
  
 
 
@@ -84,11 +122,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                     <p>{e.descrisao}</p> 
                                 </Descricao>
                                 <Quantidade>
-                                <div className="icon-produto" style={{width:"70%"}} >
-                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
-                                    <input type="text" placeholder={e.quantidade} readOnly />
-                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
-                                </div> 
+                                    <h3>Qtd: {e.quantidade} </h3>                   
                                 </Quantidade>
                                 <Preco>
                                     <Icons>

@@ -53,6 +53,7 @@ export default function Produto() {
         item.push(produto[0])
       localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
     }
+    
     alert("Produto adicionado ao carrinho!!");  
   }
 /*
