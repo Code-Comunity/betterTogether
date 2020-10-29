@@ -22,7 +22,6 @@ export default function Home() {
   useEffect(()=>{
     
     async function getApi(){
-
       try{
         const req = await api.get(`/listallprodutos`)
 
@@ -30,14 +29,9 @@ export default function Home() {
       }catch(error){
         console.log(error)
       }
-      
-      
-
     }
-
-
+    
     getApi();
-
 
   },[])
 

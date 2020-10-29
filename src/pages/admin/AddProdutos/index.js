@@ -39,8 +39,8 @@ export default function AddProdutos() {
       await api.post('/cadastro/novo',{
         produto: nomeProduto,
         descrisao: descricao,
-        preco: estoque,
-        estoque: preco,
+        preco: preco,
+        estoque: estoque,
         img: imagem
       })
       alert(`${nomeProduto} Cadastrado no banco!`)
@@ -61,52 +61,70 @@ export default function AddProdutos() {
   }
 
 
+  //const [ arquivo, setArquivo ] = useState();
+  
+  async function EnviaArquivo(){
+    const data = new FormData()
+    data.append("file", imagem)
+    try{
+      await api.post('/enviaimg',{
+      arquivo: data
+
+    }
+    )
+    return alert("Aiui")
+
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <>
-<div className="Dashboard">
+    <div className="Dashboard">
 
-<div className="header">
-  <div className="esquerda">
-    <img src={Logo} alt="LogoDashboard"/>
-  </div>
-  <div className="direta">
-    <div className="perfilDash">
-      <div className="circleDash"></div>
-      <h2>{usuarioLogado.nome}</h2>
-      <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
-    </div>
-  </div>
-</div>
-
-<div className="funcoes">
-      <Link to="/dashboard" className="itens"> <BiHomeAlt size="30px"/> </Link>
-      <Link to="/produtos" className="itens"> <BiPackage size="30px"/> </Link>
-      <Link to="/clientes" className="itens"> <BiFace size="30px"/> </Link>
-</div>
-
-<div className="main">
-
-    <div className="addProdutos">
-      <div className="left">
-
-        <input type="text" placeholder="Digite o nome do produto" onChange={(e)=>setNomeProduto(e.target.value)}/>
-        <input type="text" placeholder="Digite o estoque do produto" onChange={(e)=>setEstoque(e.target.value)}/>
-        <input type="text" placeholder="Digite o preço do produto" onChange={(e)=>setPreco(e.target.value)}/>
-
-        <textarea name="descricao" id="desc" cols="30" rows="10" placeholder="Descreva um pouco sobre o produto ou serviço que
-        você está vendendo." onChange={(e)=>setDescricao(e.target.value)} >
-        </textarea>
+    <div className="header">
+      <div className="esquerda">
+        <img src={Logo} alt="LogoDashboard"/>
       </div>
-
-      <div className="right">
-        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.value)}/>
-        <button onClick={()=>CadastrarProduto()}>Adicionar</button>
+      <div className="direta">
+        <div className="perfilDash">
+          <div className="circleDash"></div>
+          <h2>{usuarioLogado.nome}</h2>
+          <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
+        </div>
       </div>
-      
     </div>
 
-</div>
-</div>
+    <div className="funcoes">
+          <Link to="/dashboard" className="itens"> <BiHomeAlt size="30px"/> </Link>
+          <Link to="/produtos" className="itens"> <BiPackage size="30px"/> </Link>
+          <Link to="/clientes" className="itens"> <BiFace size="30px"/> </Link>
+    </div>
+
+    <div className="main">
+
+        <div className="addProdutos">
+          <div className="left">
+            <input type="text" placeholder="Digite o nome do produto" onChange={(e)=>setNomeProduto(e.target.value)}/>
+            <input type="text" placeholder="Digite o estoque do produto" onChange={(e)=>setEstoque(e.target.value)}/>
+            <input type="text" placeholder="Digite o preço do produto" onChange={(e)=>setPreco(e.target.value)}/>
+
+            <textarea name="descricao" id="desc" cols="30" rows="10" placeholder="Descreva um pouco sobre o produto ou serviço que
+            você está vendendo." onChange={(e)=>setDescricao(e.target.value)} >
+            </textarea>
+          </div>
+
+          <div className="right">
+            <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.files[0])}/>
+            <button onClick={()=>{EnviaArquivo()}}>SelectImage</button>
+            <button onClick={()=>{CadastrarProduto()}}>Adicionar</button>
+          </div>
+          
+        </div>
+
+    </div>
+    </div>
     </>
   );
 }

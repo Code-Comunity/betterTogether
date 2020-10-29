@@ -16,7 +16,7 @@ import PerfilFoto from '../../../assets/perfilgrande.png';
 
 import { IoIosCube, IoIosCall } from 'react-icons/io';
 import { FaUserCircle } from 'react-icons/fa';
-import { ImLocation2 } from 'react-icons/im';
+
 
 
 
@@ -48,7 +48,7 @@ export default function Perfil(){
                             </Link>
                         </Botao>
                         <Botao2>
-                            <Link>
+                            <Link  to="/alterdados">
                                 <FaUserCircle />
                                 <h3>Alterar dados</h3>
                             </Link>

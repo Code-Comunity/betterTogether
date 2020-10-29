@@ -23,12 +23,14 @@ header img{
 }
 .produtos-container{
   width: 80%;
+  max-width: 1280px;
   margin: 10px;
   padding: 10px;
+  
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: flex-start;
   align-items: space-around;
 }
 .produtos{
@@ -66,6 +68,13 @@ header img{
   color: #A6A6A6;
   text-align: left;
   margin-top: 5px;
+}
+@media(max-width: 700px){
+  .produtos-container{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+   }
 }
 @media(max-width: 320px){
   .produtos{
