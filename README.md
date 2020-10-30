@@ -28,14 +28,11 @@ Foto | Nome | GitHub | Likedin | E-mail
 
 **Tecnologias**
 
-Linguagem:
-
+Linguagens:
 - Javascript
-- Php
 
 Banco de dados
-
-- [Não Lançado]
+- MYSQL
 
 <br>
 
