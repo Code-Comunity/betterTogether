@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useHistory} from 'react-router-dom';
 import api from "../../../service/api";
 import { IoIosBarcode, IoMdCard } from "react-icons/io";
 
@@ -29,11 +30,12 @@ import {
   Botao,
   PagBotao
 } from "./styles.js";
+import { version } from "react-dom";
 
 export default function Comprar() {
   //Variáveis de estado, resgatados do storage
   const [user, setUser] = useState([]);
-  const [endereco, setEndereco] = useState([]);
+  let [endereco, setEndereco] = useState([]);
   const [items, setItems] = useState([]);
   const [ totalItens, setTotalItens ] = useState("");
 
@@ -51,10 +53,11 @@ export default function Comprar() {
   const [ruaNum, setRuaNum] = useState(0);
   //Var de estado para Receber Resposta
   const [metodoPagamento, setMetodoPagamento] = useState("");
-
   const [pagamento, setPagamento] = useState([]);
   const [focus, setFocus] = useState("");
+  const history = useHistory();
 
+  //CRIANDO OBJETOS PARA PASSAR PARA O PAGARME DE COSTUMER E SHIPPING E ADRESS ~~
   //Criando Costumer
   const costumer = {
     external_id: "#3311",
@@ -119,38 +122,57 @@ export default function Comprar() {
     let precoTotal = qtdItem * precoItem;
     return precoTotal;
   });
+
+
+  const carrinho = JSON.parse(localStorage.getItem('@btgther/carrinho'));
+  const [statusCarrinho, setStatusCarrinho] = useState(carrinho)
+
+
   //Resgatar informações do usuário salvos no storage
   useEffect(() => {
-    const usuario = JSON.parse(localStorage.getItem("@btgther/usuario"));
     const itemsCarrinho = JSON.parse(localStorage.getItem("@btgther/carrinho"));
-
+    const usuario = JSON.parse(localStorage.getItem("@btgther/usuario"));
     //Setar variaveis de estado
     setEndereco(usuario.endereco);
     setUser(usuario);
-    setItems(itemsCarrinho);
+    setItems(itemsCarrinho)
     setCostumerNome(usuario.nome);
   }, []);
+
+
+  useEffect(()=>{
+    function atualizador(){
+        const newParse = JSON.parse(localStorage.getItem('@btgther/carrinho'))
+        console.log(newParse)
+        return setStatusCarrinho(newParse);
+    }
+    atualizador();  
+  },[])
+
+ /* useEffect(() => {
+    let itemsCarrinho = JSON.parse(localStorage.getItem("@btgther/carrinho"));
+    async function getItems(){
+
+      if(itemsCarrinho.length === 0 || itemsCarrinho === null){
+        history.push('/')
+      }else{
+        setItems(itemsCarrinho)
+      }
+    }
+    getItems()
+  }, [])*/
+
+  
   //Pegando endereço dos correios (POR ENQUANTO PEGAREMOS O CADASTRADO NO STORAGE)
   useEffect(() => {
-    const enderecoDoCliente = JSON.parse(
-      localStorage.getItem("@btgther/usuario")
-    );
-    const enderecoSemTraço = enderecoDoCliente.endereco.cep.replace(
-      /[^\d]+/g,
-      ""
-    );
     async function BuscarCep() {
-      const CorreiosCep = await axios
-        .get(`https://viacep.com.br/ws/${enderecoSemTraço}/json/`)
-        .then((e) => {
-          return e.data;
-        });
-      return setEndereco(CorreiosCep);
+     if(cep.length === 8){
+      let CorreiosCep = await axios.get(`https://viacep.com.br/ws/${cep}/json/`).then((e)=>{return e.data;});
+          return setEndereco(CorreiosCep);
+      }
     }
     BuscarCep();
-  }, []);
-
-  //const [cep, setCep] = useState("");
+  }, [cep]);
 
   async function RealizarCompra() {
     const total1 = valorTotal.reduce(
@@ -162,7 +184,7 @@ export default function Comprar() {
     valorTotalSemPonto = parseInt(valorTotalSemPonto);
 
     try {
-      const response = await api.post("/transaction", {
+      const response = await api.post("/pagarme-cartao", {
         amount: valorTotalSemPonto,
         card_number: numeroCartao,
         card_cvv: cvv,
@@ -196,7 +218,7 @@ export default function Comprar() {
     valorTotalSemPonto = valorTotalSemPonto.replace(".", "");
     valorTotalSemPonto = parseInt(valorTotalSemPonto);
       try{
-        const response = await api.post("/transactionboleto", {
+        const response = await api.post("/pagarme-boleto", {
           amount: valorTotalSemPonto,
           costumer:costumer,
           payment_method: "boleto",
@@ -262,7 +284,7 @@ export default function Comprar() {
             <Form>
               <input
                 type="text"
-                placeholder="CEP"
+                placeholder="CEP *SEM TRAÇO*"
                 onChange={(e) => setCep(e.target.value)}
               />
             </Form>
@@ -292,10 +314,10 @@ export default function Comprar() {
               />
             </Form>
             <Form>
-              <input type="text" placeholder="Cidade" />
+              <input type="text" placeholder="Cidade" value={endereco.localidade} />
             </Form>
             <Form>
-              <input type="text" placeholder="Bairro" />
+              <input type="text" placeholder="Bairro" value={endereco.bairro} />
             </Form>
 
             <div style={{ display: "flex", width: "100%" }}>
@@ -308,11 +330,11 @@ export default function Comprar() {
                 />
               </Form>
               <Form>
-                <input type="text" placeholder="UF" style={{ width: "100%" }} />
+                <input type="text" placeholder="UF" style={{ width: "100%" }} value={endereco.uf} />
               </Form>
             </div>
             <Form>
-              <input type="text" placeholder="Nome da rua" />
+              <input type="text" placeholder="Nome da rua" value={endereco.logradouro} />
             </Form>
           </DadosEntrega>
 
@@ -385,11 +407,7 @@ export default function Comprar() {
                   ) 
                 : 
                 (<button onClick={()=>PagarBoleto()}>Gerar Boleto</button>) }
-                
-                
-                 
 
-                
               </InfoCartao>
             </Direita>
           </DadosCartao>
@@ -398,10 +416,10 @@ export default function Comprar() {
         
         <CarrinhoDeCompras>
           <h1>Produtos no carrinho</h1>
-            {items.map(e=>{
+            {statusCarrinho.map(e => {
               return(
                 <Produto>
-                      <img src={e.img} alt=""/>
+                      <img src={e.images} alt=""/>
                     <div>
                       <h1>{e.produto}</h1>
                       <span>{e.descrisao}</span>

@@ -53,6 +53,9 @@ export const Foto = styled.div`
     img{
         width: 100%;
         height: 100%;
+        image-resolution: initial;
+        image-rendering: optimizeQuality;
+        resize: both;
     }
     @media (max-width: 1024px){    
         width: 140px;

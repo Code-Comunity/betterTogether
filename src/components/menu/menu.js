@@ -29,8 +29,6 @@ export default function Navbar() {
     localStorage.clear();
     return window.location.href = "/"
   }
-
-  console.log(logado,usuario)
   return (
     <>
       <MenuResponsivo />

@@ -1,5 +1,5 @@
-import React from 'react'
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {BrowserRouter as Router,Switch,Route, useHistory} from "react-router-dom";
 
 import Dashboard from '../pages/admin/Dashboard';
 import EditProdutos from '../pages/admin/EditProdutos';
@@ -11,6 +11,8 @@ import Home from '../pages/clientes/Home';
 import Produto from '../pages/clientes/Produto';
 
 export default function RotasADM() {
+
+
   return (
     <Router>
       <Switch>

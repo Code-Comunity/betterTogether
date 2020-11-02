@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar, Quantidade} from './style';
 
 //icons
@@ -7,22 +7,18 @@ import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
-import Context from '../../contexts/auth';
 import { useHistory } from 'react-router-dom';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
     const history = useHistory()
-    
 
-    const { qtd, qtdMais, qtdMenos } = useContext(Context);
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
     const parseCarrinho = JSON.parse(carrinho);
     
     const [statusCarrinho, setStatusCarrinho] = useState(parseCarrinho)
-
 
     const clickFora = (e) => {
         if(e.target.id === id) onClose();
@@ -33,55 +29,27 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         localStorage.setItem('@btgther/carrinho', JSON.stringify(parseCarrinho));
         return setStatusCarrinho(parseCarrinho);
     }
-
-    /*
-    //Parte relacionada a quantidade no carrinho
-    //Contador que aumenta quantidade
-    const [count, setCount] = useState(qtd)
-    const [produto, setProduto] = useState([]);
     
-    function qtdMaisCarrinho(){
-        setCount(count + 1);
-        produto[0].quantidade = count;
-        const item = parseCarrinho
-          item.push(produto[0])
-        localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
-
-        produto.map(e =>{     
-            if(count === e.estoque){
-                setCount(e.estoque);
-                alert("Esse é todo o nosso estoque :(")    
-            }
-            return setCount;
-        })
-    }
-  
-    //Contador que diminui quantidade
-    function qtdMenosCarrinho(){
-        setCount(count - 1);
-        produto[0].quantidade = count;
-        const item = parseCarrinho
-          item.push(produto[0])
-        localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
-
-        if(count === 1){
-            setCount(1);
-        } 
-        
-        console.log(produto[0].quantidade)
-    }
-
-    */
-
     function FinalizarCompra(){
-        
         let item = JSON.parse(localStorage.getItem('@btgther/carrinho'));
-        const valores = item.map((e)=>{return e.preco;});
-        console.log(valores);
 
-        const total = valores.reduce((total, currentElement) => total + currentElement)
-        alert("valor total"+total);
-        return history.push('/compra')
+
+        if(item){
+            const valores = item.map((e)=>{return e.preco;});
+        
+            console.log(valores);
+    
+            if(valores.length === 0){
+                alert("Nenhum item no carrinho, impossível finalizar compra")
+            }else{
+                const total = valores.reduce((total, currentElement) => total + currentElement)
+                alert("valor total"+total);
+                return history.push('/compra')
+            }
+        }else{
+            alert("Nenhum item no carrinho, impossível finalizar compra")
+        }
+        
     }
 
     useEffect(()=>{
@@ -116,7 +84,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
                             return( 
                             <Card key={e.id_produto}>
-                                <Foto  ><img src={e.img} alt=""/></Foto>
+                                <Foto  ><img src={e.images} alt=""/></Foto>
                                 <Descricao>
                                     <h1>{e.produto}</h1>
                                     <p>{e.descrisao}</p> 

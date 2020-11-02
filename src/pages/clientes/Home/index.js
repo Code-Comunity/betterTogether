@@ -12,32 +12,25 @@ import api from '../../../service/api';
 
 export default function Home() {
 
-  //const url = window.location.href;
-  //const splitURL = url.split('/');
-
   //USE STATES
 
   const [produtos, setProdutos] = useState([]);
+
 
   useEffect(()=>{
     
     async function getApi(){
 
       try{
-        const req = await api.get(`/listallprodutos`)
+        const req = await api.get(`/produto`)
 
-        return setProdutos(req.data.produtos);
+        return setProdutos(req.data);
       }catch(error){
         console.log(error)
       }
       
-      
-
     }
-
-
     getApi();
-
 
   },[])
 
@@ -51,17 +44,17 @@ export default function Home() {
       <div className="home-content">
         <div className="produtos-container">
           { produtos.map(e => {
+            console.log(e.images)
             let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             return(
-              <Link to={`/produto/${e.id_produto}`} >
+              <Link to={`/produto/${e.id}`} >
                   <div key={e.id_produto} className="produtos">
                     <div className="foto-produto-home">
-                      <img src={e.img} alt="teste"/> {/* Produto não apresenta imagem, pois a url que vem do back nao funciona no front separado. */}
+                      <img src={e.images} alt="teste"/>
                     </div>
                     <div className="home-content-produto">
                       <h1>{e.produto}</h1>
                       <p>{preco}</p>
-                      <p>12x no cartão</p>
                     </div>
                   </div>
               </Link>

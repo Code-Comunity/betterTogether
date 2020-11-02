@@ -27,7 +27,7 @@ export default function Produto() {
       try{
         const data = await api.get(`/produto/${splitURL[4]}`)
         const aiui = data.data;
-        setProduto([aiui]);
+        setProduto([aiui[0]]);
       }catch(err){
         console.log(err);
       }
@@ -40,7 +40,8 @@ export default function Produto() {
   const carrinho = localStorage.getItem('@btgther/carrinho');
   const parseCarrinho = JSON.parse(carrinho); //TRANSFORMAR STRING EM OBJETO
 
-  
+  console.log(produto[0])
+
   //SETTER
   function Comprar(){
     if(parseCarrinho === null){
@@ -77,7 +78,7 @@ export default function Produto() {
             <div className="produto-content">
             <div className="produto-esquerda">
               <div className="foto-produto">
-                <img src={e.img} alt="teste"/>
+                <img src={e.images} alt="teste"/>
               </div>
               <div className="descricao-produto">
                 <h1>{e.produto}</h1>
@@ -89,7 +90,6 @@ export default function Produto() {
               <div className="align-preco">
                 <div className="preco-produto-pag" >
                   <h1>{total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
-                  <p>1 x de {preco} sem juros no cartão</p>
                 </div>
 
                 <div className="qtd-produto-pag">

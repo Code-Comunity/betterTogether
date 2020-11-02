@@ -97,7 +97,7 @@
 
 .dropdown{
   position: absolute;
-  margin-top: 143px;
+  margin-top: 133px;
   margin-left: -10px;
   border-radius: 0 0 15px 15px;
   background-color: #820E0E;
@@ -126,9 +126,8 @@
   display: flex;
 }
 
-@media(max-width: 425px){
+@media(max-width: 700px){
   .ladoDireito{
     display: none;
   }
-
 }

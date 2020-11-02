@@ -42,7 +42,7 @@ export default function Dashboard() {
 
     async function buscaSaldo() {
       try {
-        const { data } = await api.get("/mostrarsaldo");
+        const { data } = await api.get("/pagarme-total");
         setSaldo(data);
       } catch (error) {
         console.log(error);
