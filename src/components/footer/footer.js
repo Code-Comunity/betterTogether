@@ -49,7 +49,7 @@ export default function Footer(){
                     </CentroBaixo>
                     <DireitaBaixo>
                         <Link >
-                            <h4 onClick="scroll(100vh, 0);">Voltar ao topo</h4>
+                            <h4 onClick="$('html, body').animate({scrollTop:0}, 5000);">Voltar ao topo</h4>
                             <AiOutlineArrowUp />
                         </Link>
                     </DireitaBaixo>

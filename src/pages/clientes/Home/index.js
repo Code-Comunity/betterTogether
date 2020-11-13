@@ -47,17 +47,19 @@ export default function Home() {
             console.log(e.images)
             let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             return(
-              <Link to={`/produto/${e.id}`} >
+             
                   <div key={e.id_produto} className="produtos">
-                    <div className="foto-produto-home">
-                      <img src={e.images} alt="teste"/>
-                    </div>
-                    <div className="home-content-produto">
-                      <h1>{e.produto}</h1>
-                      <p>{preco}</p>
-                    </div>
+                     <Link style={{height: "100%"}} to={`/produto/${e.id}`} >
+                        <div className="foto-produto-home">
+                          <img src={e.images} alt="teste"/>
+                        </div>
+                        <div className="home-content-produto">
+                          <h1>{e.produto}</h1>
+                          <p>{preco}</p>
+                        </div>
+                    </Link>
                   </div>
-              </Link>
+              
             )
           })}
         </div>     

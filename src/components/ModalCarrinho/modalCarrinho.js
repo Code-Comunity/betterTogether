@@ -83,7 +83,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                             let totalCarrinho = qtdCarrinho * preco;
 
                             return( 
-                            <Card key={e.id_produto}>
+                            <Card key={e.id}>
                                 <Foto  ><img src={e.images} alt=""/></Foto>
                                 <Descricao>
                                     <h1>{e.produto}</h1>
