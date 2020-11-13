@@ -36,7 +36,7 @@ export default function Footer(){
                                 <FaWhatsapp/>
                             </a >
                         </Contato>
-                        <Link><h3>betteremail@gmail.com</h3></Link>
+                        <a href="mailto:bettertogetherssa@outlook.com"><h3>bettertogetherssa@outlook.com</h3></a>
                     </Direita>
                 </Cima>
                 <Baixo>
