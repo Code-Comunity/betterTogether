@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
-import Footer from '../../../components/footer/footer';
 import { IoIosCalculator} from "react-icons/io";
 //css
 import './style.css';
@@ -27,7 +26,7 @@ export default function Produto() {
       try{
         const data = await api.get(`/produto/${splitURL[4]}`)
         const aiui = data.data;
-        setProduto([aiui[0]]);
+        setProduto([aiui]);
       }catch(err){
         console.log(err);
       }
@@ -40,12 +39,12 @@ export default function Produto() {
   const carrinho = localStorage.getItem('@btgther/carrinho');
   const parseCarrinho = JSON.parse(carrinho); //TRANSFORMAR STRING EM OBJETO
 
-  console.log(produto[0])
-
+  
   //SETTER
   function Comprar(){
     if(parseCarrinho === null){
-      produto[0].quantidade = qtd;    
+      produto[0].quantidade = qtd;
+      
       localStorage.setItem('@btgther/carrinho', JSON.stringify(produto));
     }
     if(parseCarrinho != null){
@@ -54,22 +53,18 @@ export default function Produto() {
         item.push(produto[0])
       localStorage.setItem('@btgther/carrinho', JSON.stringify(item));
     }
-    
+
     alert("Produto adicionado ao carrinho!!");  
   }
-/*
-  //Atualizador do qtd
-  useEffect(()=>{
-    const button = document.querySelector(".button-produto-add")
+  
 
-    button.addEventListener("click", () =>{ qtd = 1 })
-  },[]);*/
 
   return (
     <>
       <Navbar />
       <div className="produto-container">
        {
+         //.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
          produto.map(e =>{
           let preco = e.preco
           let total = preco * qtd;
@@ -78,7 +73,7 @@ export default function Produto() {
             <div className="produto-content">
             <div className="produto-esquerda">
               <div className="foto-produto">
-                <img src={e.images} alt="teste"/>
+                <img src={e.img} alt="teste"/>
               </div>
               <div className="descricao-produto">
                 <h1>{e.produto}</h1>
@@ -90,6 +85,7 @@ export default function Produto() {
               <div className="align-preco">
                 <div className="preco-produto-pag" >
                   <h1>{total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
+                  <p>1 x de {preco} sem juros no cartão</p>
                 </div>
 
                 <div className="qtd-produto-pag">
@@ -110,7 +106,7 @@ export default function Produto() {
                 </div>
                 <div className="button-container">
                   <button className="button-produto"><h2>Comprar</h2></button>
-                  <button onClick={()=>Comprar()}  className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
+                  <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
                 </div>
               </div>
             </div>
@@ -119,7 +115,6 @@ export default function Produto() {
          })
        }
       </div>
-      <Footer />
     </>
   );
 }

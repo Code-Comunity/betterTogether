@@ -42,13 +42,13 @@ export default function EditProdutos() {
       async function GetDados(){
         
         try{ 
-          const {data} = await api.get(`/produto/${splitURL[4]}`)
+          const {data} = await api.get(`/editar/${splitURL[4]}`)
           console.log(data[0].produto)
           setNomeProduto(data[0].produto)
           setEstoque(data[0].estoque)
           setPreco(data[0].preco)
           setDescricao(data[0].descrisao)
-          setImagem(data[0].images)
+          setImagem(data[0].img)
 
 
         }catch(error){  
@@ -64,26 +64,6 @@ export default function EditProdutos() {
   function Deslogar(){
     localStorage.clear();
     return window.location.href = "/"
-  }
-
-  async function AtualizarDados(){
-    try{
-      const data = new FormData()
-      data.append('id', splitURL[4]);
-      data.append('produto', nomeProduto)
-      data.append('descrisao', descricao)
-      data.append('preco', preco)
-      data.append('estoque', estoque)
-      data.append('images', imagem)
-
-      const response = await api.patch(`/produto/${splitURL[4]}`, data)
-      console.log(response)
-      alert(response);
-    }catch(err){
-      console.log(err)
-    }
-
-    
   }
 
 
@@ -126,8 +106,8 @@ export default function EditProdutos() {
 
       <div className="right">
         <img className="imgProduto" src={imagem} alt="Imagem do produto"/>
-        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.files[0])}/>
-        <button onClick={()=>AtualizarDados()}>Atualizar</button>
+        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.value)}/>
+        <button onClick={()=>{}}>Adicionar</button>
       </div>
       
     </div>

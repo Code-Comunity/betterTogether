@@ -16,8 +16,8 @@ export default function Footer(){
                 <Cima>
                     <Esquerda>
                         <h4>Atalhos:</h4>
-                        <Link to="alterdados"><h3>Meu perfil</h3></Link>
-                        <Link to="perfil"><h3>Meus pedidos</h3></Link>
+                        <Link><h3>Meu perfil</h3></Link>
+                        <Link><h3>Meus pedidos</h3></Link>
                         <Link><h3>Promoções</h3></Link>
                     </Esquerda>
                     <Centro>
@@ -29,14 +29,14 @@ export default function Footer(){
                         
                         <Contato>
                             <h3>Contato</h3>
-                            <a href="https://www.instagram.com/bettertogetherssa/" target="_blank">
+                            <Link>
                                 <IoLogoInstagram/>
-                            </a>
-                            <a href="https://wa.me/557198774901" target="_blank">
+                            </Link>
+                            <Link>
                                 <FaWhatsapp/>
-                            </a >
+                            </Link>
                         </Contato>
-                        <a href="mailto:bettertogetherssa@outlook.com"><h3>bettertogetherssa@outlook.com</h3></a>
+                        <Link><h3>betteremail@gmail.com</h3></Link>
                     </Direita>
                 </Cima>
                 <Baixo>
@@ -48,8 +48,8 @@ export default function Footer(){
                         <img src={Cartoes} alt="Cartoes"/>
                     </CentroBaixo>
                     <DireitaBaixo>
-                        <Link >
-                            <h4 onClick="$('html, body').animate({scrollTop:0}, 5000);">Voltar ao topo</h4>
+                        <Link>
+                            <h4>Voltar ao topo</h4>
                             <AiOutlineArrowUp />
                         </Link>
                     </DireitaBaixo>

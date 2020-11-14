@@ -12,16 +12,13 @@ import {FaInfoCircle, FaShoppingCart} from 'react-icons/fa';
 //Modal
 import Modal from '../ModalCarrinho/modalCarrinho';
 import { useState } from 'react';
-import { useEffect } from 'react';
-
-//Responsivo
-import MenuResponsivo from '../menuResponsivo/menu';
 
 //Context
 import Context from '../../contexts/auth';
 import { IoIosLogIn, IoIosLogOut,IoIosPerson, IoMdPersonAdd } from 'react-icons/io';
 
 export default function Navbar() {
+
   const { logado, usuario } = useContext(Context);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -29,16 +26,16 @@ export default function Navbar() {
     localStorage.clear();
     return window.location.href = "/"
   }
+
+  console.log(logado,usuario)
   return (
     <>
-      <MenuResponsivo />
-      <div className="nav-menu">
+      <nav>
         
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
         </div>
         <div className="ladoDireito">
-                  
                   
                   <div className="botoes">
                       <Link to="/sobre" className="btnNav">
@@ -74,11 +71,10 @@ export default function Navbar() {
               <Link className="BotoesLogin" to="/cadastro"> <IoMdPersonAdd size="25px" /> Cadastrar</Link> 
             </div>
 
-             )}   
-                     
+             )}           
             
         </div>        
-      </div>
+      </nav>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}
     </>
   );

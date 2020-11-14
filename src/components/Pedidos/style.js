@@ -48,13 +48,6 @@ export const InfoItens = styled.div`
         font-weight: bold;
     }
 
-    @media(max-width: 425px){
-        span{
-            font-size: 12px;
-            margin: 3px; 
-        }
-    }
-
 `
 export const Total = styled.div`
     border-left: gray 1px solid;
@@ -65,9 +58,4 @@ export const Total = styled.div`
 
     display: flex;
     flex-direction: column;
-
-    @media(max-width: 425px){
-        font-size: 13px;
-    }
-
 `

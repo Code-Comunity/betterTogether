@@ -43,7 +43,7 @@ export function AuthProvider({children}){
 
   async function AutenticarAdm(){
     try{
-      const {data} = await api.post('/login-Admin', {email:emailAdmin, senha: senhaAdmin})
+      const {data} = await api.post('/admin/login', {email:emailAdmin, senha: senhaAdmin})
 
       localStorage.setItem('@btgther/usuarioADM', JSON.stringify(data.usuario))
       localStorage.setItem('@btgther/tokenADM', data.token)
@@ -52,7 +52,7 @@ export function AuthProvider({children}){
 
 
     }catch(error){
-      console.log(error.response)
+      console.log(error)
     }
   }
 

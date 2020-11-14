@@ -10,27 +10,29 @@ import api from '../../../service/api';
 
 export default function AddProdutos() {
 
-  const [ produtos, setProdutos ] = useState([])
-  
-  async function DeletarProduto(prop){
-    await api.delete(`/produto/${prop}`)
-  }
 
+  const [ produtos, setProdutos ] = useState([])
+
+  async function DeletarProduto(prop){
+    await api.get(`/excluir/${prop}`)
+  }
 
   useEffect(()=>{
     async function getProdutos(){
-      const {data} = await api.get('/produto')
-      return setProdutos(data);
+      const {data} = await api.get('/listProduto')
+      return setProdutos(data.produtos);
     }
     getProdutos();
   },[produtos])
 
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
+
   useEffect(()=>{
     async function buscaUser(){
       try{
         const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
+
         setUsuarioLogado(usuarioLogado);
       }catch(error){
         console.log(error)
@@ -81,14 +83,18 @@ export default function AddProdutos() {
       </Link>
 
       { produtos.map(e=>{
+        //Aqui chamaremos na api, os produtos
+
         return(
-        <div key={e.id} className="produto" >
+          
+        <div key={e.id_produto} className="produto" >
           <BiPackage size="73px" />
+          {console.log(e)}
           <h1>{e.produto}</h1>
-            <Link to={`/editar/${e.id}`}>
+            <Link to={`/editar/${e.id_produto}`}>
               <IoIosBuild size="20px" />
             </Link>
-            <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id)} size="20px" />
+            <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id_produto)} size="20px" />
         </div>
         )
         }) }
@@ -103,7 +109,7 @@ export default function AddProdutos() {
                 <h4>Metas</h4>
                 <BiBullseye size="50px" />  
                 { meta ? <div><h1>Meta</h1></div> : <span>Nenhuma meta ainda</span> }
-                <Link to="#" className="addMeta">
+                <Link className="addMeta">
                 <span><BiLayerPlus /></span>
                 <span>Adicionar nova meta</span>
                 </Link>

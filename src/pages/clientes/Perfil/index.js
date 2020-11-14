@@ -14,9 +14,9 @@ import Pedidos from '../../../components/Pedidos/index';
 //imagens e icons
 import PerfilFoto from '../../../assets/perfilgrande.png';
 
-import { IoIosCube } from 'react-icons/io';
+import { IoIosCube, IoIosCall } from 'react-icons/io';
 import { FaUserCircle } from 'react-icons/fa';
-//import { ImLocation2 } from 'react-icons/im';
+import { ImLocation2 } from 'react-icons/im';
 
 
 
@@ -48,11 +48,24 @@ export default function Perfil(){
                             </Link>
                         </Botao>
                         <Botao2>
-                            <Link to="/alterdados">
+                            <Link>
                                 <FaUserCircle />
-                                <h3>Alterar dados</h3>
+                                <h3>Cadastro</h3>
                             </Link>
                         </Botao2>
+                        <Botao2>
+                            <Link>
+                                <ImLocation2/>
+                                <h3>Endereço</h3>
+                            </Link>
+                        </Botao2>
+                        <Botao2>
+                            <Link>
+                                <IoIosCall />
+                                <h3>Fale conosco</h3>
+                            </Link>
+                        </Botao2>
+                        
                     </Esquerda>
                     <Direita>
                         <h1>Pedidos:</h1>

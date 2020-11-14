@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkComprar, Quantidade} from './style';
 
 //icons
@@ -7,18 +7,18 @@ import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
 
-import { useHistory } from 'react-router-dom';
+import Context from '../../contexts/auth';
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
-    const history = useHistory()
-
+    const {qtdMais, qtdMenos} = useContext(Context);
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
     const parseCarrinho = JSON.parse(carrinho);
     
     const [statusCarrinho, setStatusCarrinho] = useState(parseCarrinho)
+
 
     const clickFora = (e) => {
         if(e.target.id === id) onClose();
@@ -29,27 +29,43 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         localStorage.setItem('@btgther/carrinho', JSON.stringify(parseCarrinho));
         return setStatusCarrinho(parseCarrinho);
     }
-    
+
     function FinalizarCompra(){
+        
         let item = JSON.parse(localStorage.getItem('@btgther/carrinho'));
-
-
-        if(item){
-            const valores = item.map((e)=>{return e.preco;});
         
-            console.log(valores);
-    
-            if(valores.length === 0){
-                alert("Nenhum item no carrinho, impossível finalizar compra")
-            }else{
-                const total = valores.reduce((total, currentElement) => total + currentElement)
-                alert("valor total"+total);
-                return history.push('/compra')
-            }
-        }else{
-            alert("Nenhum item no carrinho, impossível finalizar compra")
-        }
+        let item2 = item.map((e) => {
+            
+            let qtdItem = e.quantidade;
+            //console.log(qtdItem)
+
+            let precoItem = e.preco;
+            //console.log(precoItem)
+            
+            let precoTotal = qtdItem * precoItem;
+            e.preco = precoTotal;
+
+            return precoTotal;
+        })
+
         
+
+        
+        console.log(item)
+        /*
+        const coquecoisa = item.map((e) => {return e.preco = precoTotal});
+        console.log(coquecoisa)
+        */
+        const valores = item.map((e)=>{return e.preco;});
+        console.log(valores);
+
+        const total = valores.reduce((total, currentElement) => total + currentElement)
+        alert("valor total"+total);
+        return total;
+        
+        /* PARA ENVIAR PARA O BACKEND
+        api.post('/transaction', {total})
+        */
     }
 
     useEffect(()=>{
@@ -66,7 +82,8 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
         }
     },[])
 
-
+  
+    
  
 
 
@@ -83,14 +100,18 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                             let totalCarrinho = qtdCarrinho * preco;
 
                             return( 
-                            <Card key={e.id}>
-                                <Foto  ><img src={e.images} alt=""/></Foto>
+                            <Card key={e.id_produto}>
+                                <Foto  ><img src={e.img} alt=""/></Foto>
                                 <Descricao>
                                     <h1>{e.produto}</h1>
                                     <p>{e.descrisao}</p> 
                                 </Descricao>
                                 <Quantidade>
-                                    <h3>Qtd: {e.quantidade} </h3>                   
+                                <div className="icon-produto" style={{width:"70%"}} >
+                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
+                                    <input type="text" placeholder={e.quantidade} readOnly />
+                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
+                                </div> 
                                 </Quantidade>
                                 <Preco>
                                     <Icons>

@@ -39,7 +39,7 @@ export default function Pedidos(){
                 </Infos>
               <Total>
                     <IoMdCash size="25px" color="green"/>
-                    <h3>{e.valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
+                    <h3>{e.valorTotal}</h3>
               </Total>
             </Bottom>
 

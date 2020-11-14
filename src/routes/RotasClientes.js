@@ -4,10 +4,10 @@ import {BrowserRouter as Router,Switch,Route,useHistory} from "react-router-dom"
 // Paginas
 import Home from '../pages/clientes/Home';
 import Produto from '../pages/clientes/Produto';
+import Contato from '../pages/clientes/Contato';
 import Sobre from '../pages/clientes/Sobre';
 import Perfil from '../pages/clientes/Perfil';
 import Comprar from '../pages/clientes/Compra';
-import AlterDados from '../pages/clientes/AlteraDados';
 
 export default function RotasClientes() {
   const history = useHistory();
@@ -42,9 +42,9 @@ export default function RotasClientes() {
     <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/produto" component={Produto} />
+        <Route path="/contato" component={Contato} />
         <Route path="/sobre" component={Sobre} />
         <Route path="/perfil" component={Perfil} />
-        <Route path="/alterdados" component={AlterDados} />
         <Route path="/compra" component={Comprar} />
     </Switch>
     </Router>

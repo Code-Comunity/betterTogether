@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BiFace,BiHomeAlt,BiPackage, BiBeenHere,BiMailSend,BiPhone, BiDollarCircle } from "react-icons/bi";
+import { BiFace,BiHomeAlt,BiPackage, BiBeenHere,BiMailSend,BiPhone } from "react-icons/bi";
 import { IoMdCalendar,IoIosExit } from "react-icons/io";
 import {Link} from 'react-router-dom';
 import './clientes.css'
@@ -9,34 +9,22 @@ import api from '../../../service/api';
 
 export default function Clientes() {
 
-  //State
-  const [usuarioLogado , setUsuarioLogado ] = useState([])
-  const [saldo, setSaldo] = useState([]);
 
-  useEffect(() => {
-    async function buscaUser() {
-      try {
-        const usuarioLogado = JSON.parse(
-          localStorage.getItem("@btgther/usuarioADM")
-        );
+  const [usuarioLogado , setUsuarioLogado ] = useState([])
+
+  useEffect(()=>{
+    async function buscaUser(){
+      try{
+        const usuarioLogado = JSON.parse(localStorage.getItem('@btgther/usuarioADM'));
 
         setUsuarioLogado(usuarioLogado);
-      } catch (error) {
-        console.log(error);
+      }catch(error){
+        console.log(error)
       }
     }
 
-    async function buscaSaldo() {
-      try {
-        const { data } = await api.get("/mostrarsaldo");
-        setSaldo(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    buscaSaldo();
-    buscaUser();
-  }, []);
+    buscaUser()
+  },[])
 
   const [ clientes, setClientes ] = useState([])
 
@@ -121,58 +109,23 @@ export default function Clientes() {
       </div>
     </div>
 
-    <div className="CardsEstatisticas">
-            <div className="cardEst">
+      <div className="CardsEstatisticas">
+
+          <div className="cardEst">
+
               <div className="dirCard">
                 <h4>Rendimento Mensal</h4>
                 <IoMdCalendar size="30px" />
               </div>
 
               <div className="esqCard">
-                {saldo.waiting_funds ? (
-                  <h3>{saldo.waiting_funds.amount}</h3>
-                ) : (
-                  <h3>"sem fundos</h3>
-                )}
+                <h3>150 R$</h3>
               </div>
-            </div>
-
-            <div className="cardEst1">
-              <div className="saldoDisponivel">
-                <div className="dirCard">
-                  <h4>Saldo Disponível</h4>
-                  <BiDollarCircle size="30px" />
-                </div>
-
-                <div className="esqCard">
-                  {saldo.available ? (
-                    <h3>{saldo.available.amount}</h3>
-                  ) : (
-                    <h3>"Sem fundos para sacar"</h3>
-                  )}
-                </div>
-              </div>
-
-              <button
-                className="btnTransfer"
-                onClick={() => alert("Criar função de transferencia")}
-              >
-                Sacar
-              </button>
-            </div>
-
-            <div className="cardEst">
-              <div className="dirCard">
-                <h4>Público comum</h4>
-                <h5 style={{ marginTop: 10, marginBottom: 10 }}>Feminino</h5>
-                <h5>Masculino</h5>
-              </div>
-              <div className="esqCard">
-                
-              </div>
-            </div>
           </div>
+        
+      </div>
 </div>
+
 </div>
     </>
   );

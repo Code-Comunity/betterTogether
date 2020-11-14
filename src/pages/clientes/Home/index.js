@@ -12,25 +12,32 @@ import api from '../../../service/api';
 
 export default function Home() {
 
+  //const url = window.location.href;
+  //const splitURL = url.split('/');
+
   //USE STATES
 
   const [produtos, setProdutos] = useState([]);
-
 
   useEffect(()=>{
     
     async function getApi(){
 
       try{
-        const req = await api.get(`/produto`)
+        const req = await api.get(`/listallprodutos`)
 
-        return setProdutos(req.data);
+        return setProdutos(req.data.produtos);
       }catch(error){
         console.log(error)
       }
       
+      
+
     }
+
+
     getApi();
+
 
   },[])
 
@@ -44,22 +51,20 @@ export default function Home() {
       <div className="home-content">
         <div className="produtos-container">
           { produtos.map(e => {
-            console.log(e.images)
             let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             return(
-             
+              <Link to={`/produto/${e.id_produto}`} >
                   <div key={e.id_produto} className="produtos">
-                     <Link style={{height: "100%"}} to={`/produto/${e.id}`} >
-                        <div className="foto-produto-home">
-                          <img src={e.images} alt="teste"/>
-                        </div>
-                        <div className="home-content-produto">
-                          <h1>{e.produto}</h1>
-                          <p>{preco}</p>
-                        </div>
-                    </Link>
+                    <div className="foto-produto-home">
+                      <img src={e.img} alt="teste"/> {/* Produto não apresenta imagem, pois a url que vem do back nao funciona no front separado. */}
+                    </div>
+                    <div className="home-content-produto">
+                      <h1>{e.produto}</h1>
+                      <p>{preco}</p>
+                      <p>12x no cartão</p>
+                    </div>
                   </div>
-              
+              </Link>
             )
           })}
         </div>     
