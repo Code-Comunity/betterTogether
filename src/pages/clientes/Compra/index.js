@@ -439,8 +439,8 @@ export default function Comprar() {
                       <span>{e.descrisao}</span>
                     </div>
                     <ul>
-                    <h2>Qtd: {e.quantidade}</h2>
-                    <h2>Preço: {e.preco}</h2> 
+                      <h2>Qtd: {e.quantidade}</h2>
+                      <h2>Preço: {e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h2> 
                     </ul>
                 </Produto>
               )

@@ -124,6 +124,7 @@ export const Produto = styled.div`
         font-size: 18px;
         margin-top: 7px;
         width: 100%;
+        padding: 10px;
     }
     img{
         width: 65px;
@@ -132,10 +133,14 @@ export const Produto = styled.div`
         resize: both;
     }
     h2{
-        width: 20%;
+        width: 25%;
         font-size: 15px;
     }
-`
+    span{
+        padding: 10px;
+    }
+    
+` 
 
 export const InputsCartao = styled.div`
     width: 100%;
