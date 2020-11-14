@@ -14,6 +14,8 @@ export default function Dashboard() {
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
   const [ saldo, setSaldo ] = useState([])
+  const [ pedidos, setPedidos ] = useState([]) //Todas as transações
+  const [ recebivel, setRecebivel ] = useState([])
 
   useEffect(()=>{
     async function buscaUser(){
@@ -28,25 +30,65 @@ export default function Dashboard() {
 
     async function buscaSaldo(){
       try{
-        const {data} = await api.get('/mostrarsaldo')
+        const {data} = await api.get('/pagarme-total')
 
         const { available } = data;
-        console.log(available)
-
         setSaldo(data);
         
       }catch(error){
         console.log(error)
       }
     }
+
+    async function TodasTransactions(){
+      try{
+        const {data} = await api.get('/pagarme-todastransacoes')
+        setPedidos(data.transactions);
+      }catch(error){
+        console.log(error)
+      }
+    }
+    async function BuscaRecebiveis(){
+      try {
+        const {data} = await api.get('/pagarme-recebiveis')
+        setRecebivel(data.recipients[0].id)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    BuscaRecebiveis();
+    TodasTransactions()
     buscaSaldo()
     buscaUser()
   },[])
-
-
   function Deslogar(){
     localStorage.clear();
     return window.location.href = "/"
+  }
+
+  async function Estornar(prop){
+    try {
+      const { retorno } = await api.post(`/pagarme-estorno/${prop}`)
+      alert(retorno)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function Sacar(amount, id){
+    console.log(amount)
+    console.log(id)
+    const dadosSaque = {
+      amount: amount,
+      id: id
+    }
+    console.log(dadosSaque)
+    try {
+      await api.post('/pagarme-sacar',dadosSaque)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -77,11 +119,18 @@ export default function Dashboard() {
               <h1 style={{color: '#820E0E', fontSize: 20}}>Ultimos pedidos</h1>
 
             <div className="pedidoslista">
+
+              {/** USAR a variavel de estado pedidos em vez do data, ficando assim pedidos.map()
+               * mas atentar-se ao objeto retornado, alguns possuem objetos dentro de objetos
+               * e arrays dentro do objeto, portanto possivelmente precise de um map dentro de um map...
+               */}
+
               { data.map(e=>{
                 //Aqui chamaremos na api, os ultimos pedidos
                 return(
                 <div key={e.id} className="itemLista">
                   <div className="top">
+                    <button onClick={()=>Estornar(e.id)}>Realizar Estorno</button>
                     <div className="nome">
                     <h2 style={{marginRight:10}}>{e.thumb}</h2>
                     <h3 style={{color: '#820E0E'}}>{e.nome}</h3>
@@ -142,7 +191,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                         
-                        <button className="btnTransfer" onClick={()=>alert('Criar função de transferencia')} >Sacar</button>
+                        <button className="btnTransfer" onClick={()=>Sacar(saldo.waiting_funds.amount,recebivel)} >Sacar</button>
                       
                   </div>
 
