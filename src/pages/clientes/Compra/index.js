@@ -139,15 +139,26 @@ export default function Comprar() {
     setCostumerNome(usuario.nome);
   }, []);
 
-
+    async function frete(){
+    try{
+      const response = await api.post("/frete",{cep:cep, peso:0.40})
+      console.log(response);
+      return response;
+    }catch(error){
+      console.log(error.response)
+    }
+  }
   useEffect(()=>{
     function atualizador(){
         const newParse = JSON.parse(localStorage.getItem('@btgther/carrinho'))
         console.log(newParse)
+        frete();
+
         return setStatusCarrinho(newParse);
     }
     atualizador();  
   },[])
+
 
  /* useEffect(() => {
     let itemsCarrinho = JSON.parse(localStorage.getItem("@btgther/carrinho"));
@@ -239,6 +250,8 @@ export default function Comprar() {
   }
   //Novos useStates
   const [nomeIdent, setNomeIdent] = useState("");
+
+
   
   return (
     <>
@@ -287,6 +300,7 @@ export default function Comprar() {
                 placeholder="CEP *SEM TRAÇO*"
                 onChange={(e) => setCep(e.target.value)}
               />
+              <button onClick={()=> frete()}>frete</button>
             </Form>
             <div style={{ display: "flex", width: "100%" }}>
               <Form>
@@ -425,8 +439,8 @@ export default function Comprar() {
                       <span>{e.descrisao}</span>
                     </div>
                     <ul>
-                    <h2>Qtd: {e.quantidade}</h2>
-                    <h2>Preço: {e.preco}</h2> 
+                      <h2>Qtd: {e.quantidade}</h2>
+                      <h2>Preço: {e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h2> 
                     </ul>
                 </Produto>
               )

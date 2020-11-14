@@ -16,8 +16,8 @@ export default function Footer(){
                 <Cima>
                     <Esquerda>
                         <h4>Atalhos:</h4>
-                        <Link><h3>Meu perfil</h3></Link>
-                        <Link><h3>Meus pedidos</h3></Link>
+                        <Link to="alterdados"><h3>Meu perfil</h3></Link>
+                        <Link to="perfil"><h3>Meus pedidos</h3></Link>
                         <Link><h3>Promoções</h3></Link>
                     </Esquerda>
                     <Centro>
@@ -36,7 +36,7 @@ export default function Footer(){
                                 <FaWhatsapp/>
                             </a >
                         </Contato>
-                        <Link><h3>betteremail@gmail.com</h3></Link>
+                        <a href="mailto:bettertogetherssa@outlook.com"><h3>bettertogetherssa@outlook.com</h3></a>
                     </Direita>
                 </Cima>
                 <Baixo>
@@ -49,7 +49,7 @@ export default function Footer(){
                     </CentroBaixo>
                     <DireitaBaixo>
                         <Link >
-                            <h4 onClick="scroll(100vh, 0);">Voltar ao topo</h4>
+                            <h4 onClick="$('html, body').animate({scrollTop:0}, 5000);">Voltar ao topo</h4>
                             <AiOutlineArrowUp />
                         </Link>
                     </DireitaBaixo>

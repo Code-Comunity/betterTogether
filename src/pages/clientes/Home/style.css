@@ -7,7 +7,7 @@ header{
   
 }
 header img{
-  width: 100vw;
+  width: 100%;
   resize: both;
   image-resolution: 300;
   margin-top: 60px;
@@ -69,11 +69,24 @@ header img{
   text-align: left;
   margin-top: 5px;
 }
-@media(max-width: 700px){
+
+
+@media(max-width: 1024px){
+  .produtos-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .produtos{
+    margin: 10px;
+  }
+}
+@media(max-width: 768px){
   .produtos-container{
     display: flex;
     flex-direction: column; 
     align-items: center;
+    width: 100%;
    }
 }
 @media(max-width: 320px){
