@@ -4,17 +4,25 @@ import api from '../../../service/api';
 
 import axios from 'axios';
 
+import { IoIosBarcode, IoMdCard } from "react-icons/io";
+
+import Cards from 'react-credit-cards'
+import 'react-credit-cards/es/styles-compiled.css'
+
 //components
 import Navbar from '../../../components/menu/menu';
 
+
+
 //style
-import { Container, Compra, PessoalInfo,TituloSection, DadosEntrega,DadosCartao, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco, Botao } from './styles.js';
+import { Container, Compra, PessoalInfo,TituloSection, DadosEntrega,DadosCartao, Direita, Cartao, Form, Baixo, Form2, Form3, InfoCartao, InfoEndereco, Botao, CarrinhoDeCompras, Produto, Cartões,InputsCartao,PagBotao } from './styles.js'
 
 export default function Comprar(){
   //Variáveis de estado, resgatados do storage
   const [user, setUser] = useState([]);
   const [endereco, setEndereco] = useState([]);
   const [items, setItems] = useState([]);
+  const [ totalItens, setTotalItens ] = useState("");
 
   //Variáveis de estado, para armazenar as values dos inputs.
   const [numResid, setNumResid] = useState("");
@@ -29,9 +37,10 @@ export default function Comprar(){
   const [cep, setCep] = useState("");
   const [ruaNum, setRuaNum] = useState(0);
 
-    //Var de estado para Receber Resposta
+  const [metodoPagamento, setMetodoPagamento] = useState("");
 
     const [ pagamento, setPagamento ] = useState([]);
+    const [focus, setFocus] = useState("");
 
   //Criando Costumer
   const costumer = {
@@ -182,6 +191,11 @@ export default function Comprar(){
         billing: billing,
         shipping: shipping,
         items: meusItems
+      },{
+          infoEndereco:InfoEndereco,
+          numeroResidencia: numResid,
+          referencia: referencia,
+          nomeIdentificacao: nomeIdent
       });
 
 
@@ -194,6 +208,37 @@ export default function Comprar(){
       alert(error)
     }
   }
+
+
+  async function PagarBoleto() {
+    const total1 = valorTotal.reduce(
+      (total1, currentElement) => total1 + currentElement
+    );
+
+    let valorTotalSemPonto = total1 + "";
+    valorTotalSemPonto = valorTotalSemPonto.replace(".", "");
+    valorTotalSemPonto = parseInt(valorTotalSemPonto);
+      try{
+        const response = await api.post("/transactionboleto", {
+          amount: valorTotalSemPonto,
+          costumer:costumer,
+          payment_method: "boleto",
+          postback_url: "localhost:8080/postbackboletos",
+        });
+
+        console.log(response);
+        console.log(response.data.transaction.boleto_url);
+        /**
+         * response.data.transaction <- Objeto resposta após gerado o boleto.
+         * response.data.transaction.boleto_url <- Url do boleto, para ver o boleto em sí.
+         */
+        alert("Boleto gerado, olhar o console, e falta aplicar o redirect para o boleto url")
+      }catch(erro){
+        console.log(erro.response)
+      }
+
+  }
+
   //Novos useStates
   const [ nomeIdent, setNomeIdent ] = useState('')
   
@@ -203,7 +248,7 @@ export default function Comprar(){
       <Container>
         <Compra>
           <PessoalInfo>
-        <TituloSection>
+          <TituloSection>
           <h1>1</h1>
           <h2>Informações pessoais</h2>
         </TituloSection>
@@ -323,50 +368,97 @@ export default function Comprar(){
 
 
           <Direita>
+              <Cartões>
+                <PagBotao onClick={()=>setMetodoPagamento("cartao")}><IoMdCard size="25px" /></PagBotao>
+                <PagBotao onClick={()=>setMetodoPagamento("")}><IoIosBarcode size="25px" /></PagBotao>
+              </Cartões>
+              <InfoCartao>
 
-           
-            <InfoCartao>
-             
-              <Form>
-                <input
-                  type="text"
-                  placeholder="Número do cartão"
-                  onChange={(e) => setNumeroCartao(e.target.value)}
-                />
-              </Form>
+                { metodoPagamento === "cartao" ?
+                 (<InputsCartao>
+                    <Cards 
+                      number={numeroCartao}
+                      name={nomeCartao}
+                      expiry={dataExpiracao}
+                      cvc={cvv}
+                      focused={focus}
+                    />
+                      <Form>
+                        <input
+                          type="tel"
+                          placeholder="Número do cartão"
+                          value={numeroCartao}
+                          onChange={(e) => setNumeroCartao(e.target.value)}
+                          onFocus={(e)=> setFocus(e.target.name)}
+                        />
+                      </Form>
 
-              <Form>
-                <input
-                  type="password"
-                  placeholder="Nome escrito no cartão"
-                  onChange={(e) => setNomeCartao(e.target.value)}
-                />
-              </Form>
-              <Baixo>
-                <Form3>
-                  <input
-                    type="text"
-                    placeholder="Data expiração"
-                    onChange={(e) => setDataExpiracao(e.target.value)}
-                  />
-                </Form3>
+                      <Form>
+                        <input
+                          type="text"
+                          placeholder="Nome escrito no cartão"
+                          value={nomeCartao}
+                          onChange={(e) => setNomeCartao(e.target.value)}
+                          onFocus={(e)=> setFocus(e.target.name)}
+                        />
+                      </Form>
+                      <Baixo>
+                        <Form3>
+                          <input
+                            type="tel"
+                            placeholder="Data expiração"
+                            value={dataExpiracao}
+                            onChange={(e) => setDataExpiracao(e.target.value)}
+                            onFocus={(e)=> setFocus(e.target.name)}
+                          />
+                        </Form3>
 
-                <Form2>
-                  <input
-                    type="text"
-                    placeholder="CVV"
-                    onChange={(e) => setCvv(e.target.value)}
-                  />
-                </Form2>
-              </Baixo>
+                        <Form2>
+                          <input
+                            type="tel"
+                            placeholder="CVV"
+                            value={cvv}
+                            onChange={(e) => setCvv(e.target.value)}
+                            onFocus={(e)=> setFocus(e.target.name)}
+                          />
+                        </Form2>
+                      </Baixo>
+                      <Botao onClick={() => RealizarCompra()}>
+                        <h2>Finalizar</h2>
+                      </Botao>
+                   </InputsCartao>
+                  ) 
+                : 
+                (<button onClick={()=>PagarBoleto()}>Gerar Boleto</button>) }
 
-              <Botao onClick={() => RealizarCompra()}>
-                <h2>Finalizar</h2>
-              </Botao>
-            </InfoCartao>
-          </Direita>
+
+
+
+
+              </InfoCartao>
+            </Direita>
           </DadosCartao>
         </Compra>
+
+        <CarrinhoDeCompras>
+          <h1>Produtos no carrinho</h1>
+            {items.map(e=>{
+              return(
+                <Produto>
+                      <img src={e.img} alt=""/>
+                    <div>
+                      <h1>{e.produto}</h1>
+                      <span>{e.descrisao}</span>
+                    </div>
+                    <ul>
+                    <h2>Qtd: {e.quantidade}</h2>
+                    <h2>Preço: {e.preco}</h2> 
+                    </ul>
+                </Produto>
+              )
+            })}
+
+        </CarrinhoDeCompras>
           
       </Container>
     </>

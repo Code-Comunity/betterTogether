@@ -12,16 +12,16 @@ export default function Registro() {
   const [ email, setEmail ] = useState('');
   const [ senha, setSenha ] = useState('');
   const [ cep, setCep ] = useState('');
-
+  const [ img, setImg ] = useState();
 
   async function Cadastrar(){
     try{
- 
      await api.post('/cadastrarCliente',{
       nome:nome,
       email:email,
       senha:senha,
-      cep:cep
+      cep:cep,
+      images: img
      })
      
      alert(`Voce foi cadastrado, seu nome: ${nome}`);
@@ -63,6 +63,11 @@ export default function Registro() {
           <div className="inputWIcon">
             <h3><IoIosFingerPrint size="20px" /></h3>
             <input type="text" name="cep" placeholder="digite seu CEP" onChange={ e => setCep(e.target.value) }/>
+          </div>
+
+          <div className="inputWIcon">
+            <h3><IoIosFingerPrint size="20px" /></h3>
+            <input type="file" name="foto" placeholder="digite seu CEP" onChange={ e => setImg(e.target.files[0]) }/>
           </div>
 
         </div>

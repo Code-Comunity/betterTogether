@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [ saldo, setSaldo ] = useState([])
   const [ pedidos, setPedidos ] = useState([]) //Todas as transações
   const [ recebivel, setRecebivel ] = useState([])
-
+  console.log(pedidos)
   useEffect(()=>{
     async function buscaUser(){
       try{
@@ -124,6 +124,13 @@ export default function Dashboard() {
                * mas atentar-se ao objeto retornado, alguns possuem objetos dentro de objetos
                * e arrays dentro do objeto, portanto possivelmente precise de um map dentro de um map...
                */}
+
+               {
+                 pedidos.map(e=>{
+                   console.log(e.id)
+                   
+                 })
+               }
 
               { data.map(e=>{
                 //Aqui chamaremos na api, os ultimos pedidos

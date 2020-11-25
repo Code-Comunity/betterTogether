@@ -68,12 +68,12 @@ export default function Produto() {
          produto.map(e =>{
           let preco = e.preco
           let total = preco * qtd;
-
+          console.log(e)
            return(
             <div className="produto-content">
             <div className="produto-esquerda">
               <div className="foto-produto">
-                <img src={e.img} alt="teste"/>
+                <img src={e.images} alt="teste"/>
               </div>
               <div className="descricao-produto">
                 <h1>{e.produto}</h1>
@@ -105,7 +105,6 @@ export default function Produto() {
                   </div>
                 </div>
                 <div className="button-container">
-                  <button className="button-produto"><h2>Comprar</h2></button>
                   <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
                 </div>
               </div>

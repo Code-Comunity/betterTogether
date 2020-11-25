@@ -6,12 +6,14 @@ import {Container, Conteudo, Card, Foto, Descricao, Preco, Icons, Close, LinkCom
 import {IoMdCheckmarkCircle} from 'react-icons/io';
 import {FaTrash} from 'react-icons/fa';
 import {RiCloseCircleFill} from 'react-icons/ri';
-
+import { useHistory } from 'react-router-dom';
 import Context from '../../contexts/auth';
+
 
 const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
     const {qtdMais, qtdMenos} = useContext(Context);
+    const history = useHistory()
 
     //GETTER
     const carrinho = localStorage.getItem('@btgther/carrinho');
@@ -19,6 +21,8 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     
     const [statusCarrinho, setStatusCarrinho] = useState(parseCarrinho)
 
+    //Contex
+    const { logado } = useContext(Context);
 
     const clickFora = (e) => {
         if(e.target.id === id) onClose();
@@ -31,41 +35,25 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
     }
 
     function FinalizarCompra(){
-        
         let item = JSON.parse(localStorage.getItem('@btgther/carrinho'));
+     
+
+        if(item){
+            const valores = item.map((e)=>{return e.preco;});
         
-        let item2 = item.map((e) => {
-            
-            let qtdItem = e.quantidade;
-            //console.log(qtdItem)
-
-            let precoItem = e.preco;
-            //console.log(precoItem)
-            
-            let precoTotal = qtdItem * precoItem;
-            e.preco = precoTotal;
-
-            return precoTotal;
-        })
-
+            console.log(valores);
+    
+            if(valores.length === 0){
+                alert("Nenhum item no carrinho, impossível finalizar compra")
+            }else{
+                const total = valores.reduce((total, currentElement) => total + currentElement)
+                alert("valor total"+total);
+                return logado ? history.push('/compra') : history.push('/login');
+            }
+        }else{
+            alert("Nenhum item no carrinho, impossível finalizar compra")
+        }
         
-
-        
-        console.log(item)
-        /*
-        const coquecoisa = item.map((e) => {return e.preco = precoTotal});
-        console.log(coquecoisa)
-        */
-        const valores = item.map((e)=>{return e.preco;});
-        console.log(valores);
-
-        const total = valores.reduce((total, currentElement) => total + currentElement)
-        alert("valor total"+total);
-        return total;
-        
-        /* PARA ENVIAR PARA O BACKEND
-        api.post('/transaction', {total})
-        */
     }
 
     useEffect(()=>{

@@ -32,9 +32,9 @@ export default function Clientes() {
 
       async function getClientes(){
         try{
-          const {data} = await api.get('/listCliente');
-          //console.log(data.clientes)
-          return setClientes(data.clientes)
+          const {data} = await api.get('/cliente');
+          console.log(data)
+          return setClientes(data)
 
         }catch(error){
           console.log(error)

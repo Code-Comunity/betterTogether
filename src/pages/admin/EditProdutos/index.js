@@ -42,13 +42,13 @@ export default function EditProdutos() {
       async function GetDados(){
         
         try{ 
-          const {data} = await api.get(`/editar/${splitURL[4]}`)
-          console.log(data[0].produto)
+          const {data} = await api.get(`/produto/${splitURL[4]}`)
+          console.log(data[0])
           setNomeProduto(data[0].produto)
           setEstoque(data[0].estoque)
           setPreco(data[0].preco)
           setDescricao(data[0].descrisao)
-          setImagem(data[0].img)
+          setImagem(data[0].images)
 
 
         }catch(error){  
@@ -66,6 +66,26 @@ export default function EditProdutos() {
     return window.location.href = "/"
   }
 
+
+  async function Atualizar(){
+    try{
+    const data = new FormData;
+
+        data.append("id", splitURL[4])
+        data.append("produto", nomeProduto )
+        data.append("descrisao", descricao)
+        data.append("preco",preco)
+        data.append("estoque", estoque)
+        data.append("images", imagem)
+
+       await api.put(`/produto`, data)
+        return window.location.href = "/"
+    }catch(e){
+      console.error(e)
+    }
+    
+
+  }
 
   return (
     <>
@@ -106,8 +126,8 @@ export default function EditProdutos() {
 
       <div className="right">
         <img className="imgProduto" src={imagem} alt="Imagem do produto"/>
-        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.value)}/>
-        <button onClick={()=>{}}>Adicionar</button>
+        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.files[0])}/>
+        <button onClick={()=>Atualizar()}>Adicionar</button>
       </div>
       
     </div>

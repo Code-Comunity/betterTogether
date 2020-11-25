@@ -36,13 +36,14 @@ export default function AddProdutos() {
   async function CadastrarProduto(){
 
     try{
-      await api.post('/cadastro/novo',{
-        produto: nomeProduto,
-        descrisao: descricao,
-        preco: estoque,
-        estoque: preco,
-        img: imagem
-      })
+      const data = new FormData();
+      data.append("produto", nomeProduto);
+      data.append("descrisao", descricao);
+      data.append("preco", preco);
+      data.append("estoque", estoque);
+      data.append("images", imagem);
+
+      await api.post("/produto", data);
       alert(`${nomeProduto} Cadastrado no banco!`)
       
       return window.location.href = "/dashboard"
@@ -99,7 +100,7 @@ export default function AddProdutos() {
       </div>
 
       <div className="right">
-        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.value)}/>
+        <input type="file" name="addimgprodut" id="addimgprodut" onChange={(e)=>setImagem(e.target.files[0])}/>
         <button onClick={()=>CadastrarProduto()}>Adicionar</button>
       </div>
       

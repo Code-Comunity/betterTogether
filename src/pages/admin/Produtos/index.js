@@ -19,8 +19,8 @@ export default function AddProdutos() {
 
   useEffect(()=>{
     async function getProdutos(){
-      const {data} = await api.get('/listProduto')
-      return setProdutos(data.produtos);
+      const {data} = await api.get('/produto')
+      return setProdutos(data);
     }
     getProdutos();
   },[produtos])
@@ -87,14 +87,14 @@ export default function AddProdutos() {
 
         return(
           
-        <div key={e.id_produto} className="produto" >
+        <div key={e.id} className="produto" >
           <BiPackage size="73px" />
           {console.log(e)}
           <h1>{e.produto}</h1>
-            <Link to={`/editar/${e.id_produto}`}>
+            <Link to={`/editar/${e.id}`}>
               <IoIosBuild size="20px" />
             </Link>
-            <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id_produto)} size="20px" />
+            <FaTrash style={{cursor: 'pointer'}} onClick={()=>DeletarProduto(e.id)} size="20px" />
         </div>
         )
         }) }
