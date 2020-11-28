@@ -33,11 +33,7 @@ export default function Home() {
       
 
     }
-
-
     getApi();
-
-
   },[])
 
   return (
@@ -52,18 +48,19 @@ export default function Home() {
           { produtos.map(e => {
             let preco = e.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             return(
-              <Link to={`/produto/${e.id}`} >
-                  <div key={e.id} className="produtos">
-                    <div className="foto-produto-home">
-                      <img src={e.images} alt="teste"/> {/* Produto não apresenta imagem, pois a url que vem do back nao funciona no front separado. */}
-                    </div>
-                    <div className="home-content-produto">
-                      <h1>{e.produto}</h1>
-                      <p>{preco}</p>
-                      <p>12x no cartão</p>
-                    </div>
-                  </div>
-              </Link>
+              <div key={e.id} className="produtos">
+                <Link to={`/produto/${e.id}`} >
+                    
+                      <div className="foto-produto-home">
+                        <img src={e.images} alt="teste"/> {/* Produto não apresenta imagem, pois a url que vem do back nao funciona no front separado. */}
+                      </div>
+                      <div className="home-content-produto">
+                        <h1>{e.produto}</h1>
+                        <p>{preco}</p>
+                        <p>12x no cartão</p>
+                      </div>   
+                </Link>
+              </div>
             )
           })}
         </div>     

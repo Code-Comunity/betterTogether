@@ -26,7 +26,8 @@ export default function Produto() {
       try{
         const data = await api.get(`/produto/${splitURL[4]}`)
         const aiui = data.data;
-        setProduto([aiui]);
+        setProduto(aiui);
+
       }catch(err){
         console.log(err);
       }
@@ -67,6 +68,7 @@ export default function Produto() {
          //.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
          produto.map(e =>{
           let preco = e.preco
+          console.log(produto)
           let total = preco * qtd;
           console.log(e)
            return(

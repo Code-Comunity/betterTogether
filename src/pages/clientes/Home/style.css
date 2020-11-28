@@ -1,17 +1,21 @@
+html{
+  min-width: 100%;
+}
 header{
   width: 100%;
   margin: 0;
   
 }
 header img{
-  width: 100vw;
+  width: 100%;
   resize: both;
   image-resolution: 300;
   margin-top: 60px;
 }
+
 .home-content{
   width: 100%;
-  margin-top: 40px;
+  margin-top: 2%;
 
   display: flex;
   justify-content: center;
@@ -19,12 +23,14 @@ header img{
 }
 .produtos-container{
   width: 80%;
+  max-width: 1280px;
   margin: 10px;
   padding: 10px;
+  
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: flex-start;
   align-items: space-around;
 }
 .produtos{
@@ -54,7 +60,7 @@ header img{
   padding: 10px;
 }
 .home-content-produto h1{
-  font-size: 20px;
+  font-size: 2.0rem;
   color: #820E0E;
   text-align: left;
 }
@@ -62,4 +68,38 @@ header img{
   color: #A6A6A6;
   text-align: left;
   margin-top: 5px;
+}
+
+
+@media(max-width: 1024px){
+  .produtos-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .produtos{
+    margin: 10px;
+  }
+}
+@media(max-width: 768px){
+  .produtos-container{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+   }
+}
+@media(max-width: 320px){
+  .produtos{
+    width: 97%;
+    height: 280px;
+  }
+  .foto-produto-home{
+    width: 100%;
+    height: 68%;
+  }
+  .foto-produto-home img{
+    width: 100%;
+    height: 100%;
+  }
 }

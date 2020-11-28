@@ -1,4 +1,4 @@
-nav{
+.nav-menu{
   background: #820E0E;
   height: 60px;
   width: 100%;
@@ -12,6 +12,11 @@ nav{
   z-index: 10;
 }
 
+
+.menu-toggle{
+  position: fixed;
+  z-index: 10;
+}
 .botoes{
   display: flex;
 }
@@ -92,7 +97,7 @@ nav{
 
 .dropdown{
   position: absolute;
-  margin-top: 143px;
+  margin-top: 133px;
   margin-left: -10px;
   border-radius: 0 0 15px 15px;
   background-color: #820E0E;
@@ -119,4 +124,10 @@ nav{
 
 .perfil:hover .dropdown{
   display: flex;
+}
+
+@media(max-width: 700px){
+  .ladoDireito{
+    display: none;
+  }
 }

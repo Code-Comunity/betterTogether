@@ -15,6 +15,7 @@ export default function AddProdutos() {
   const [ preco, setPreco ] = useState('');
   const [ descricao, setDescricao ] = useState('');
   const [ imagem, setImagem ] = useState('');
+  const [ peso, setPeso ] = useState('');
 
   const [usuarioLogado , setUsuarioLogado ] = useState([])
 
@@ -42,6 +43,7 @@ export default function AddProdutos() {
       data.append("preco", preco);
       data.append("estoque", estoque);
       data.append("images", imagem);
+      data.append("peso", peso);
 
       await api.post("/produto", data);
       alert(`${nomeProduto} Cadastrado no banco!`)
@@ -93,6 +95,7 @@ export default function AddProdutos() {
         <input type="text" placeholder="Digite o nome do produto" onChange={(e)=>setNomeProduto(e.target.value)}/>
         <input type="text" placeholder="Digite o estoque do produto" onChange={(e)=>setEstoque(e.target.value)}/>
         <input type="text" placeholder="Digite o preço do produto" onChange={(e)=>setPreco(e.target.value)}/>
+        <input type="text" placeholder="Digite o peso do produto" onChange={(e)=>setPeso(e.target.value)}/>
 
         <textarea name="descricao" id="desc" cols="30" rows="10" placeholder="Descreva um pouco sobre o produto ou serviço que
         você está vendendo." onChange={(e)=>setDescricao(e.target.value)} >

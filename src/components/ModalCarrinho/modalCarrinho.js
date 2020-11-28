@@ -96,9 +96,9 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
                                 </Descricao>
                                 <Quantidade>
                                 <div className="icon-produto" style={{width:"70%"}} >
-                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMenos}>-</h1> 
-                                    <input type="text" placeholder={e.quantidade} readOnly />
-                                    <h1 className="naoSelecionavel" unselectable="on" onClick={qtdMais}>+</h1>
+                                <h3>Qtd: {e.quantidade}</h3>
+                                    
+
                                 </div> 
                                 </Quantidade>
                                 <Preco>

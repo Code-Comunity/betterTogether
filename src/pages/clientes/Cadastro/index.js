@@ -16,14 +16,14 @@ export default function Registro() {
 
   async function Cadastrar(){
     try{
-     await api.post('/cadastrarCliente',{
+     const {data} = await api.post('/cadastrarCliente',{
       nome:nome,
       email:email,
       senha:senha,
       cep:cep,
-      images: img
+      img: img
      })
-     
+
      alert(`Voce foi cadastrado, seu nome: ${nome}`);
      return window.location.href = "/"
     }

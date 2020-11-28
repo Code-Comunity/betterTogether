@@ -1,0 +1,165 @@
+.menu-responsivo{
+    height: 70px;
+    width: 100vw;
+    position: fixed;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    display: none;
+    top: 5px;
+    
+  }
+  
+  .menu-responsivo img{
+    width: 50px;  
+  }
+  
+  .menu-responsivo h1{
+    position: absolute;
+    width: max-content;
+    top: 5px;
+    left: 5%;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+  
+  .menu-responsivo ul {
+    float: right;
+    margin-right: 25px;
+    margin-top: 15px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+  }
+  
+  .menu-responsivo ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 15px;
+  }
+  
+  .menu-responsivo ul li a{
+    position: relative;
+    padding: 5px 0;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  
+  #res-menu, i{
+    display: none;
+    z-index: 90;
+  }
+  
+  button{
+    margin: 5px;
+    background: #ffffff;
+    color: #702BC2;
+    border-radius: 9px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  .btnMenu{
+    text-decoration: none;
+    margin: 5px;
+    background: #ffffff;
+    color: #702BC2;
+    border-radius: 9px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .btnMenu:hover{
+    text-decoration: none;
+    background: #702BC2;
+    color: white;
+  }
+  
+  @media (max-width: 700px){
+    .menu-responsivo{
+      z-index: 99999;
+      display: block;
+      background: none;
+    }
+    label{
+      display: block;
+      width: max-content;
+      margin-left: 80%;
+      color: white;
+      z-index: 90;
+      position: absolute;
+    }
+    .menu-responsivo  ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #820E0E;
+      top:-15px;
+      left: -100%;
+      text-align: center;
+      transition: .5s;
+      z-index: 1;
+      overflow: hidden;
+    }
+     .menu-responsivo  ul li{
+      display: block;
+      margin: 40px 0;
+      line-height: 30px;
+  
+    }
+     .menu-responsivo  ul li a{
+      font-size: 20px;
+    }
+    #menuFechado{   
+      display: block;
+      color: white;
+      font-size: 30px;
+      font-weight: 200;
+    
+      font-style: normal;
+      border-radius: 1px;
+      position: absolute;
+    }
+    #menuAberto{
+      display: block;
+      position: absolute;
+      color: white;
+      font-size: 30px;
+    
+      font-style: normal;
+      border-radius: 1px;
+      display: none;
+    }
+    #res-menu:checked ~ ul{
+      left: 0;
+    }
+     .menu-responsivo  ul {
+      float: right;
+      margin-right: 25px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   
+    }
+    .loginAndRegisterButton{
+      display: flex;
+      flex-direction: column;
+    }
+    button{
+      padding: 5px;
+    }
+    button:hover{
+      background: #340042;
+      color: white;
+    }
+  }

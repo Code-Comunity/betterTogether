@@ -17,6 +17,9 @@ import { useState } from 'react';
 import Context from '../../contexts/auth';
 import { IoIosLogIn, IoIosLogOut,IoIosPerson, IoMdPersonAdd } from 'react-icons/io';
 
+//Menu Responsivo
+import  MenuResponsivo  from '../menuResponsivo/menu';
+
 export default function Navbar() {
 
   const { logado, usuario } = useContext(Context);
@@ -30,7 +33,8 @@ export default function Navbar() {
   console.log(logado,usuario)
   return (
     <>
-      <nav>
+      <MenuResponsivo />
+      <div className="nav-menu">
         
         <div className="ladoEsquerdo">
         <Link to='/' ><img src={Logo} alt="Logo"/></Link>
@@ -56,7 +60,7 @@ export default function Navbar() {
                  { logado ? ( <div className="perfil">
               <h4>{usuario.nome}</h4>
               <div className="circle">
-                <img src={Perfil} alt="Perfil foto"/>
+                <img src={usuario.img} alt="Perfil foto"/>
               </div>
 
               <div className="dropdown">
@@ -74,7 +78,7 @@ export default function Navbar() {
              )}           
             
         </div>        
-      </nav>
+      </div>
        {isModalVisible ? <Modal onClose={() => setIsModalVisible(false)} /> : null}
     </>
   );

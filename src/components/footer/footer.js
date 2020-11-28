@@ -16,8 +16,8 @@ export default function Footer(){
                 <Cima>
                     <Esquerda>
                         <h4>Atalhos:</h4>
-                        <Link><h3>Meu perfil</h3></Link>
-                        <Link><h3>Meus pedidos</h3></Link>
+                        <Link to="alterdados"><h3>Meu perfil</h3></Link>
+                        <Link to="perfil"><h3>Meus pedidos</h3></Link>
                         <Link><h3>Promoções</h3></Link>
                     </Esquerda>
                     <Centro>
