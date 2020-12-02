@@ -29,12 +29,12 @@ export default function Home() {
       }catch(error){
         console.log(error)
       }
-      
-      
 
     }
     getApi();
   },[])
+
+  console.log(produtos)
 
   return (
     <>

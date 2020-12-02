@@ -12,11 +12,27 @@ import api from '../../../service/api';
 
 export default function Dashboard() {
 
-  const [usuarioLogado , setUsuarioLogado ] = useState([])
+  const [ usuarioLogado , setUsuarioLogado ] = useState([])
   const [ saldo, setSaldo ] = useState([])
   const [ pedidos, setPedidos ] = useState([]) //Todas as transações
   const [ recebivel, setRecebivel ] = useState([])
-  console.log(pedidos)
+
+  useEffect(()=>{
+    
+    async function getApi(){
+      try{
+        const req = await api.get(`/pagarme-todastransacoes`)
+        console.log(req)
+        return setPedidos(req);
+      }catch(error){
+        console.log(error)
+      }
+    }
+    getApi();
+  },[])
+  console.log(pedidos.data)  
+
+
   useEffect(()=>{
     async function buscaUser(){
       try{
@@ -125,12 +141,7 @@ export default function Dashboard() {
                * e arrays dentro do objeto, portanto possivelmente precise de um map dentro de um map...
                */}
 
-               {
-                 pedidos.map(e=>{
-                   console.log(e.id)
-                   
-                 })
-               }
+           
 
               { data.map(e=>{
                 //Aqui chamaremos na api, os ultimos pedidos

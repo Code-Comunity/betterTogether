@@ -45,6 +45,8 @@ export default function AddProdutos() {
       data.append("images", imagem);
       data.append("peso", peso);
 
+      console.log(data);
+
       await api.post("/produto", data);
       alert(`${nomeProduto} Cadastrado no banco!`)
       

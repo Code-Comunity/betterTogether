@@ -68,7 +68,7 @@
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 35px;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 .BTNLogin:hover{
@@ -88,4 +88,15 @@
   .BTNLogin{
     width: 200px;
   }
+  .boxLogin{
+    width: 100vw;
+    height: 100vh;
+   
+    background-color: #820E0E;
+  }
+  .loginarea{
+    background-color: #820E0E;
+    border-radius: none;
+  }
+
 }

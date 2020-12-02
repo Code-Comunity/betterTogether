@@ -24,6 +24,7 @@ export default function Navbar() {
 
   const { logado, usuario } = useContext(Context);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  console.log(usuario)
 
   function Deslogar(){
     localStorage.clear();

@@ -16,7 +16,7 @@ export function AuthProvider({children}){
     const token = localStorage.getItem('@btgther/token')
     if(usuario && token){setUsuario(JSON.parse(usuario));}
   }
-
+  
   function verifyAdm(){
     const usuario = localStorage.getItem('@btgther/usuarioADM')
     const token = localStorage.getItem('@btgther/tokenADM')

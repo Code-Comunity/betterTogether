@@ -44,10 +44,11 @@ export const Card = styled.div`
 `
 export const Foto = styled.div`
     width: 20%;
+    
 
     img{
         width: 100%;
-        height: 160px;
+        height: 100%;
     }
     @media (max-width: 1024px){    
         width: 140px;
@@ -60,6 +61,7 @@ export const Foto = styled.div`
         p{
             font-size:1.2rem;
         }
+      
     }
     @media (max-width: 425px){ 
         width: 100px;
@@ -70,6 +72,7 @@ export const Foto = styled.div`
         p{
             font-size:1.0rem;
         }
+        
     }
     @media (max-width: 320px){ 
         h1{   
@@ -83,6 +86,7 @@ export const Foto = styled.div`
 export const Descricao = styled.div`
     width: 70%;
     padding: 10px;
+    word-break: break-all;
 
     p{
         color: #A6A6A6;
@@ -126,6 +130,7 @@ export const Quantidade = styled.div`
     justify-content: center;
     margin-right: 30px;
     margin-bottom: 25px;
+    padding-left: 50px;
 
 
     @media (max-width: 425px){
@@ -195,4 +200,12 @@ export const LinkComprar = styled.div`
             margin-left: 2px;
         }
     }
+
+    @media(max-width: 768px){
+        margin-top: 10px;
+
+        span{
+            size: 15px;
+        }
+    } 
 `

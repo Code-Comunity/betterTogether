@@ -89,7 +89,7 @@ const Modal = ({ id = 'modal' ,onClose = () => {}}) => {
 
                             return( 
                             <Card key={e.id_produto}>
-                                <Foto  ><img src={e.img} alt=""/></Foto>
+                                <Foto  ><img src={e.images} alt=""/></Foto>
                                 <Descricao>
                                     <h1>{e.produto}</h1>
                                     <p>{e.descrisao}</p> 
