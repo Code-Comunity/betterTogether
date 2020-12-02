@@ -21,16 +21,18 @@ export default function Dashboard() {
     
     async function getApi(){
       try{
-        const req = await api.get(`/pagarme-todastransacoes`)
-        console.log(req)
-        return setPedidos(req);
+        const req = await api.get('/pagarme-todastransacoes')
+       
+        setPedidos(req.data.map(pedidos=>pedidos));
+        
+        return
       }catch(error){
         console.log(error)
       }
     }
     getApi();
   },[])
-  console.log(pedidos.data)  
+
 
 
   useEffect(()=>{
@@ -57,12 +59,12 @@ export default function Dashboard() {
     }
 
     async function TodasTransactions(){
-      try{
-        const {data} = await api.get('/pagarme-todastransacoes')
-        setPedidos(data.transactions);
-      }catch(error){
-        console.log(error)
-      }
+      // try{
+      //   const {data} = await api.get('/pagarme-todastransacoes')
+      //   setPedidos(data.transactions);
+      // }catch(error){
+      //   console.log(error)
+      // }
     }
     async function BuscaRecebiveis(){
       try {
@@ -118,7 +120,7 @@ export default function Dashboard() {
           <div className="direta">
             <div className="perfilDash">
               <div className="circleDash"></div>
-              <h2>{usuarioLogado.nome}</h2>
+              <h2>{/*usuarioLogado.nome*/}</h2>
               <h3> <IoIosExit className="exitbtn" size="23px" color="#820E0E" onClick={()=>Deslogar()} /> </h3>
             </div>
           </div>
@@ -143,36 +145,36 @@ export default function Dashboard() {
 
            
 
-              { data.map(e=>{
+              { pedidos.map(e=>{
                 //Aqui chamaremos na api, os ultimos pedidos
                 return(
                 <div key={e.id} className="itemLista">
                   <div className="top">
                     <button onClick={()=>Estornar(e.id)}>Realizar Estorno</button>
                     <div className="nome">
-                    <h2 style={{marginRight:10}}>{e.thumb}</h2>
-                    <h3 style={{color: '#820E0E'}}>{e.nome}</h3>
+                    <h2 style={{marginRight:10}}>{/*e.thumb*/}</h2>
+                    <h3 style={{color: '#820E0E'}}>{e.name}</h3>
                     </div>
                   </div>
 
                   <div className="bottom">
                   <div className="infos">
                       <div className="infoitems">
-                          <span><BiMap />{e.local}</span>
+                          <span><BiMap />{/*e.local*/}</span>
                           <span><BiPackage />{e.status}</span>
                       </div>
                   <div className="infoitems">
-                          <span><IoMdClock />{e.hora}</span>
-                          <span><IoMdBarcode />{e.codigo}</span>
+                          <span><IoMdClock />{/*e.hora*/}</span>
+                          <span><IoMdBarcode />{e.id}</span>
                       </div>
                     <div className="infoitems">
-                        <span><IoMdShareAlt />{e.frete}</span>
-                        <span><BiCar />{e.transportadora}</span>
+                        <span><IoMdShareAlt />{/*e.frete*/}</span>
+                        <span><BiCar />{/*e.transportadora*/}</span>
                     </div>
                       </div>
                     <div className="total">
                           <IoMdCash size="25px" color="green"/>
-                          <h3>{e.valorTotal}</h3>
+                          <h3>{/*e.valorTotal*/}</h3>
                     </div>
                   </div>
 
