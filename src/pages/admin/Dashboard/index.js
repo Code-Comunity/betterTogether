@@ -21,8 +21,8 @@ export default function Dashboard() {
   const [ pedidos, setPedidos ] = useState([]) //Todas as transações
   const [ recebivel, setRecebivel ] = useState([])
 
+  //Pegando os dados do pedido pra mapear
   useEffect(()=>{
-    
     async function getApi(){
       try{
         const req = await api.get('/pagarme-todastransacoes')
@@ -38,7 +38,7 @@ export default function Dashboard() {
   },[])
   console.log(pedidos)
 
-
+  //Buscando se o usuário está logado e pegando dados dele
   useEffect(()=>{
     async function buscaUser(){
       try{
@@ -62,14 +62,7 @@ export default function Dashboard() {
       }
     }
 
-    async function TodasTransactions(){
-      // try{
-      //   const {data} = await api.get('/pagarme-todastransacoes')
-      //   setPedidos(data.transactions);
-      // }catch(error){
-      //   console.log(error)
-      // }
-    }
+
     async function BuscaRecebiveis(){
       try {
         const {data} = await api.get('/pagarme-recebiveis')
@@ -80,15 +73,17 @@ export default function Dashboard() {
     }
 
     BuscaRecebiveis();
-    TodasTransactions()
     buscaSaldo()
     buscaUser()
   },[])
+
+  //Função de deslogar
   function Deslogar(){
     localStorage.clear();
     return window.location.href = "/"
   }
 
+  //Função q realiza extorno
   async function Estornar(prop){
     try {
       const { retorno } = await api.post(`/pagarme-estorno/${prop}`)
@@ -98,6 +93,7 @@ export default function Dashboard() {
     }
   }
 
+  //Função saque
   async function Sacar(amount, id){
     console.log(amount)
     console.log(id)
@@ -113,10 +109,18 @@ export default function Dashboard() {
     }
   }
 
+  function Rastreio(prop){
+    let codigo = window.prompt("Informe o código de rastreio: ");
+    console.log(codigo) 
+    pedidos.push({"Codigo": codigo}, {"ItemClicado": prop});
+    console.log(pedidos)
+    
+  }
+  console.log(pedidos)
+
   return (
     <>
       <div className="Dashboard">
-
         <div className="header">
           <div className="esquerda">
             <img src={Logo} alt="LogoDashboard"/>
@@ -171,7 +175,10 @@ export default function Dashboard() {
                           <h3>{e.items.map(e=>(e.unit_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})))}</h3>
                     </div>
                   </div>
-                  <button style={{color: "#820E0E", marginTop: "15px"}} onClick={()=>Estornar(e.id)}>Realizar Estorno</button>    
+                  <div className="container-opcoes-pedidos">     
+                      <button style={{color: "#820E0E", marginTop: "15px"}} onClick={()=>Rastreio(e.id)}>Adicionar código de rastreio</button>
+                      <button style={{color: "#820E0E", marginTop: "15px"}} onClick={()=>Estornar(e.id)}>Realizar Estorno</button>
+                  </div>     
                 </div>
                 )
                 }) }

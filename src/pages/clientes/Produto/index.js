@@ -19,8 +19,22 @@ export default function Produto() {
   //USE STATES
 
   const [produto, setProduto] = useState([]);
+  const [freteCodigo, setFreteCodigo] = useState([]);
+  const [valorFrete, setValorFrete] = useState({})
 
-  console.log(splitURL);
+  async function frete(){
+    try{
+      const response = await api.post("/frete",{cep:freteCodigo, peso:0.40})
+      //console.log(response.data);
+      
+      return setValorFrete(response.data);
+    }catch(error){
+      console.log(error.response)
+    }
+    
+  }
+  console.log(valorFrete.Pac)
+
   useEffect(()=>{
     async function getApi(){
       try{
@@ -102,10 +116,14 @@ export default function Produto() {
                 <div className="produto-frete-calc">
                   <h2>Calcular frete:</h2>
                   <div className="icon-produto"> 
-                    <input type="text" />
-                    <h3><IoIosCalculator size="20px" /></h3>
+                    <input type="text" onChange={(e)=> setFreteCodigo(e.target.value)} />
+                    <h3 onClick={()=> frete()}><IoIosCalculator size="20px" /></h3>
                   </div>
                 </div>
+                      { valorFrete ? (<ul>              
+                        <li>{valorFrete.Pac}</li>
+                        <li>{valorFrete.Sedex}</li>
+                      </ul>) : <div></div> } 
                 <div className="button-container">
                   <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
                 </div>

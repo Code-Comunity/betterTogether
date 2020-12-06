@@ -8,6 +8,7 @@ import Contato from '../pages/clientes/Contato';
 import Sobre from '../pages/clientes/Sobre';
 import Perfil from '../pages/clientes/Perfil';
 import Comprar from '../pages/clientes/Compra';
+import AlterDados from '../pages/clientes/AlteraDados';
 
 export default function RotasClientes() {
   const history = useHistory();
@@ -45,6 +46,7 @@ export default function RotasClientes() {
         <Route path="/contato" component={Contato} />
         <Route path="/sobre" component={Sobre} />
         <Route path="/perfil" component={Perfil} />
+        <Route path="/alterdados" component={AlterDados} />
         <Route path="/compra" component={Comprar} />
     </Switch>
     </Router>
