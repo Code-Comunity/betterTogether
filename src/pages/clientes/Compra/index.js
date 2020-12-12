@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom';
 import api from "../../../service/api";
-import { IoIosBarcode, IoMdCard } from "react-icons/io";
+import { IoIosBarcode, IoMdCard, IoIosCalculator } from "react-icons/io";
 
 import axios from "axios";
 import Cards from 'react-credit-cards'
@@ -37,7 +37,7 @@ export default function Comprar() {
   const [user, setUser] = useState([]);
   const [endereco, setEndereco] = useState([]);
   const [items, setItems] = useState([]);
-  const [ totalItens, setTotalItens ] = useState("");
+  const [totalItens, setTotalItens ] = useState("");
 
   //Variáveis de estado, para armazenar as values dos inputs.
   const [numResid, setNumResid] = useState("");
@@ -54,8 +54,42 @@ export default function Comprar() {
   //Var de estado para Receber Resposta
   const [metodoPagamento, setMetodoPagamento] = useState("");
   const [pagamento, setPagamento] = useState([]);
+  const [valorFrete, setValorFrete] = useState([])
+  const [freteCodigo, setFreteCodigo] = useState([]);
   const [focus, setFocus] = useState("");
   const history = useHistory();
+
+
+
+  async function Fretar(){
+    try{
+      const {data} = await api.post("/frete",{cep:freteCodigo, peso:0.40})
+      console.log(data);
+
+      const PacValor = data.Pac.Valor
+      const PacPrazo = data.Pac.Prazo
+      const SedexValor = data.Sedex.Valor
+      const SedexPrazo = data.Sedex.Prazo
+      
+      const obj = [{
+        Titulo: "Pac",
+        Valor:PacValor,
+        Prazo: PacPrazo   
+      },
+      {
+        Titulo: "Sedex",
+        Valor: SedexValor,
+        Prazo: SedexPrazo   
+      }]
+      console.log(obj)
+      
+      return setValorFrete(obj);
+    }catch(error){
+      console.log(error.response)
+    }
+    
+  }
+
 
   console.log(endereco)
   //CRIANDO OBJETOS PARA PASSAR PARA O PAGARME DE COSTUMER E SHIPPING E ADRESS ~~
@@ -179,7 +213,8 @@ export default function Comprar() {
      if(cep.length === 8){
       let CorreiosCep = await axios.get(`https://viacep.com.br/ws/${cep}/json/`).then((e)=>{return e.data;});
           return setEndereco(CorreiosCep);
-      }
+    }
+    console.log(endereco)
     }
     BuscarCep();
   }, [cep]);
@@ -302,7 +337,26 @@ export default function Comprar() {
                 onChange={(e) => setCep(e.target.value)}
               />
               <button onClick={()=> frete()}>frete</button>
+
+              <div className="produto-frete-calc">
+                  <h2>Calcular frete:</h2>
+                  <div className="icon-produto"> 
+                    <input placeholder="Simule o frete da sua compra" type="text" onChange={(e)=> setCep(e.target.value)} />
+                    <h3 onClick={()=> Fretar()}><IoIosCalculator size="20px" /></h3>
+                  </div>
+                </div>
+                      { valorFrete ? (<ul>              
+                      {valorFrete.map(e=>(
+                        <>
+                        <li>{e.Titulo}</li>
+                      <li>{e.Valor}</li>
+                      <li>{e.Prazo}</li>
+                      </>
+                      ))}
+                      </ul>) : <div></div> } 
             </Form>
+
+            
             <div style={{ display: "flex", width: "100%" }}>
               <Form>
                 <input

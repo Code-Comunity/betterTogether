@@ -1,3 +1,4 @@
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect,useState} from 'react';
 import Navbar from '../../../components/menu/menu';
@@ -20,20 +21,39 @@ export default function Produto() {
 
   const [produto, setProduto] = useState([]);
   const [freteCodigo, setFreteCodigo] = useState([]);
-  const [valorFrete, setValorFrete] = useState({})
+  const [valorFrete, setValorFrete] = useState([])
+
+  console.log(valorFrete)
 
   async function frete(){
     try{
-      const response = await api.post("/frete",{cep:freteCodigo, peso:0.40})
-      //console.log(response.data);
+      const {data} = await api.post("/frete",{cep:freteCodigo, peso:0.40})
+      console.log(data);
+
+      const PacValor = data.Pac.Valor
+      const PacPrazo = data.Pac.Prazo
+      const SedexValor = data.Sedex.Valor
+      const SedexPrazo = data.Sedex.Prazo
       
-      return setValorFrete(response.data);
+      const obj = [{
+        Titulo: "Pac",
+        Valor:PacValor,
+        Prazo: PacPrazo   
+      },
+      {
+        Titulo: "Sedex",
+        Valor: SedexValor,
+        Prazo: SedexPrazo   
+      }]
+      console.log(obj)
+      
+      return setValorFrete(obj);
     }catch(error){
       console.log(error.response)
     }
     
   }
-  console.log(valorFrete.Pac)
+  console.log(valorFrete[0])
 
   useEffect(()=>{
     async function getApi(){
@@ -116,13 +136,18 @@ export default function Produto() {
                 <div className="produto-frete-calc">
                   <h2>Calcular frete:</h2>
                   <div className="icon-produto"> 
-                    <input type="text" onChange={(e)=> setFreteCodigo(e.target.value)} />
+                    <input placeholder="Simule o frete da sua compra" type="text" onChange={(e)=> setFreteCodigo(e.target.value)} />
                     <h3 onClick={()=> frete()}><IoIosCalculator size="20px" /></h3>
                   </div>
                 </div>
                       { valorFrete ? (<ul>              
-                        <li>{valorFrete.Pac}</li>
-                        <li>{valorFrete.Sedex}</li>
+                      {valorFrete.map(e=>(
+                        <>
+                        <li>{e.Titulo}</li>
+                      <li>{e.Valor}</li>
+                      <li>{e.Prazo}</li>
+                      </>
+                      ))}
                       </ul>) : <div></div> } 
                 <div className="button-container">
                   <button onClick={()=>Comprar()} className="button-produto-add"><h2>Adicionar ao carrinho</h2></button>
